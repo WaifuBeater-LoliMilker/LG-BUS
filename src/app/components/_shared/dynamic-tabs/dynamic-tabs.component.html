@@ -1,0 +1,19 @@
+<ul class="nav nav-tabs" role="tablist" #navtabs horizontalScroll>
+  @for (tab of tabs; track tab.id) {
+  <li class="nav-item" role="presentation" #tabItem [attr.data-id]="tab.id" middleClick
+    (middleClickCallback)="removeTab(tab.id)">
+    <button class="nav-link" [class.active]="tab.active" (click)="selectTab(tab.id)" type="button" role="tab">
+      <span class="fw-bold">{{ tab.title }}</span>
+      <span class="ms-2 text-danger p-1 cursor-pointer" (click)="removeTab(tab.id); $event.stopPropagation()">×</span>
+    </button>
+  </li>
+  }
+</ul>
+
+<div class="tab-content border border-top-0 p-2" #tabcontents>
+  @for (tab of tabs; track tab.id) {
+  <div class="tab-pane fade h-100" [class.show]="tab.active" [class.active]="tab.active" role="tabpanel">
+    <ng-container [ngComponentOutlet]="tab.content"></ng-container>
+  </div>
+  }
+</div>
