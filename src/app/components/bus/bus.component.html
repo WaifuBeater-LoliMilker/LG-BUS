@@ -2,7 +2,7 @@
   <div class="card-header">
     <div class="row">
       <div class="col-4 pe-1my-1 d-flex gap-1">
-        <button class="btn btn-primary-alt">
+        <button class="btn btn-primary-alt" (click)="onAddTab('Update route detail', addEditBus)">
           <fa-icon [icon]="faPlus"></fa-icon>
           <span class="ms-1">Thêm</span>
         </button>
@@ -28,11 +28,12 @@
             [height]="'calc(100% - 50px)'" [maxHeight]="'100%'" [hasSelection]="false">
           </tabulator-table-single>
         </mat-sidenav-content>
-        <mat-sidenav #rightSidebar mode="over" position="end" [opened]="isShowingRightTable" class="sidebar no-radius">
+        <mat-sidenav #rightSidebar mode="over" position="end" [opened]="isShowingRightTable"
+          (opened)="onDetailOpened()" (closedStart)="onDetailClosed()" class="sidebar no-radius">
           <div class="d-flex flex-column h-100">
             <div class="header d-flex align-items-center justify-content-between">
               <span class="ms-3">Commuter route information</span>
-              <button class="btn text-light">▶</button>
+              <button class="btn text-light" (click)="isShowingRightTable=false;">▶</button>
             </div>
             <div class="search-div container">
               <div class="row h-50">
@@ -65,6 +66,40 @@
                   </ngx-select>
                 </div>
               </div>
+              <!-- <div class="h-33">
+                <div class="d-flex border">
+                  <div class="p-2 bg-light text-center fw-bold d-flex align-items-center">
+                    TD Plaza
+                  </div>
+                  <div class="flex-grow-1 d-flex align-items-center px-3">
+                    <div class="timeline d-flex align-items-center justify-content-between w-100">
+                      <div class="stop text-center">
+                        <div class="stop-name">TD Plaza</div>
+                        <div class="dot filled"></div>
+                        <div class="stop-time">06:50</div>
+                      </div>
+                      <div class="line"></div>
+                      <div class="stop text-center">
+                        <div class="stop-name">Cổng Cảng</div>
+                        <div class="dot"></div>
+                        <div class="stop-time">06:55</div>
+                      </div>
+                      <div class="line"></div>
+                      <div class="stop text-center">
+                        <div class="stop-name">108 Bạch Đằng</div>
+                        <div class="dot"></div>
+                        <div class="stop-time">07:10</div>
+                      </div>
+                      <div class="line"></div>
+                      <div class="stop text-center">
+                        <div class="stop-name">Điện máy Trần Anh</div>
+                        <div class="dot filled"></div>
+                        <div class="stop-time">07:15</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
             </div>
             <div class="table-div">
               <tabulator-table-single #tblDetail [tableData]="detailData" [columnNames]="detailColumns"

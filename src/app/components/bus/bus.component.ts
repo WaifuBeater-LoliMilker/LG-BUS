@@ -1,8 +1,11 @@
 import {
+  AfterViewInit,
   Component,
   ElementRef,
+  Input,
   OnInit,
   TemplateRef,
+  Type,
   ViewChild,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -23,6 +26,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { CdkMenu, CdkMenuTrigger } from '@angular/cdk/menu';
 import { NgxSelectModule } from 'ngx-select-ex';
+import { AddEditBusComponent } from '../add-edit-bus/add-edit-bus.component';
+import { Tab } from '../_shared/dynamic-tabs/dynamic-tabs.component';
 
 @Component({
   selector: 'communication',
@@ -41,13 +46,14 @@ import { NgxSelectModule } from 'ngx-select-ex';
     NgxSelectModule,
   ],
 })
-export class BusComponent implements OnInit {
+export class BusComponent implements OnInit, AfterViewInit {
   //#region Properties
   isShowingRightTable = true;
   faPlus = faPlus;
   faPenToSquare = faPenToSquare;
   faCopy = faCopy;
   faTrash = faTrash;
+  addEditBus = AddEditBusComponent;
   masterColumns: ColumnDefinition[] = [
     {
       title: 'No',
@@ -57,7 +63,7 @@ export class BusComponent implements OnInit {
       width: 75,
     },
     {
-      title: '',
+      title: 'Chi tiết',
       headerSort: false,
       headerHozAlign: 'center',
       hozAlign: 'center',
@@ -98,7 +104,13 @@ export class BusComponent implements OnInit {
     },
   ];
   detailColumns: ColumnDefinition[] = [
-    { title: 'No', field: 'no', headerHozAlign: 'center', width: 75 },
+    {
+      title: 'No',
+      field: 'no',
+      headerHozAlign: 'center',
+      hozAlign: 'center',
+      width: 75,
+    },
     {
       title: 'Tên điểm đón',
       field: 'busStopName',
@@ -109,6 +121,7 @@ export class BusComponent implements OnInit {
       title: 'Giờ đón điểm',
       field: 'arriveTime',
       headerHozAlign: 'center',
+      hozAlign: 'center',
       width: '50%',
     },
   ];
@@ -326,10 +339,15 @@ export class BusComponent implements OnInit {
     },
     { no: 20, busStopName: 'Bến xe Gia Lâm', arriveTime: '10:20' },
   ];
+  @ViewChild('tblMaster', { static: false })
+  tblMaster!: TabulatorTableSingleComponent;
+  @ViewChild('tblDetail', { static: false })
+  tblDetail!: TabulatorTableSingleComponent;
   @ViewChild('btnDeleteMaster', { static: false })
   btnDeleteMaster!: ElementRef<HTMLButtonElement>;
   @ViewChild('btnDeleteDetail', { static: false })
   btnDeleteDetail!: ElementRef<HTMLButtonElement>;
+  @Input() dynamicTabs!: any;
   //#endregion
 
   //#region Constructor
@@ -338,5 +356,43 @@ export class BusComponent implements OnInit {
 
   //#region Life cycle
   ngOnInit() {}
+  ngAfterViewInit() {
+    this.tblMaster.table?.on('rowSelected', (row) => {
+      this.isShowingRightTable = true;
+    });
+  }
   //#endregion
+  onDetailClosed() {
+    this.isShowingRightTable = false;
+    this.tblMaster.table?.deselectRow();
+  }
+  onDetailOpened() {
+    this.tblDetail.table?.redraw(true);
+  }
+  onAddTab(title: string, content: Type<any>) {
+    const newId = 'tab_' + Math.random().toString(36).substring(2, 7);
+    const existing = this.dynamicTabs.tabs.find((t : Tab<Type<any>>) => t.title === title);
+    this.dynamicTabs.tabs.forEach((t: Tab<Type<any>>) => (t.active = false));
+
+    if (existing) {
+      existing.active = true;
+    } else {
+      this.dynamicTabs.tabs = [
+        ...this.dynamicTabs.tabs,
+        {
+          id: newId,
+          title,
+          content,
+          active: true,
+        },
+      ];
+      this.dynamicTabs.onTabsChanged();
+    }
+
+    const navlinks = document.querySelectorAll('mat-nav-list>a');
+    navlinks.forEach((link) => {
+      const isActive = link.getAttribute('data-tab-name') === title;
+      link.classList.toggle('active', isActive);
+    });
+  }
 }

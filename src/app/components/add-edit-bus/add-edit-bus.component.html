@@ -1,0 +1,50 @@
+<div class="d-flex flex-column h-100 card">
+  <div class="button-div card-header d-flex gap-1">
+    <button class="btn btn-primary">
+      <fa-icon [icon]="faFloppy"></fa-icon>
+      <span class="ms-1">Lưu</span>
+    </button>
+    <button class="btn btn-danger">
+      <fa-icon [icon]="faBan"></fa-icon>
+      <span class="ms-1">Hủy</span></button>
+  </div>
+  <div class="card-body pt-1">
+    <div class="search-div container">
+      <div class="row h-50 w-100">
+        <div class="col-4 d-flex align-items-center">
+          <label for="i1" class="fw-bold label-background text-light me-2 mb-0 flex-shrink-0">Địa điểm</label>
+          <ngx-select id="i1" class="flex-grow-1" placeholder="VH.Subsidiary" [allowClear]="true" [items]="headerOptions">
+          </ngx-select>
+        </div>
+        <div class="col-4 d-flex align-items-center">
+          <label for="i2" class="fw-bold label-background text-light me-2 mb-0 flex-shrink-0">Tên tuyến</label>
+          <ngx-select id="i2" class="flex-grow-1" placeholder="TDPLAZA" [allowClear]="true" [disabled]="true">
+          </ngx-select>
+        </div>
+        <div class="col-4 d-flex align-items-center">
+          <label for="i3" class="fw-bold label-background text-light me-2 mb-0 flex-shrink-0">Lượt vận
+            hành</label>
+          <ngx-select id="i3" class="flex-grow-1" placeholder="Đi làm" [allowClear]="true">
+          </ngx-select>
+        </div>
+      </div>
+      <div class="row h-50 w-100">
+        <div class="col-4 d-flex align-items-center"><label for="i4"
+            class="fw-bold label-background text-light me-2 mb-0 flex-shrink-0">Khu vực</label>
+          <ngx-select id="i4" class="flex-grow-1" placeholder="Inner Haiphong" [allowClear]="true">
+          </ngx-select>
+        </div>
+        <div class="col-8 d-flex align-items-center"><label for="i5"
+            class="fw-bold label-background text-light me-2 mb-0 flex-shrink-0">Tên điểm đón</label>
+          <ngx-select id="i5" class="flex-grow-1" placeholder="" [allowClear]="true">
+          </ngx-select>
+        </div>
+      </div>
+    </div>
+    <div class="table-div">
+      <tabulator-table-single #tblDetail [tableData]="detailData" [columnNames]="detailColumns" [height]="'100%'"
+        [hasSelection]="false">
+      </tabulator-table-single>
+    </div>
+  </div>
+</div>

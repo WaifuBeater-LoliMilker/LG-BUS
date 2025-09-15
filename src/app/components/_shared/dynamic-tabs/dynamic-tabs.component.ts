@@ -24,7 +24,15 @@ import { MiddleClickDirective } from '../../../directives/middleClick.directive'
 })
 export class DynamicTabsComponent<T> implements AfterViewInit, OnDestroy {
   //#region Properties
-  @Input() tabs: Tab<T>[] = [];
+  private _tabs: Tab<T>[] = [];
+
+  @Input() set tabs(value: Tab<T>[]) {
+    this._tabs = value;
+    this.onTabsChanged();
+  }
+  get tabs(): Tab<T>[] {
+    return this._tabs;
+  }
   @Output() tabsChange = new EventEmitter<Tab<T>[]>();
   @Output() tabRemoved = new EventEmitter<string>();
   @Output() tabSelected = new EventEmitter<Tab<T>>();
@@ -103,11 +111,15 @@ export class DynamicTabsComponent<T> implements AfterViewInit, OnDestroy {
     this.tabRemoved.emit(tabId);
   }
   public scrollToTab(id: string) {
-    const tabEl = this.tabItems.find(
+    const tabEl = this.tabItems?.find(
       (t) => t.nativeElement.getAttribute('data-id') === id
     )?.nativeElement;
     if (!tabEl) return;
     tabEl.scrollIntoView({ behavior: 'smooth', inline: 'center' });
+  }
+  public onTabsChanged() {
+    const active = this.tabs.find(t => t.active);
+    this.scrollToTab(active?.id ?? "");
   }
 }
 
