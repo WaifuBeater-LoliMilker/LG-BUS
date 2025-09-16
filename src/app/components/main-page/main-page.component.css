@@ -62,6 +62,8 @@ mat-sidenav {
   max-width: 280px;
   background-color: rgba(255, 255, 255);
   padding: 6px 0;
+  border: 1px solid rgb(201, 200, 200);
+  border-radius: 6px;
 }
 
 .profile-menu-item {

@@ -402,6 +402,7 @@ body {
   margin: 0;
   font-family: "Open Sans", "Helvetica Neue", sans-serif;
 }
+
 .material-symbols-outlined {
   font-family: 'Material Symbols Outlined';
   font-weight: normal;
@@ -469,7 +470,6 @@ body {
 .ngx-select__toggle {
   border: var(--bs-border-width) solid var(--bs-border-color) !important;
   background-color: var(--bs-body-bg) !important;
-  color: #dee2e6 !important;
 }
 
 .pull-icon {
@@ -565,4 +565,33 @@ body {
 
 .area-chart {
   height: 100%
+}
+
+.mat-mdc-list-item-unscoped-content {
+  display: flex;
+  align-items: center;
+}
+
+.mat-mdc-list-item-unscoped-content img {
+  height: 16px;
+}
+
+a.mdc-list-item .chevron {
+  transition: transform 0.25s ease;
+}
+
+a.mdc-list-item.open .chevron {
+  transform: rotate(180deg);
+}
+
+.submenu {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.submenu.open {
+  max-height: 500px;
+  opacity: 1;
 }

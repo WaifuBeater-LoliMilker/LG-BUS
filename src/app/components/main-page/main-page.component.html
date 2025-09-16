@@ -10,26 +10,35 @@
         </button>
       </mat-toolbar>
       <mat-nav-list class="w-100">
-        <a mat-list-item data-tab-name="Commuter bus route" (click)="onAddTab('Commuter bus route', bus)">
+        <a mat-list-item data-tab-name="Update commuter bus route" (click)="onAddTab('Update commuter bus route', bus)">
           <img matListIcon src="/imgs/icons/dashboard.png" class="icon me-1">
           <span class="fw-bold">Commuter bus route</span>
         </a>
-        <a mat-list-item data-tab-name="Khu vực">
-          <img matListIcon src="/imgs/icons/areas.png" class="icon me-1">
-          <span class="fw-bold">Khu vực</span>
+        <a mat-list-item (click)="categoriesOpen = !categoriesOpen" [class.open]="categoriesOpen">
+          <img matListIcon src="/imgs/icons/categories.png" class="icon me-1">
+          <span class="fw-bold">Categories</span>
+          <span class="w-25"></span>
+          <fa-icon [icon]="categoriesOpen? faChevup:faChevdown" class="chevron"></fa-icon>
         </a>
-        <a mat-list-item data-tab-name="Thiết bị">
-          <img matListIcon src="/imgs/icons/devices.png" class="icon me-1">
-          <span class="fw-bold">Thiết bị</span>
-        </a>
-        <a mat-list-item data-tab-name="Kiểu truyền thông">
-          <img matListIcon src="/imgs/icons/communication.png" class="icon me-1">
-          <span class="fw-bold">Kiểu truyền thông</span>
-        </a>
+        <div class="submenu ps-4" [class.open]="categoriesOpen">
+          <a mat-list-item data-tab-name="Areas" (click)="onAddTab('Areas', area)">
+            <img matListIcon src="/imgs/icons/areas.png" class="icon me-1">
+            <span class="fw-bold">Areas</span>
+          </a>
+          <a mat-list-item data-tab-name="Locations" (click)="onAddTab('Locations', location)">
+            <img matListIcon src="/imgs/icons/locations.png" class="icon me-1">
+            <span class="fw-bold">Locations</span>
+          </a>
+          <a mat-list-item data-tab-name="Route types" (click)="onAddTab('Route types', routeType)">
+            <img matListIcon src="/imgs/icons/communication.png" class="icon me-1">
+            <span class="fw-bold">Route types</span>
+          </a>
+        </div>
       </mat-nav-list>
       <div class="spacer"></div>
       <div class="w-100" style="height: 52px;">
-        <button mat-icon-button class="d-flex justify-content-center" [cdkMenuTriggerFor]="profileMenu" aria-label="Account options">
+        <button mat-icon-button class="d-flex justify-content-center ms-1" [cdkMenuTriggerFor]="profileMenu"
+          aria-label="Account options">
           <mat-icon fontIcon="account_circle"></mat-icon>
         </button>
       </div>
@@ -42,7 +51,7 @@
         (click)="drawer.toggle();btnToggle.classList.toggle('open', isSideNavOpened)">
       </button>
       <div class="content">
-        <dynamic-tabs #tabContainer [(tabs)]="tabs" />
+        <dynamic-tabs #tabContainer />
       </div>
     </div>
   </mat-sidenav-content>

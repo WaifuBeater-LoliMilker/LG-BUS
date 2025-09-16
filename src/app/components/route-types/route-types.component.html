@@ -1,0 +1,49 @@
+<div class="card h-100">
+  <div class="card-header">
+    <div class="my-1 d-flex gap-1">
+      <button class="btn btn-primary-alt" (click)="openModal(content, false)">
+        <fa-icon [icon]="faPlus"></fa-icon>
+        <span class="ms-1">Add</span>
+      </button>
+      <button class="btn btn-success-alt">
+        <fa-icon [icon]="faPenToSquare"></fa-icon>
+        <span class="ms-1">Edit</span></button>
+      <button #btnDelete class="btn btn-danger-alt">
+        <fa-icon [icon]="faTrash"></fa-icon>
+        <span class="ms-1">Delete</span></button>
+    </div>
+  </div>
+  <div class="card-body">
+    <tabulator-table-single #tblComp [columnNames]="columnNames" [tableData]="routeTypes" [dataTree]="true"
+      [hasSelection]="false" [height]="'100%'"></tabulator-table-single>
+  </div>
+</div>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-area">RouteTypes</h4>
+    <button type="button" class="btn-close btn-close-white" aria-label="Close"
+      (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <input type="text" class="form-control form-id-input" id="area_id" name="area_id" [(ngModel)]="areaFormValue.Id">
+      <div class="mb-3 row">
+        <label for="area_code" class="col-sm-3 col-form-label">RouteTypes Code</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="area_code" name="area_code" [(ngModel)]="areaFormValue.RouteTypesCode"
+            ngbAutofocus>
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label for="area_name" class="col-sm-3 col-form-label">RouteTypes Name</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="area_name" name="area_name" maxlength="200"
+            [(ngModel)]="areaFormValue.RouteTypesName">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary">Save</button>
+  </div>
+</ng-template>

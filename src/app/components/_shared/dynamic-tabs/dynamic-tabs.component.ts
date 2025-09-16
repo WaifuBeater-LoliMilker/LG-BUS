@@ -26,7 +26,7 @@ export class DynamicTabsComponent<T> implements AfterViewInit, OnDestroy {
   //#region Properties
   private _tabs: Tab<T>[] = [];
 
-  @Input() set tabs(value: Tab<T>[]) {
+  set tabs(value: Tab<T>[]) {
     this._tabs = value;
     this.onTabsChanged();
   }

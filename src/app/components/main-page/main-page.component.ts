@@ -18,10 +18,15 @@ import {
 } from '../_shared/dynamic-tabs/dynamic-tabs.component';
 import { Router } from '@angular/router';
 import { BusComponent } from '../bus/bus.component';
-
+import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AreasComponent } from '../areas/areas.component';
+import { LocationsComponent } from '../locations/locations.component';
+import { RouteTypesComponent } from '../route-types/route-types.component';
 @Component({
   selector: 'app-main-page',
   imports: [
+    FontAwesomeModule,
     MatSidenavModule,
     MatToolbarModule,
     MatMenuModule,
@@ -36,10 +41,15 @@ import { BusComponent } from '../bus/bus.component';
   styleUrls: ['./main-page.component.css'],
 })
 export class MainPageComponent implements OnInit {
+  faChevup = faChevronUp;
+  faChevdown = faChevronDown;
   isSideNavSideMode = false;
   isSideNavOpened = false;
-  tabs: Tab<any>[] = [];
+  categoriesOpen = true;
   bus = BusComponent;
+  area = AreasComponent;
+  location = LocationsComponent;
+  routeType = RouteTypesComponent;
   @ViewChild('tabContainer') tabContainer!: DynamicTabsComponent<any>;
   constructor(private router: Router) {}
 
@@ -47,7 +57,9 @@ export class MainPageComponent implements OnInit {
     this.isSideNavSideMode =
       localStorage.getItem('is_sidenav_side_mode') == 'side';
     this.isSideNavOpened = localStorage.getItem('is_sidenav_opened') == 'true';
-    this.onAddTab('Commuter bus route', this.bus);
+    setTimeout(() => {
+      this.onAddTab('Update commuter bus route', this.bus);
+    });
   }
   onDrawerModeChange() {
     this.isSideNavSideMode = !this.isSideNavSideMode;
@@ -62,20 +74,20 @@ export class MainPageComponent implements OnInit {
   }
   onAddTab(title: string, content: Type<any>) {
     const newId = 'tab_' + Math.random().toString(36).substring(2, 7);
-    const existing = this.tabs.find((t) => t.title === title);
-    this.tabs.forEach((t) => (t.active = false));
+    const existing = this.tabContainer.tabs.find((t) => t.title === title);
+    this.tabContainer.tabs.forEach((t) => (t.active = false));
 
     if (existing) {
       existing.active = true;
       this.tabContainer.scrollToTab(existing.id);
     } else {
-      this.tabs.push({
+      this.tabContainer.tabs.push({
         id: newId,
         title,
         content,
         active: true,
       });
-      this.tabContainer?.scrollToTab(newId);
+      this.tabContainer.scrollToTab(newId);
     }
 
     const navlinks = document.querySelectorAll('mat-nav-list>a');
