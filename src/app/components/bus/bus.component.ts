@@ -119,7 +119,7 @@ export class BusComponent implements OnInit, AfterViewInit {
       width: '50%',
     },
     {
-      title: 'Arrive Time',
+      title: 'Arrive time',
       field: 'arriveTime',
       headerHozAlign: 'center',
       hozAlign: 'center',

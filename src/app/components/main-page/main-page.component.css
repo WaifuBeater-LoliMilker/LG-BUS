@@ -16,7 +16,7 @@ mat-sidenav-content>mat-toolbar>div {
   padding: 0 20px;
 }
 
-mat-nav-list>a.active {
+[data-tab-name].active {
   background-color: rgb(196, 225, 234);
 }
 
@@ -41,7 +41,7 @@ mat-sidenav mat-toolbar {
 }
 
 mat-sidenav {
-  max-width: 210px;
+  max-width: 235px;
   border-right: 1px solid rgba(0, 0, 0, 0.193);
   box-shadow: 3px 1px 5px 0 rgba(0, 0, 0, 0.1);
   border-radius: 0%;

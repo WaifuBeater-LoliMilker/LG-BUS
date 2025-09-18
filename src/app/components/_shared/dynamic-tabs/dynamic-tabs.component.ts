@@ -1,6 +1,5 @@
 import {
   Component,
-  Input,
   Output,
   EventEmitter,
   Type,
@@ -14,11 +13,26 @@ import {
 import { CommonModule } from '@angular/common';
 import { HorizontalScrollDirective } from '../../../directives/horizontalScroll.directive';
 import { MiddleClickDirective } from '../../../directives/middleClick.directive';
-
+import {
+  CdkDragDrop,
+  CdkDragHandle,
+  CdkDrag,
+  CdkDragPreview,
+  CdkDropList,
+  moveItemInArray,
+} from '@angular/cdk/drag-drop';
 @Component({
   selector: 'dynamic-tabs',
   standalone: true,
-  imports: [CommonModule, HorizontalScrollDirective, MiddleClickDirective],
+  imports: [
+    CommonModule,
+    HorizontalScrollDirective,
+    MiddleClickDirective,
+    CdkDropList,
+    CdkDrag,
+    CdkDragHandle,
+    CdkDragPreview,
+  ],
   templateUrl: './dynamic-tabs.component.html',
   styleUrl: './dynamic-tabs.component.css',
 })
@@ -74,7 +88,7 @@ export class DynamicTabsComponent<T> implements AfterViewInit, OnDestroy {
       active: t.id === tabId,
     }));
     const selected = this.tabs.find((t) => t.id === tabId);
-    const navlinks = document.querySelectorAll(`mat-nav-list>a`);
+    const navlinks = document.querySelectorAll(`[data-tab-name]`);
     navlinks.forEach((l) => {
       if (l.getAttribute('data-tab-name') == selected?.title)
         l.classList.add('active');
@@ -88,7 +102,7 @@ export class DynamicTabsComponent<T> implements AfterViewInit, OnDestroy {
     const newTabs = [...this.tabs];
     const idx = newTabs.findIndex((t) => t.id === tabId);
     if (idx === -1) return;
-    const navlinks = document.querySelectorAll(`mat-nav-list>a`);
+    const navlinks = document.querySelectorAll(`[data-tab-name]`);
     const wasActive = newTabs[idx].active;
     newTabs.splice(idx, 1);
 
@@ -118,8 +132,11 @@ export class DynamicTabsComponent<T> implements AfterViewInit, OnDestroy {
     tabEl.scrollIntoView({ behavior: 'smooth', inline: 'center' });
   }
   public onTabsChanged() {
-    const active = this.tabs.find(t => t.active);
-    this.scrollToTab(active?.id ?? "");
+    const active = this.tabs.find((t) => t.active);
+    this.scrollToTab(active?.id ?? '');
+  }
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.tabs, event.previousIndex, event.currentIndex);
   }
 }
 

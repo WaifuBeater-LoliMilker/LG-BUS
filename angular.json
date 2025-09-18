@@ -16,7 +16,7 @@
             "outputPath": "dist/lgbus",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": ["zone.js"],
+            "polyfills": ["zone.js", "@angular/localize/init"],
             "tsConfig": "tsconfig.app.json",
             "assets": [
               {
@@ -34,10 +34,10 @@
               "node_modules/bootstrap-icons/font/bootstrap-icons.min.css",
               "@angular/material/prebuilt-themes/azure-blue.css",
               "node_modules/tabulator-tables/dist/css/tabulator_bootstrap5.min.css",
-              "./node_modules/leaflet/dist/leaflet.css",
+              "node_modules/leaflet/dist/leaflet.css",
               "src/styles.css"
             ],
-            "scripts": ["node_modules/leaflet/dist/leaflet.js"]
+            "scripts": ["./node_modules/luxon/build/global/luxon.min.js"]
           },
           "configurations": {
             "production": {
@@ -81,7 +81,11 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": ["zone.js", "zone.js/testing"],
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing",
+              "@angular/localize/init"
+            ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
               {

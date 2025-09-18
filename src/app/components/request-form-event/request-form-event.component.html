@@ -1,0 +1,8 @@
+<tabulator-table-single #table [tableData]="masterData" [columnNames]="masterColumns" [height]="'100%'"
+  [maxHeight]="'100%'" [selectableRow]="false" [paginationSize]="12">
+</tabulator-table-single>
+<ng-template #dateInputTemplate let-row="row">
+  <input class="form-control" ngbDatepicker [(ngModel)]="row.pickupDate" #d="ngbDatepicker" (click)="d.open()"
+    container="body" />
+</ng-template>
+<ng-container #vcHost></ng-container>

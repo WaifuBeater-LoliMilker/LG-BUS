@@ -586,6 +586,7 @@ a.mdc-list-item.open .chevron {
 
 .submenu {
   max-height: 0;
+  padding-left: 0.8rem;
   opacity: 0;
   overflow: hidden;
   transition: max-height 0.3s ease, opacity 0.3s ease;

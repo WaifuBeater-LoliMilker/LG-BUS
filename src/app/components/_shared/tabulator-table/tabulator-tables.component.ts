@@ -38,6 +38,7 @@ export class TabulatorTableSingleComponent
   @Input() columnNames: ColumnDefinition[] = [];
   @Input() height: string = '';
   @Input() maxHeight: string = '';
+  @Input() paginationSize: number = 10;
 
   /** Emits whenever the selection changes */
   @Output() rowSelectionChanged = new EventEmitter<any[]>();
@@ -82,7 +83,7 @@ export class TabulatorTableSingleComponent
       reactiveData: true,
       columns: this.columnNames,
       pagination: true,
-      paginationSize: 10,
+      paginationSize: this.paginationSize,
       layout: 'fitDataStretch',
       selectableRows: this.selectableRow,
       editTriggerEvent: 'click',

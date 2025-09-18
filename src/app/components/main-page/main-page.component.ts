@@ -23,6 +23,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AreasComponent } from '../areas/areas.component';
 import { LocationsComponent } from '../locations/locations.component';
 import { RouteTypesComponent } from '../route-types/route-types.component';
+import { RequestFormEventComponent } from '../request-form-event/request-form-event.component';
+import { RequestFormRouteComponent } from '../request-form-route/request-form-route.component';
 @Component({
   selector: 'app-main-page',
   imports: [
@@ -46,10 +48,13 @@ export class MainPageComponent implements OnInit {
   isSideNavSideMode = false;
   isSideNavOpened = false;
   categoriesOpen = true;
+  applicationFormOpen = true;
   bus = BusComponent;
   area = AreasComponent;
   location = LocationsComponent;
   routeType = RouteTypesComponent;
+  requestFormEvent = RequestFormEventComponent;
+  requestFormRoute = RequestFormRouteComponent;
   @ViewChild('tabContainer') tabContainer!: DynamicTabsComponent<any>;
   constructor(private router: Router) {}
 
@@ -90,7 +95,7 @@ export class MainPageComponent implements OnInit {
       this.tabContainer.scrollToTab(newId);
     }
 
-    const navlinks = document.querySelectorAll('mat-nav-list>a');
+    const navlinks = document.querySelectorAll('[data-tab-name]');
     navlinks.forEach((link) => {
       const isActive = link.getAttribute('data-tab-name') === title;
       link.classList.toggle('active', isActive);

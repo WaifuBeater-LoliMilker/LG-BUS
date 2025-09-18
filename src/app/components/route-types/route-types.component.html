@@ -20,7 +20,7 @@
 </div>
 <ng-template #content let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-area">RouteTypes</h4>
+    <h4 class="modal-title" id="modal-area">Route Type</h4>
     <button type="button" class="btn-close btn-close-white" aria-label="Close"
       (click)="modal.dismiss('Cross click')"></button>
   </div>
@@ -28,14 +28,14 @@
     <form>
       <input type="text" class="form-control form-id-input" id="area_id" name="area_id" [(ngModel)]="areaFormValue.Id">
       <div class="mb-3 row">
-        <label for="area_code" class="col-sm-3 col-form-label">RouteTypes Code</label>
+        <label for="area_code" class="col-sm-3 col-form-label">Route Type Code</label>
         <div class="col-sm-9">
           <input type="text" class="form-control" id="area_code" name="area_code" [(ngModel)]="areaFormValue.RouteTypesCode"
             ngbAutofocus>
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="area_name" class="col-sm-3 col-form-label">RouteTypes Name</label>
+        <label for="area_name" class="col-sm-3 col-form-label">Route Type Name</label>
         <div class="col-sm-9">
           <input type="text" class="form-control" id="area_name" name="area_name" maxlength="200"
             [(ngModel)]="areaFormValue.RouteTypesName">

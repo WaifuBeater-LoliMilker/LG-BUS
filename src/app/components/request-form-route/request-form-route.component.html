@@ -1,0 +1,9 @@
+<ng-template #dateInputTemplate let-row="row">
+  <input class="form-control" ngbDatepicker [(ngModel)]="row.date" #d="ngbDatepicker" (click)="openDatepicker(d)"
+    container="body" />
+</ng-template>
+
+<tabulator-table-single #table [tableData]="data" [columnNames]="columns" [height]="'100%'" [maxHeight]="'100%'"
+  [hasSelection]="false">
+</tabulator-table-single>
+<ng-container #vcHost></ng-container>

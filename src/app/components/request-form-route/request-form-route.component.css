@@ -1,0 +1,4 @@
+:host ::ng-deep .tabulator-row,
+:host ::ng-deep .tabulator-cell {
+  overflow: visible !important;
+}

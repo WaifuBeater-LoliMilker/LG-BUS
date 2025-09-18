@@ -67,13 +67,13 @@ export class AddEditBusComponent implements OnInit {
       },
     },
     {
-      title: 'Pickup Point',
+      title: 'Stop name',
       field: 'busStopName',
       headerHozAlign: 'center',
       width: '50%',
     },
     {
-      title: 'Pickup Time',
+      title: 'Arrive time',
       field: 'arriveTime',
       headerHozAlign: 'center',
       hozAlign: 'center',
