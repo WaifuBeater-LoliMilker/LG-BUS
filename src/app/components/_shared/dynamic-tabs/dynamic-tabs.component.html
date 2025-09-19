@@ -1,5 +1,5 @@
 <ul class="nav nav-tabs" role="tablist" #navtabs horizontalScroll cdkDropList cdkDropListOrientation="horizontal"
-  (cdkDropListDropped)="drop($event)">
+  (cdkDropListDropped)="drop($event)" [shortcut]="['ctrl','q']" (shortcutTriggered)="removeTabWithShortcut($event)">
   @for (tab of tabs; track tab.id) {
   <li class="nav-item" role="presentation" #tabItem [attr.data-id]="tab.id" middleClick cdkDrag
     (middleClickCallback)="removeTab(tab.id)">

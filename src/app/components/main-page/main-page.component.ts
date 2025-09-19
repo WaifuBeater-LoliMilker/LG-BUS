@@ -25,6 +25,7 @@ import { LocationsComponent } from '../locations/locations.component';
 import { RouteTypesComponent } from '../route-types/route-types.component';
 import { RequestFormEventComponent } from '../request-form-event/request-form-event.component';
 import { RequestFormRouteComponent } from '../request-form-route/request-form-route.component';
+import { RequestFormStopComponent } from '../request-form-stop/request-form-stop.component';
 @Component({
   selector: 'app-main-page',
   imports: [
@@ -55,6 +56,7 @@ export class MainPageComponent implements OnInit {
   routeType = RouteTypesComponent;
   requestFormEvent = RequestFormEventComponent;
   requestFormRoute = RequestFormRouteComponent;
+  requestFormStop = RequestFormStopComponent;
   @ViewChild('tabContainer') tabContainer!: DynamicTabsComponent<any>;
   constructor(private router: Router) {}
 

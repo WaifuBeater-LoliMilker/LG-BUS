@@ -1,3 +1,8 @@
+:host ::ng-deep .tabulator-row,
+:host ::ng-deep .tabulator-cell {
+  overflow: visible !important;
+}
+
 .nav-tabs {
   display: flex;
   gap: 4px;
@@ -21,7 +26,83 @@
   cursor: pointer;
 }
 
-:host ::ng-deep .tabulator-row,
-:host ::ng-deep .tabulator-cell {
-  overflow: visible !important;
+.header {
+  height: 50px;
+  background-color: rgb(45, 164, 203);
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.sidebar {
+  width: 100%;
+}
+
+mat-sidenav {
+  border-radius: 0% !important;
+}
+
+.btn {
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.applicant-container {
+  height: 75px;
+}
+
+.applicant-label {
+  width: 10%;
+  height: 100%;
+}
+
+.applicant-title {
+  width: 85%;
+  margin: 0 auto;
+  border-top: 3px solid rgb(127, 149, 227);
+}
+
+.applicant-content {
+  height: 100%;
+  width: 90%;
+}
+
+.register-container {
+  height: 250px;
+}
+
+.register-label {
+  width: 10%;
+  height: 100%;
+}
+
+.register-title {
+  width: 85%;
+  margin: 0 auto;
+  border-top: 3px solid rgb(127, 149, 227);
+}
+
+.register-content {
+  height: 100%;
+  width: 90%;
+}
+
+.info-label {
+  width: 250px;
+  height: 100%;
+  background-color: rgb(216, 216, 216);
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-value {
+  display: flex;
+  align-items: center;
+  padding-left: 0.5rem;
+  flex: 1 1 0;
+}
+
+.note-section {
+  height: 80px;
 }

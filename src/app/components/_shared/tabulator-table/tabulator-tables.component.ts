@@ -37,6 +37,7 @@ export class TabulatorTableSingleComponent
   @Input() dataTree = false;
   @Input() columnNames: ColumnDefinition[] = [];
   @Input() height: string = '';
+  @Input() rowHeight: number = 0;
   @Input() maxHeight: string = '';
   @Input() paginationSize: number = 10;
 
@@ -92,6 +93,7 @@ export class TabulatorTableSingleComponent
       dataTreeChildField: 'children',
     };
     if (this.height) options.height = this.height;
+    if (this.rowHeight) options.rowHeight = this.rowHeight;
     if (this.maxHeight) options.maxHeight = this.maxHeight;
     if (this.dataTree) {
       options.dataTree = true;

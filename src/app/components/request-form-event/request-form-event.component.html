@@ -1,8 +1,178 @@
-<tabulator-table-single #table [tableData]="masterData" [columnNames]="masterColumns" [height]="'100%'"
-  [maxHeight]="'100%'" [selectableRow]="false" [paginationSize]="12">
-</tabulator-table-single>
+<mat-sidenav-container class="h-100 w-100">
+  <mat-sidenav-content>
+    <div class="header d-flex align-items-center">
+      <span class="ms-3">Request for event</span>
+    </div>
+    <tabulator-table-single #table [tableData]="masterData" [columnNames]="masterColumns" [height]="'calc(100% - 50px)'"
+      [maxHeight]="'100%'" [hasSelection]="false" [paginationSize]="10">
+    </tabulator-table-single>
+  </mat-sidenav-content>
+  <mat-sidenav #rightSidebar mode="over" position="end" [opened]="isShowingRightTable" (opened)="onDetailOpened()"
+    (closedStart)="onDetailClosed()" class="sidebar no-radius">
+    <div class="d-flex flex-column h-100">
+      <div class="header d-flex align-items-center justify-content-between">
+        <span class="ms-3">New request</span>
+        <button class="btn text-light" (click)="isShowingRightTable=false;">▶</button>
+      </div>
+      <div style="height: calc(100% - 50px);">
+        <div class="applicant-container pt-1 d-flex">
+          <!-- Left section -->
+          <div class="applicant-label d-flex flex-column align-items-center justify-content-start">
+            <div class="applicant-title text-center pt-2 fw-bold fs-5">Applicant</div>
+          </div>
+          <!-- Right section -->
+          <div class="applicant-content d-flex flex-column flex-grow-1">
+            <!-- First row -->
+            <div class="d-flex flex-grow-1 border-top border-dark-subtle">
+              <div class="info-label fw-bold">Document no</div>
+              <div class="info-value">532438707</div>
+              <div class="info-label fw-bold">Register date</div>
+              <div class="info-value">2025-10-17</div>
+            </div>
+            <!-- Second row -->
+            <div class="d-flex flex-grow-1 border-top border-bottom border-dark-subtle">
+              <div class="info-label fw-bold">Applicant</div>
+              <div class="info-value">
+                Johnny Depp / Dev Department / Leader / 123456789
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="register-container pt-1 d-flex">
+          <div class="register-label d-flex flex-column align-items-center justify-content-start">
+            <div class="register-title text-center pt-2 fw-bold fs-5">Register details</div>
+          </div>
+          <div class="register-content d-flex flex-column flex-grow-1">
+            <div class="d-flex flex-grow-1 border-top border-dark-subtle">
+              <div class="info-label fw-bold">Location</div>
+              <div class="info-value">
+                VH.Subsidary
+              </div>
+            </div>
+            <div class="d-flex flex-grow-1 border-top border-dark-subtle">
+              <div class="info-label fw-bold">Reason</div>
+              <div class="info-value"></div>
+              <div class="info-label fw-bold">Headcount</div>
+              <div class="info-value">12</div>
+            </div>
+            <div class="d-flex flex-grow-1 border-top border-dark-subtle">
+              <div class="info-label fw-bold">Service user</div>
+              <div class="info-value"></div>
+            </div>
+            <div class="d-flex flex-grow-1 border-top border-bottom border-dark-subtle note-section">
+              <div class="info-label fw-bold">Note</div>
+              <div class="info-value"></div>
+            </div>
+          </div>
+        </div>
+        <div class="register-container pt-1 d-flex">
+          <div class="register-label d-flex flex-column align-items-center justify-content-start">
+            <div class="register-title text-center pt-2 fw-bold fs-5">Attached files</div>
+          </div>
+          <div class="register-content d-flex flex-column flex-grow-1">
+            <div class="d-flex flex-column flex-grow-1 border-top border-bottom border-dark-subtle">
+              <div class="d-flex py-1 align-items-center">
+                <label for="attachedFile" class="col-form-label col-form-label-sm me-2 fw-bold" style="width: 120px;">
+                  Attached file
+                </label>
+                <input type="file" class="form-control form-control-sm" id="attachedFile">
+              </div>
+              <table class="table table-bordered border-primary">
+                <thead class="table-secondary">
+                  <tr>
+                    <th>File name</th>
+                    <th>Size</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><img src="/imgs/icons/doc.png" class="me-1">Đơn đăng ký.doc</td>
+                    <td>1.2MB</td>
+                    <td class="d-flex justify-content-center"><button class="btn btn-danger btn-sm btn-del"><i
+                          class="bi bi-trash"></i></button></td>
+                  </tr>
+                  <tr>
+                    <td><img src="/imgs/icons/xls.png" class="me-1">Danh sách nhân viên.xlsx</td>
+                    <td>3.5MB</td>
+                    <td class="d-flex justify-content-center"><button class="btn btn-danger btn-sm btn-del"><i
+                          class="bi bi-trash"></i></button></td>
+                  </tr>
+                  <tr>
+                    <td><img src="/imgs/icons/pdf.png" class="me-1">Thông tin xe.pdf</td>
+                    <td>4.9MB</td>
+                    <td class="d-flex justify-content-center"><button class="btn btn-danger btn-sm btn-del"><i
+                          class="bi bi-trash"></i></button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="register-container pt-1 d-flex">
+          <div class="register-label d-flex flex-column align-items-center justify-content-start">
+            <div class="register-title text-center pt-2 fw-bold fs-5">Approval process</div>
+          </div>
+          <div class="register-content d-flex flex-column flex-grow-1">
+            <div class="d-flex flex-grow-1 border-top border-bottom border-dark-subtle">
+              <table class="table table-bordered border-primary">
+                <thead class="table-secondary">
+                  <tr>
+                    <th>Progress</th>
+                    <th>Order</th>
+                    <th>Responsible position</th>
+                    <th>Responsible personel</th>
+                    <th>Status</th>
+                    <th>Check time</th>
+                    <th>Accept time</th>
+                    <th>Details</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Yêu cầu</td>
+                    <td>1st</td>
+                    <td>TL</td>
+                    <td>Joongi Han</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>VH External Cooperation Team / Team Leader / /6/6-208-0024 / 090-606-7787</td>
+                  </tr>
+                  <tr>
+                    <td>Xử lý</td>
+                    <td>2nd</td>
+                    <td>Người phụ trách</td>
+                    <td>BusinessTripCar</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Welfare Part / 090-606-7787</td>
+                  </tr>
+                  <tr>
+                    <td>Xử lý</td>
+                    <td>3rd</td>
+                    <td>Người phụ trách</td>
+                    <td>Keanu</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>VH External / 090-606-7787</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-sidenav>
+</mat-sidenav-container>
 <ng-template #dateInputTemplate let-row="row">
   <input class="form-control" ngbDatepicker [(ngModel)]="row.pickupDate" #d="ngbDatepicker" (click)="d.open()"
     container="body" />
+</ng-template>
+<ng-template #timeInputTemplate let-row="row">
+  <ngb-timepicker [(ngModel)]="row.duration" [spinners]="false"/>
 </ng-template>
 <ng-container #vcHost></ng-container>

@@ -1,4 +1,3 @@
-// pull-down.directive.ts
 import {
   Directive,
   ElementRef,
@@ -25,7 +24,6 @@ export class RefreshableDirective {
   private hideTimeout: any;
 
   constructor(private el: ElementRef, private renderer: Renderer2) {
-    // --- icon setup (hidden & at top) ---
     this.iconWrapperEl = this.renderer.createElement('div');
     this.iconEl = this.renderer.createElement('div');
     this.renderer.addClass(this.iconWrapperEl, 'pull-icon-wrapper');
@@ -42,7 +40,7 @@ export class RefreshableDirective {
     );
     this.renderer.setStyle(this.iconWrapperEl, 'transform', 'translate(-50%, 0)');
     this.renderer.setStyle(this.iconWrapperEl, 'opacity', '0');
-    
+
     this.renderer.insertBefore(
       this.iconWrapperEl,
       this.iconEl,
@@ -69,7 +67,6 @@ export class RefreshableDirective {
     if (this.startY === null) return;
 
     const delta = event.clientY - this.startY;
-    // clamp between 0 and threshold
     const offset = Math.min(Math.max(delta, 0), this.threshold);
     this.renderer.setStyle(
       this.iconWrapperEl,
@@ -77,7 +74,6 @@ export class RefreshableDirective {
       `translate(-50%, ${offset}px)`
     );
 
-    // fire callback only once when you first hit the threshold
     if (!this.thresholdReached && delta >= this.threshold) {
       this.thresholdReached = true;
       this.refreshCallback.emit();
@@ -89,7 +85,6 @@ export class RefreshableDirective {
   onPointerEnd() {
     this.startY = null;
 
-    // animate back up + fade out
     this.renderer.setStyle(this.iconWrapperEl, 'transform', 'translate(-50%, 0)');
     this.renderer.setStyle(this.iconWrapperEl, 'opacity', '0');
   }
