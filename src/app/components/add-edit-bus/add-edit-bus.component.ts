@@ -119,7 +119,6 @@ export class AddEditBusComponent implements OnInit {
   tblDetail!: TabulatorTableSingleComponent;
   @ViewChild('content', { static: false })
   modal!: TemplateRef<any>;
-  @Input() dynamicTabs!: any;
 
   constructor(private modalService: NgbModal) {}
 

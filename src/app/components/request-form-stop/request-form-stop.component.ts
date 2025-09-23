@@ -44,7 +44,6 @@ export class RequestFormStopComponent implements AfterViewInit {
     dateInputTemplate!: TemplateRef<any>;
     @ViewChild('vcHost', { read: ViewContainerRef, static: true })
     vcr!: ViewContainerRef;
-    @Input() dynamicTabs!: any;
 
     isShowingRightTable = true;
     masterColumns: ColumnDefinition[] = [

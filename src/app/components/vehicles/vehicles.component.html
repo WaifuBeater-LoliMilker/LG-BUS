@@ -1,0 +1,470 @@
+<div class="header d-flex mb-2">
+  <div class="input-group">
+    <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">Supplier</label>
+    <input type="text" class="form-control me-3">
+  </div>
+  <div class="input-group">
+    <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">Route name</label>
+    <input type="text" class="form-control me-3">
+  </div>
+  <div class="input-group">
+    <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">License plate number</label>
+    <input type="text" class="form-control me-3">
+  </div>
+  <button class="btn btn-primary d-flex align-items-center">
+    <fa-icon [icon]="faGlass"></fa-icon>
+    <span class="ms-1">Search</span>
+  </button>
+</div>
+<div class="card">
+  <div class="card-header">
+    <div class="d-flex gap-1" ngbDropdown>
+      <button class="btn btn-primary-alt" (click)="openModal()">
+        <fa-icon [icon]="faPlus"></fa-icon>
+        <span class="ms-1">Add</span>
+      </button>
+      <button class="btn btn-success-alt">
+        <fa-icon [icon]="faPenToSquare"></fa-icon>
+        <span class="ms-1">Edit</span></button>
+      <button #btnDeleteMaster class="btn btn-danger-alt">
+        <fa-icon [icon]="faTrash"></fa-icon>
+        <span class="ms-1">Delete</span></button>
+      <button #btnDeleteMaster id="btn_import" class="btn btn-primary" ngbDropdownToggle>
+        <fa-icon [icon]="faImport"></fa-icon>
+        <span class="ms-1">Import</span></button>
+      <div ngbDropdownMenu aria-labelledby="btn_import" class="file-upload-card">
+        <label class="file-label">
+          <span>Select a file:</span>
+          <input type="file" class="form-control">
+        </label>
+        <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0"
+          aria-valuemax="100">
+          <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 25%">25%</div>
+        </div>
+      </div>
+      <button #btnDeleteMaster class="btn btn-success">
+        <fa-icon [icon]="faExport"></fa-icon>
+        <span class="ms-1">Export</span></button>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="overflow-auto">
+      <table class="table table-bordered table-sm table-striped border-primary">
+        <thead class="table-primary fw-bold small">
+          <tr>
+            <th>No</th>
+            <th>Supplier</th>
+            <th>Area</th>
+            <th>Route name</th>
+            <th>License plate number</th>
+            <th>Vehicle brand</th>
+            <th>Prod year</th>
+            <th>Register date</th>
+            <th>Suspension type</th>
+            <th>Driver</th>
+            <th>Scanner number</th>
+            <th>Scanner Serial</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Kumho</td>
+            <td>Nội thành HP</td>
+            <td>TD PLAZA (FSE HP)</td>
+            <td>29E-08440</td>
+            <td>THACO BLUEKY120S</td>
+            <td>2024</td>
+            <td>December 27, 2024</td>
+            <td>BÓNG HƠI</td>
+            <td>LÊ QUANG VINH</td>
+            <td>81</td>
+            <td>V010629</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Kumho</td>
+            <td>Nội thành HP</td>
+            <td>TD PLAZA</td>
+            <td>29LD-30212</td>
+            <td>THACO BLUEKY120S</td>
+            <td>2023</td>
+            <td>September 7, 2023</td>
+            <td>BÓNG HƠI</td>
+            <td>NGUYỄN XUÂN BÌNH</td>
+            <td>110</td>
+            <td>V010655</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Kumho</td>
+            <td>Nội thành HP</td>
+            <td>CẦU RÀO</td>
+            <td>29LD-30211</td>
+            <td>THACO BLUEKY120S</td>
+            <td>2023</td>
+            <td>October 21, 2023</td>
+            <td>BÓNG HƠI</td>
+            <td>VŨ HỒNG TUẤN</td>
+            <td>113</td>
+            <td>V010658</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Kumho</td>
+            <td>Nội thành HP</td>
+            <td>LẠCH TRAY(KTX HP)</td>
+            <td>29H-93121</td>
+            <td>THACO BLUEKY120S</td>
+            <td>2023</td>
+            <td>January 4, 2024</td>
+            <td>BÓNG HƠI</td>
+            <td>TRỊNH HỒNG QUANG</td>
+            <td>26</td>
+            <td>V010027</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Kumho</td>
+            <td>Nội thành HP</td>
+            <td>HỒ SEN (FSE HP)</td>
+            <td>29LD-30210</td>
+            <td>THACO BLUEKY120S</td>
+            <td>2023</td>
+            <td>December 7, 2023</td>
+            <td>BÓNG HƠI</td>
+            <td>NGUYỄN ĐỨC CƯỜNG</td>
+            <td>138</td>
+            <td>V010630</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Kumho</td>
+            <td>Ngoại thành HP</td>
+            <td>MINH ĐỨC</td>
+            <td>29LD-32771</td>
+            <td>THACO BLUEKY120S</td>
+            <td>2023</td>
+            <td>April 28, 2023</td>
+            <td>BÓNG HƠI</td>
+            <td>NGUYỄN VĂN ĐẠT</td>
+            <td>1</td>
+            <td>V010357</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>Kumho</td>
+            <td>Ngoại thành HP</td>
+            <td>AN DƯƠNG</td>
+            <td>29H-93063</td>
+            <td>THACO BLUEKY120S</td>
+            <td>2023</td>
+            <td>December 13, 2023</td>
+            <td>BÓNG HƠI</td>
+            <td>NGUYỄN MINH GIANG</td>
+            <td>50</td>
+            <td>V010495</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>Kumho</td>
+            <td>Ngoại thành HP</td>
+            <td>AN DƯƠNG</td>
+            <td>29LD-30179</td>
+            <td>THACO BLUEKY120S</td>
+            <td>2023</td>
+            <td>May 23, 2023</td>
+            <td>BÓNG HƠI</td>
+            <td>NGÔ VĂN TUY</td>
+            <td>103</td>
+            <td>V010429</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>Kumho</td>
+            <td>Ngoại thành HP</td>
+            <td>CẦU ĐẦM</td>
+            <td>29H-01789</td>
+            <td>THACO BLUEKY120S</td>
+            <td>2023</td>
+            <td>October 21, 2023</td>
+            <td>BÓNG HƠI</td>
+            <td>NGUYỄN XUÂN TRƯỜNG</td>
+            <td>37</td>
+            <td>V010106</td>
+          </tr>
+          <tr>
+            <td>47</td>
+            <td>Lotte</td>
+            <td>Ngoại thành HP</td>
+            <td>FSE - Khách Sạn LGD (19s)</td>
+            <td>29LD-31545</td>
+            <td>DAEWOO G8</td>
+            <td>2020</td>
+            <td>May 10, 2020</td>
+            <td>BÓNG HƠI</td>
+            <td>Vũ Đức Trung</td>
+            <td>27</td>
+            <td>V010063</td>
+          </tr>
+          <tr>
+            <td>48</td>
+            <td>Lotte</td>
+            <td>Ngoại thành HP</td>
+            <td>Nam Am</td>
+            <td>29LD-30502</td>
+            <td>THACO TB120S-W336-IE4</td>
+            <td>2021</td>
+            <td>March 23, 2021</td>
+            <td>BÓNG HƠI</td>
+            <td>Khuê Như Kha</td>
+            <td>57</td>
+            <td>V010624</td>
+          </tr>
+          <tr>
+            <td>49</td>
+            <td>Lotte</td>
+            <td>Ngoại thành HP</td>
+            <td>Nam Am</td>
+            <td>29LD-30548</td>
+            <td>THACO TB120S-W336-IE4</td>
+            <td>2021</td>
+            <td>October 29, 2021</td>
+            <td>BÓNG HƠI</td>
+            <td>Doãn Trà Hậu</td>
+            <td>76</td>
+            <td>V010114</td>
+          </tr>
+          <tr>
+            <td>50</td>
+            <td>Lotte</td>
+            <td>Ngoại thành HP</td>
+            <td>Nam Am</td>
+            <td>29LD-30552</td>
+            <td>THACO TB120S-W336-IE4</td>
+            <td>2021</td>
+            <td>November 25, 2019</td>
+            <td>BÓNG HƠI</td>
+            <td>Vũ Văn Tuấn</td>
+            <td>33</td>
+            <td>V010094</td>
+          </tr>
+          <tr>
+            <td>51</td>
+            <td>Lotte</td>
+            <td>Ngoại thành HP</td>
+            <td>Nam Am</td>
+            <td>29LD-31498</td>
+            <td>THACO TB120S-W336-IE4</td>
+            <td>2022</td>
+            <td>November 25, 2019</td>
+            <td>BÓNG HƠI</td>
+            <td>Bùi Văn Đức</td>
+            <td>68</td>
+            <td>V010380</td>
+          </tr>
+          <tr>
+            <td>52</td>
+            <td>Lotte</td>
+            <td>Ngoại thành HP</td>
+            <td>Nam Am</td>
+            <td>29LD-31492</td>
+            <td>DAEWOO G12ECO</td>
+            <td>2023</td>
+            <td>January 7, 2021</td>
+            <td>BÓNG HƠI</td>
+            <td>Phạm Quyền Huy</td>
+            <td>33</td>
+            <td>V010635</td>
+          </tr>
+          <tr>
+            <td>53</td>
+            <td>Lotte</td>
+            <td>Ngoại thành HP</td>
+            <td>Nam Am</td>
+            <td>29LD-31496</td>
+            <td>DAEWOO G12ECO</td>
+            <td>2023</td>
+            <td>August 7, 2021</td>
+            <td>BÓNG HƠI</td>
+            <td>Nguyễn Duy Trinh</td>
+            <td>116</td>
+            <td>V010627</td>
+          </tr>
+          <tr>
+            <td>54</td>
+            <td>Lotte</td>
+            <td>Ngoại thành HP</td>
+            <td>Nam Am</td>
+            <td>29LD-01720</td>
+            <td>THACO TB120S-W336-IE4</td>
+            <td>2019</td>
+            <td>November 29, 2019</td>
+            <td>BÓNG HƠI</td>
+            <td>Vũ Văn Điệp</td>
+            <td>104</td>
+            <td>V010381</td>
+          </tr>
+          <tr>
+            <td>55</td>
+            <td>Lotte</td>
+            <td>Ngoại thành HP</td>
+            <td>Nam Am - B16</td>
+            <td>29LD-30710</td>
+            <td>THACO BLUESKY TB120S</td>
+            <td>2019</td>
+            <td>June 1, 2022</td>
+            <td>BÓNG HƠI</td>
+            <td>Bùi Huy Cường</td>
+            <td>35</td>
+            <td>V010016</td>
+          </tr>
+          <tr>
+            <td>56</td>
+            <td>Lotte</td>
+            <td>Ngoại thành HP</td>
+            <td>Nam Am - B16</td>
+            <td>29LD-30787</td>
+            <td>THACO BLUESKY TB120S</td>
+            <td>2019</td>
+            <td>October 24, 2019</td>
+            <td>BÓNG HƠI</td>
+            <td>Vũ Tiến Linh</td>
+            <td>49</td>
+            <td>V010625</td>
+          </tr>
+          <tr>
+            <td>57</td>
+            <td>Lotte</td>
+            <td>Ngoại thành HP</td>
+            <td>Bến xe Vinh Bảo</td>
+            <td>29LD-30782</td>
+            <td>THACO TB120S-W336-IE4</td>
+            <td>2021</td>
+            <td>November 29, 2019</td>
+            <td>BÓNG HƠI</td>
+            <td>Vũ Văn Hưởng</td>
+            <td>23</td>
+            <td>V010107</td>
+          </tr>
+          <tr>
+            <td>58</td>
+            <td>Lotte</td>
+            <td>Ngoại thành HP</td>
+            <td>Bến xe Vinh Bảo</td>
+            <td>29LD-30702</td>
+            <td>THACO TB120S-W336-IE4</td>
+            <td>2019</td>
+            <td>November 29, 2019</td>
+            <td>BÓNG HƠI</td>
+            <td>Phạm Quang Học</td>
+            <td>39</td>
+            <td>V010164</td>
+          </tr>
+          <tr>
+            <td>59</td>
+            <td>Lotte</td>
+            <td>Ngoại thành HP</td>
+            <td>Bến xe Vinh Bảo</td>
+            <td>29LD-30567</td>
+            <td>THACO TB120S-W336-IE4</td>
+            <td>2019</td>
+            <td>December 5, 2019</td>
+            <td>BÓNG HƠI</td>
+            <td>Hoàng Quốc Trung</td>
+            <td>41</td>
+            <td>V010066</td>
+          </tr>
+          <tr>
+            <td>60</td>
+            <td>Lotte</td>
+            <td>Ngoại thành HP</td>
+            <td>Bến xe Vinh Bảo</td>
+            <td>29LD-31880</td>
+            <td>THACO BLUESKY TB120S</td>
+            <td>2022</td>
+            <td>August 23, 2023</td>
+            <td>BÓNG HƠI</td>
+            <td>Tạ Đông Quyết</td>
+            <td>121</td>
+            <td>V010619</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-area">Vehicles</h4>
+    <button type="button" class="btn-close btn-close-white" aria-label="Close"
+      (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="container">
+        <div class="row mb-2">
+          <label class="col-form-label  fw-bold" for="supplier">Supplier</label>
+          <div class="input">
+            <ngx-select id="supplier" class="" placeholder="Choose a supplier" [allowClear]="true">
+            </ngx-select>
+          </div>
+          <label class="col-form-label  fw-bold" for="area">Area</label>
+          <div class="input">
+            <ngx-select id="area" class="" placeholder="Choose an area" [allowClear]="true">
+            </ngx-select>
+          </div>
+          <label class="col-form-label  fw-bold" for="route_name">Route name</label>
+          <div class="input">
+            <ngx-select id="route_name" class="" placeholder="Choose a route" [allowClear]="true">
+            </ngx-select>
+          </div>
+        </div>
+        <div class="row mb-2">
+          <label class="col-form-label  fw-bold" for="plate_number">License plate number</label>
+          <div class="input">
+            <input id="plate_number" class="form-control" placeholder="Enter the license plate number">
+          </div>
+          <label class="col-form-label  fw-bold" for="vehicle_brand">Vehicle brand</label>
+          <div class="input">
+            <ngx-select id="vehicle_brand" class="" placeholder="Choose a vehicle brand" [allowClear]="true">
+            </ngx-select>
+          </div>
+        </div>
+        <div class="row mb-2">
+          <label class="col-form-label  fw-bold" for="prod_year">Production year</label>
+          <div class="input">
+            <input id="prod_year" class="form-control" type="number" placeholder="Enter production year">
+          </div>
+          <label class="col-form-label  fw-bold" for="register_date">Register date</label>
+          <div class="input">
+            <input id="register_date" class="form-control" type="date" placeholder="Pick register date">
+          </div>
+          <label class="col-form-label  fw-bold" for="suspension_type">Suspension type</label>
+          <div class="input">
+            <ngx-select id="suspension_type" class="" placeholder="Choose a suspension type" [allowClear]="true">
+            </ngx-select>
+          </div>
+        </div>
+        <div class="row mb-2">
+          <label class="col-form-label  fw-bold" for="driver">Driver</label>
+          <div class="input">
+            <ngx-select id="driver" class="" placeholder="Choose a driver" [allowClear]="true">
+            </ngx-select>
+          </div>
+          <label class="col-form-label  fw-bold" for="scanner_numer">Scanner number</label>
+          <div class="input">
+            <input id="scanner_numer" class="form-control" type="number" placeholder="Enter scanner number">
+          </div>
+          <label class="col-form-label  fw-bold" for="scaner_serial">Scanner serial</label>
+          <div class="input">
+            <input id="scaner_serial" class="form-control" placeholder="Enter scanner serial">
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary">Save</button>
+  </div>
+</ng-template>

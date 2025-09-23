@@ -164,6 +164,9 @@ export class DynamicTabsComponent<T> implements AfterViewInit, OnDestroy {
     const active = this.tabs.find((t) => t.active);
     this.scrollToTab(active?.id ?? '');
   }
+  public passTabsToChilds(tab: Tab<T>) {
+    return tab.passTabs ? { dynamicTabs: this } : {};
+  }
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.tabs, event.previousIndex, event.currentIndex);
   }
@@ -174,4 +177,5 @@ export interface Tab<T> {
   title: string;
   content: Type<T>;
   active: boolean;
+  passTabs?: boolean;
 }

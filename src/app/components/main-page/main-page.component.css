@@ -16,6 +16,10 @@ mat-sidenav-content>mat-toolbar>div {
   padding: 0 20px;
 }
 
+.mat-mdc-nav-list .mat-mdc-list-item {
+  border-radius: 0;
+}
+
 [data-tab-name].active {
   background-color: rgb(196, 225, 234);
 }
@@ -41,7 +45,7 @@ mat-sidenav mat-toolbar {
 }
 
 mat-sidenav {
-  max-width: 235px;
+  max-width: 240px;
   border-right: 1px solid rgba(0, 0, 0, 0.193);
   box-shadow: 3px 1px 5px 0 rgba(0, 0, 0, 0.1);
   border-radius: 0%;
@@ -138,4 +142,9 @@ mat-sidenav {
 
 .toggle-btn:hover::after {
   font-size: 20px;
+}
+
+.fw-sidenav {
+  font-weight: 500;
+  font-family: system-ui, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }

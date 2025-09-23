@@ -26,6 +26,8 @@ import { RouteTypesComponent } from '../route-types/route-types.component';
 import { RequestFormEventComponent } from '../request-form-event/request-form-event.component';
 import { RequestFormRouteComponent } from '../request-form-route/request-form-route.component';
 import { RequestFormStopComponent } from '../request-form-stop/request-form-stop.component';
+import { VehiclesComponent } from '../vehicles/vehicles.component';
+import { ScheduleManagementComponent } from '../schedule-management/schedule-management.component';
 @Component({
   selector: 'app-main-page',
   imports: [
@@ -50,13 +52,15 @@ export class MainPageComponent implements OnInit {
   isSideNavOpened = false;
   categoriesOpen = true;
   applicationFormOpen = true;
+  requestFormEvent = RequestFormEventComponent;
+  requestFormRoute = RequestFormRouteComponent;
+  requestFormStop = RequestFormStopComponent;
   bus = BusComponent;
   area = AreasComponent;
   location = LocationsComponent;
   routeType = RouteTypesComponent;
-  requestFormEvent = RequestFormEventComponent;
-  requestFormRoute = RequestFormRouteComponent;
-  requestFormStop = RequestFormStopComponent;
+  vehicles = VehiclesComponent;
+  schedule = ScheduleManagementComponent;
   @ViewChild('tabContainer') tabContainer!: DynamicTabsComponent<any>;
   constructor(private router: Router) {}
 
@@ -65,7 +69,7 @@ export class MainPageComponent implements OnInit {
       localStorage.getItem('is_sidenav_side_mode') == 'side';
     this.isSideNavOpened = localStorage.getItem('is_sidenav_opened') == 'true';
     setTimeout(() => {
-      this.onAddTab('Update commuter bus route', this.bus);
+      this.onAddTab('Update commuter bus route', this.bus, true);
     });
   }
   onDrawerModeChange() {
@@ -79,7 +83,7 @@ export class MainPageComponent implements OnInit {
     this.isSideNavOpened = open;
     localStorage.setItem('is_sidenav_opened', open.toString());
   }
-  onAddTab(title: string, content: Type<any>) {
+  onAddTab(title: string, content: Type<any>, passTabs: boolean = false) {
     const newId = 'tab_' + Math.random().toString(36).substring(2, 7);
     const existing = this.tabContainer.tabs.find((t) => t.title === title);
     this.tabContainer.tabs.forEach((t) => (t.active = false));
@@ -93,6 +97,7 @@ export class MainPageComponent implements OnInit {
         title,
         content,
         active: true,
+        passTabs,
       });
       this.tabContainer.scrollToTab(newId);
     }

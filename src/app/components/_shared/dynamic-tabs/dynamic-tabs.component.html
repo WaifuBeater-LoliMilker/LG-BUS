@@ -24,7 +24,7 @@
 <div class="tab-content border border-top-0 p-2" #tabcontents>
   @for (tab of tabs; track tab.id) {
   <div class="tab-pane fade h-100" [class.show]="tab.active" [class.active]="tab.active" role="tabpanel">
-    <ng-container [ngComponentOutlet]="tab.content" [ngComponentOutletInputs]="{ dynamicTabs : this }"></ng-container>
+    <ng-container [ngComponentOutlet]="tab.content" [ngComponentOutletInputs]="passTabsToChilds(tab)"></ng-container>
   </div>
   }
 </div>

@@ -52,7 +52,6 @@ export class RequestFormEventComponent implements AfterViewInit {
   timeInputTemplate!: TemplateRef<any>;
   @ViewChild('vcHost', { read: ViewContainerRef, static: true })
   vcr!: ViewContainerRef;
-  @Input() dynamicTabs!: any;
 
   isShowingRightTable = true;
   masterColumns: ColumnDefinition[] = [

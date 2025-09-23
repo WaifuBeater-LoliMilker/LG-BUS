@@ -62,7 +62,6 @@ export class RouteTypesComponent implements OnInit {
   tblComp!: TabulatorTableSingleComponent;
   @ViewChild('btnDelete', { static: false })
   btnDelete!: ElementRef<HTMLButtonElement>;
-  @Input() dynamicTabs!: any;
   //#endregion
 
   //#region Constructor

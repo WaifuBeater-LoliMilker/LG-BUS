@@ -10,48 +10,59 @@
         </button>
       </mat-toolbar>
       <mat-nav-list class="w-100">
-        <a mat-list-item data-tab-name="Update commuter bus route" (click)="onAddTab('Update commuter bus route', bus)">
+        <a mat-list-item data-tab-name="Update commuter bus route"
+          (click)="onAddTab('Update commuter bus route', bus, true)">
           <img matListIcon src="/imgs/icons/dashboard.png" class="icon me-1">
-          <span class="fw-bold">Commuter bus route</span>
+          <span class="fw-sidenav">Commuter bus route</span>
         </a>
-        <a mat-list-item (click)="categoriesOpen = !categoriesOpen" [class.open]="categoriesOpen">
-          <img matListIcon src="/imgs/icons/categories.png" class="icon me-1">
-          <span class="fw-bold">Categories</span>
-          <span class="spacer"></span>
-          <fa-icon [icon]="categoriesOpen? faChevup:faChevdown" class="chevron"></fa-icon>
-        </a>
-        <div class="submenu" [class.open]="categoriesOpen">
-          <a mat-list-item data-tab-name="Areas" (click)="onAddTab('Areas', area)">
-            <img matListIcon src="/imgs/icons/areas.png" class="icon me-1">
-            <span class="fw-bold">Areas</span>
-          </a>
-          <a mat-list-item data-tab-name="Locations" (click)="onAddTab('Locations', location)">
-            <img matListIcon src="/imgs/icons/locations.png" class="icon me-1">
-            <span class="fw-bold">Locations</span>
-          </a>
-          <a mat-list-item data-tab-name="Route types" (click)="onAddTab('Route types', routeType)">
-            <img matListIcon src="/imgs/icons/communication.png" class="icon me-1">
-            <span class="fw-bold">Route types</span>
-          </a>
-        </div>
         <a mat-list-item (click)="applicationFormOpen = !applicationFormOpen" [class.open]="applicationFormOpen">
           <img matListIcon src="/imgs/icons/forms.png" class="icon me-1">
-          <span class="fw-bold">Application form</span>
+          <span class="fw-sidenav">Application form</span>
           <span class="spacer"></span>
           <fa-icon [icon]="applicationFormOpen? faChevup:faChevdown" class="chevron"></fa-icon>
         </a>
         <div class="submenu" [class.open]="applicationFormOpen">
           <a mat-list-item data-tab-name="Request for event" (click)="onAddTab('Request for event', requestFormEvent)">
             <img matListIcon src="/imgs/icons/events.png" class="icon me-1">
-            <span class="fw-bold">Request for event</span>
+            <span class="fw-sidenav">Request for event</span>
           </a>
-          <a mat-list-item data-tab-name="Request for bus route" (click)="onAddTab('Request for bus route', requestFormRoute)">
+          <a mat-list-item data-tab-name="Request for bus route"
+            (click)="onAddTab('Request for bus route', requestFormRoute)">
             <img matListIcon src="/imgs/icons/bus.png" class="icon me-1">
-            <span class="fw-bold">Request for bus route</span>
+            <span class="fw-sidenav">Request for bus route</span>
           </a>
-          <a mat-list-item data-tab-name="Request for bus stop" (click)="onAddTab('Request for bus stop', requestFormStop)">
+          <a mat-list-item data-tab-name="Request for bus stop"
+            (click)="onAddTab('Request for bus stop', requestFormStop)">
             <img matListIcon src="/imgs/icons/bus-stop.png" class="icon me-1">
-            <span class="fw-bold">Request for bus stop</span>
+            <span class="fw-sidenav">Request for bus stop</span>
+          </a>
+        </div>
+        <a mat-list-item (click)="categoriesOpen = !categoriesOpen" [class.open]="categoriesOpen">
+          <img matListIcon src="/imgs/icons/categories.png" class="icon me-1">
+          <span class="fw-sidenav">Categories</span>
+          <span class="spacer"></span>
+          <fa-icon [icon]="categoriesOpen? faChevup:faChevdown" class="chevron"></fa-icon>
+        </a>
+        <div class="submenu" [class.open]="categoriesOpen">
+          <a mat-list-item data-tab-name="Areas" (click)="onAddTab('Areas', area)">
+            <img matListIcon src="/imgs/icons/areas.png" class="icon me-1">
+            <span class="fw-sidenav">Areas</span>
+          </a>
+          <a mat-list-item data-tab-name="Locations" (click)="onAddTab('Locations', location)">
+            <img matListIcon src="/imgs/icons/locations.png" class="icon me-1">
+            <span class="fw-sidenav">Locations</span>
+          </a>
+          <a mat-list-item data-tab-name="Route types" (click)="onAddTab('Route types', routeType)">
+            <img matListIcon src="/imgs/icons/communication.png" class="icon me-1">
+            <span class="fw-sidenav">Route types</span>
+          </a>
+          <a mat-list-item data-tab-name="Vehicles" (click)="onAddTab('Vehicles', vehicles)">
+            <img matListIcon src="/imgs/icons/car.png" class="icon me-1">
+            <span class="fw-sidenav">Vehicles</span>
+          </a>
+          <a mat-list-item data-tab-name="Schedule management" (click)="onAddTab('Schedule management', schedule)">
+            <img matListIcon src="/imgs/icons/schedule.png" class="icon me-1">
+            <span class="fw-sidenav">Schedule management</span>
           </a>
         </div>
       </mat-nav-list>
