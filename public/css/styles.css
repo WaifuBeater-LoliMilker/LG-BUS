@@ -596,3 +596,11 @@ a.mdc-list-item.open .chevron {
   max-height: 500px;
   opacity: 1;
 }
+
+.modal-width {
+  width: 65% !important;
+}
+
+.modal-width-sm {
+  width: 55% !important;
+}

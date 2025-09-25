@@ -1,23 +1,23 @@
 /* tslint:disable:no-unused-variable */
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { MainPageComponent } from './main-page.component';
+import { ApprovalComponent } from './approval.component';
 
-describe('MainPageComponent', () => {
-  let component: MainPageComponent;
-  let fixture: ComponentFixture<MainPageComponent>;
+describe('ApprovalComponent', () => {
+  let component: ApprovalComponent;
+  let fixture: ComponentFixture<ApprovalComponent>;
 
-  beforeEach((() => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MainPageComponent ]
+      declarations: [ ApprovalComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MainPageComponent);
+    fixture = TestBed.createComponent(ApprovalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

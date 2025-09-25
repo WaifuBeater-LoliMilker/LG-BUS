@@ -37,6 +37,36 @@
             <span class="fw-sidenav">Request for bus stop</span>
           </a>
         </div>
+        <a mat-list-item data-tab-name="Approval" (click)="onAddTab('Approval', approval)">
+          <img matListIcon src="/imgs/icons/approval.png" class="icon me-1">
+          <span class="fw-sidenav">Approval</span>
+        </a>
+        <a mat-list-item data-tab-name="Schedule management" (click)="onAddTab('Schedule management', schedule)">
+          <img matListIcon src="/imgs/icons/schedule.png" class="icon me-1">
+          <span class="fw-sidenav">Schedule management</span>
+        </a>
+        <a mat-list-item data-tab-name="Operation management" (click)="onAddTab('Operation management', operation)">
+          <img matListIcon src="/imgs/icons/operation.png" class="icon me-1">
+          <span class="fw-sidenav">Operation management</span>
+        </a>
+        <a mat-list-item data-tab-name="Payment management" (click)="paymentManagementOpen = !paymentManagementOpen"
+          [class.open]="paymentManagementOpen">
+          <img matListIcon src="/imgs/icons/payment.png" class="icon me-1">
+          <span class="fw-sidenav">Payment management</span>
+          <span class="spacer"></span>
+          <fa-icon [icon]="paymentManagementOpen? faChevup:faChevdown" class="chevron"></fa-icon>
+        </a>
+        <div class="submenu" [class.open]="paymentManagementOpen">
+          <a mat-list-item data-tab-name="Pricing management" (click)="onAddTab('Pricing management', pricing)">
+            <img matListIcon src="/imgs/icons/pricing.png" class="icon me-1">
+            <span class="fw-sidenav">Pricing management</span>
+          </a>
+          <a mat-list-item data-tab-name="Service completion"
+            (click)="onAddTab('Service completion', serviceCompletion)">
+            <img matListIcon src="/imgs/icons/service-outcome.png" class="icon me-1">
+            <span class="fw-sidenav">Service completion</span>
+          </a>
+        </div>
         <a mat-list-item (click)="categoriesOpen = !categoriesOpen" [class.open]="categoriesOpen">
           <img matListIcon src="/imgs/icons/categories.png" class="icon me-1">
           <span class="fw-sidenav">Categories</span>
@@ -59,10 +89,6 @@
           <a mat-list-item data-tab-name="Vehicles" (click)="onAddTab('Vehicles', vehicles)">
             <img matListIcon src="/imgs/icons/car.png" class="icon me-1">
             <span class="fw-sidenav">Vehicles</span>
-          </a>
-          <a mat-list-item data-tab-name="Schedule management" (click)="onAddTab('Schedule management', schedule)">
-            <img matListIcon src="/imgs/icons/schedule.png" class="icon me-1">
-            <span class="fw-sidenav">Schedule management</span>
           </a>
         </div>
       </mat-nav-list>

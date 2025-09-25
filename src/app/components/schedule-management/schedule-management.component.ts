@@ -1,4 +1,10 @@
-import { Component, Input, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
   faCopy,
@@ -44,7 +50,7 @@ export class ScheduleManagementComponent implements OnInit {
   openModal() {
     this.modalService.open(this.modal, {
       centered: true,
-      modalDialogClass: 'w-75',
+      modalDialogClass: 'modal-width',
       // fullscreen: true,
     });
   }

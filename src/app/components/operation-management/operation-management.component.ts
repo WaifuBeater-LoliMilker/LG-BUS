@@ -1,10 +1,4 @@
-import {
-  Component,
-  Input,
-  OnInit,
-  TemplateRef,
-  ViewChild,
-} from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
   faCopy,
@@ -15,16 +9,30 @@ import {
   faPlus,
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
-import { NgbDropdownModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbDatepickerModule,
+  NgbDropdownModule,
+  NgbModal,
+  NgbTimepickerModule,
+} from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 import { NgxSelectModule } from 'ngx-select-ex';
 
 @Component({
-  selector: 'app-vehicles',
-  templateUrl: './vehicles.component.html',
-  styleUrls: ['./vehicles.component.css'],
-  imports: [FontAwesomeModule, NgbDropdownModule, NgxSelectModule],
+  selector: 'app-operation-management',
+  templateUrl: './operation-management.component.html',
+  styleUrls: ['./operation-management.component.css'],
+  imports: [
+    FontAwesomeModule,
+    NgbDropdownModule,
+    NgxSelectModule,
+    NgbDatepickerModule,
+    NgbTimepickerModule,
+    FormsModule,
+  ],
 })
-export class VehiclesComponent implements OnInit {
+export class OperationManagementComponent implements OnInit {
+  time = { hour: 13, minute: 30 };
   faGlass = faMagnifyingGlass;
   faPlus = faPlus;
   faPenToSquare = faPenToSquare;

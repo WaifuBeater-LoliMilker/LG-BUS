@@ -81,7 +81,7 @@ table {
 }
 
 form label {
-  width: 165px;
+  max-width: 120px;
 }
 
 form .input {

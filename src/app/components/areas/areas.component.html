@@ -14,8 +14,28 @@
     </div>
   </div>
   <div class="card-body">
-    <tabulator-table-single #tblComp [columnNames]="columnNames" [tableData]="areas" [dataTree]="true"
-      [hasSelection]="false" [height]="'100%'"></tabulator-table-single>
+    <table class="table table-bordered table-striped border-primary">
+      <thead class="table-primary fw-bold small text-start">
+        <tr>
+          <th>Code</th>
+          <th>Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>IN</td>
+          <td>Inner Haiphong</td>
+        </tr>
+        <tr>
+          <td>SUB</td>
+          <td>Suburban Haiphong</td>
+        </tr>
+        <tr>
+          <td>OTHER</td>
+          <td>Other provinces</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 <ng-template #content let-modal>

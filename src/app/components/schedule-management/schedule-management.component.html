@@ -989,7 +989,7 @@
 </div>
 <ng-template #content let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-area">Vehicles</h4>
+    <h4 class="modal-title" id="modal-area">Schedule management</h4>
     <button type="button" class="btn-close btn-close-white" aria-label="Close"
       (click)="modal.dismiss('Cross click')"></button>
   </div>
@@ -1018,7 +1018,8 @@
             <ngx-select id="route_type" class="" placeholder="Choose a route type" [allowClear]="true">
             </ngx-select>
           </div>
-          <label class="col-form-label fw-bold" for="number_of_vehicle">Number of vehicle</label>
+          <label class="col-form-label fw-bold" for="number_of_vehicle" style="max-width: 220px;">Number of
+            vehicle</label>
           <div class="input">
             <input id="number_of_vehicle" class="form-control" type="number" placeholder="Enter number of vehicle">
           </div>
@@ -1026,7 +1027,7 @@
         <div class="row mb-2">
           <label class="col-form-label fw-bold" for="note">Note</label>
           <div class="input">
-            <textarea id="note" class="form-control" type="number">
+            <textarea id="note" class="form-control" type="number" style="height:120px">
               </textarea>
           </div>
         </div>

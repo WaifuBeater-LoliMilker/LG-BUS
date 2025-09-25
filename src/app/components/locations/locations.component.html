@@ -14,8 +14,24 @@
     </div>
   </div>
   <div class="card-body">
-    <tabulator-table-single #tblComp [columnNames]="columnNames" [tableData]="locations" [dataTree]="true"
-      [hasSelection]="false" [height]="'100%'"></tabulator-table-single>
+    <table class="table table-bordered table-striped border-primary">
+      <thead class="table-primary fw-bold small text-start">
+        <tr>
+          <th>SUB</th>
+          <th>VH.Subsidiary</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Parent</td>
+          <td>VH.Parent company</td>
+        </tr>
+        <tr>
+          <td>CUSTOMER</td>
+          <td>Customer company</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 <ng-template #content let-modal>
@@ -30,8 +46,8 @@
       <div class="mb-3 row">
         <label for="area_code" class="col-sm-3 col-form-label">Location Code</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" id="area_code" name="area_code" [(ngModel)]="areaFormValue.LocationCode"
-            ngbAutofocus>
+          <input type="text" class="form-control" id="area_code" name="area_code"
+            [(ngModel)]="areaFormValue.LocationCode" ngbAutofocus>
         </div>
       </div>
       <div class="mb-3 row">

@@ -1,0 +1,219 @@
+<div class="d-inline-block text-start align-top mb-1">
+  <span class="fw-bold" style="font-size: 24px;">• Chi tiết kết quả dịch vụ</span>
+</div>
+<div class="header d-flex mb-2">
+  <div class="input-group flex-nowrap">
+    <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">Supplier</label>
+    <input type="text" class="form-control me-1">
+  </div>
+  <div class="input-group flex-nowrap">
+    <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">Type</label>
+    <input type="text" class="form-control me-1">
+  </div>
+  <div class="input-group flex-nowrap">
+    <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">Search range</label>
+    <input type="date" class="form-control" ngbDatepicker #d1="ngbDatepicker" (click)="d1.open()">
+    <span class="input-group-text">to</span>
+    <input type="date" class="form-control me-1" ngbDatepicker #d2="ngbDatepicker" (click)="d2.open()">
+  </div>
+  <button class="btn btn-primary d-flex align-items-center">
+    <fa-icon [icon]="faGlass"></fa-icon>
+    <span class="ms-1">Search</span>
+  </button>
+</div>
+<div class="d-flex justify-content-end">
+  <button class="btn btn-sm btn-primary mb-1">
+    <fa-icon [icon]="faDownload"></fa-icon>
+    <span class="ms-1">Download</span></button>
+</div>
+<table class="table table-bordered table-striped align-middle border-primary">
+  <thead class="table-primary">
+    <tr>
+      <th class="no-sort"></th>
+      <th class="no-sort"></th>
+      <th colspan="5" class="text-center">Số tiền thanh toán tài khoản</th>
+    </tr>
+    <tr>
+      <th>Công ty</th>
+      <th>Loại xe</th>
+      <th>Tới cơ quan</th>
+      <th>Về nhà</th>
+      <th>Số tiền thanh toán tại Kì</th>
+      <th>Khấu trừ ngoài dịch vụ</th>
+      <th>Tổng số tiền thanh toán</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2">Lotte rental</td>
+      <td>Số lượng</td>
+      <td>59</td>
+      <td>67</td>
+      <td>126</td>
+      <td>0</td>
+      <td>126</td>
+    </tr>
+    <tr>
+      <td>Số tiền</td>
+      <td>61,324,000</td>
+      <td>70,853,000</td>
+      <td>132,177,000</td>
+      <td>0</td>
+      <td>132,177,000</td>
+    </tr>
+  </tbody>
+</table>
+<div class="d-inline-block text-start align-top mb-1">
+  <span class="fw-bold" style="font-size: 24px;">• Chi tiết quản lý kết quả dịch vụ</span>
+</div>
+<div class="d-flex justify-content-end">
+  <button class="btn btn-sm btn-primary mb-1">
+    <fa-icon [icon]="faDownload"></fa-icon>
+    <span class="ms-1">Download</span></button>
+</div>
+<table class="table table-bordered table-hover table-sm align-middle text-center">
+  <thead class="table-primary">
+    <tr>
+      <th>Số</th>
+      <th>Ngày dịch vụ</th>
+      <th>Giờ khởi hành</th>
+      <th>Giờ đến</th>
+      <th>Công ty dịch vụ</th>
+      <th>Biển số xe</th>
+      <th>Tên lái xe</th>
+      <th>Tuyến</th>
+      <th>Kết quả dịch vụ</th>
+      <th>Phí dịch vụ</th>
+      <th>Trình trạng sắp xếp</th>
+      <th>Lưu ý</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1.00</td>
+      <td>2025-07-14</td>
+      <td>05:55</td>
+      <td>07:30</td>
+      <td>Lotte rent a car</td>
+      <td>29LD-30926</td>
+      <td>Khúc Như Kha</td>
+      <td>Nam Am</td>
+      <td>OK</td>
+      <td>912,544.00</td>
+      <td>Đã hoàn thành</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>2.00</td>
+      <td>2025-07-14</td>
+      <td>05:55</td>
+      <td>07:30</td>
+      <td>Lotte rent a car</td>
+      <td>29LD-31485</td>
+      <td>Đoàn Tố Hiệu</td>
+      <td>Nam Am</td>
+      <td>OK</td>
+      <td>912,544.00</td>
+      <td>Đã hoàn thành</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>3.00</td>
+      <td>2025-07-14</td>
+      <td>05:55</td>
+      <td>07:30</td>
+      <td>Lotte rent a car</td>
+      <td>29LD-30522</td>
+      <td>Vũ Văn Tuấn</td>
+      <td>Nam Am</td>
+      <td>OK</td>
+      <td>912,544.00</td>
+      <td>Đã hoàn thành</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>4.00</td>
+      <td>2025-07-14</td>
+      <td>05:55</td>
+      <td>07:30</td>
+      <td>Lotte rent a car</td>
+      <td>29LD-31498</td>
+      <td>Bùi Văn Đức</td>
+      <td>Nam Am</td>
+      <td>OK</td>
+      <td>912,544.00</td>
+      <td>Đã hoàn thành</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>5.00</td>
+      <td>2025-07-14</td>
+      <td>05:55</td>
+      <td>07:30</td>
+      <td>Lotte rent a car</td>
+      <td>29LD-30732</td>
+      <td>Phạm Văn Huấn</td>
+      <td>Nam Am</td>
+      <td>NG</td>
+      <td>912,544.00</td>
+      <td>Đã hoàn thành</td>
+      <td>Không thanh toán do đón nhân viên muộn</td>
+    </tr>
+    <tr>
+      <td>6.00</td>
+      <td>2025-07-14</td>
+      <td>05:55</td>
+      <td>07:30</td>
+      <td>Lotte rent a car</td>
+      <td>29LD-31804</td>
+      <td>Nguyễn Duy Trinh</td>
+      <td>Nam Am</td>
+      <td>OK</td>
+      <td>912,544.00</td>
+      <td>Đã hoàn thành</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>7.00</td>
+      <td>2025-07-14</td>
+      <td>05:55</td>
+      <td>07:30</td>
+      <td>Lotte rent a car</td>
+      <td>29LD-01720</td>
+      <td>Vũ Văn Điệp</td>
+      <td>Nam Am</td>
+      <td>OK</td>
+      <td>912,544.00</td>
+      <td>Đã hoàn thành</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>8.00</td>
+      <td>2025-07-14</td>
+      <td>05:55</td>
+      <td>07:30</td>
+      <td>Lotte rent a car</td>
+      <td>29LD-30787</td>
+      <td>Bùi Huy Cường</td>
+      <td>Nam Am - B16</td>
+      <td>OK</td>
+      <td>913,699.00</td>
+      <td>Đã hoàn thành</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>9.00</td>
+      <td>2025-07-14</td>
+      <td>05:55</td>
+      <td>07:30</td>
+      <td>Lotte rent a car</td>
+      <td>29LD-30780</td>
+      <td>Vũ Tiến Linh</td>
+      <td>Nam Am - B16</td>
+      <td>OK</td>
+      <td>913,699.00</td>
+      <td>Đã hoàn thành</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>

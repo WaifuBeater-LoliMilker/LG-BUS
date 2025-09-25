@@ -7,10 +7,6 @@
   background-color: #2DA4CB;
 }
 
-.header input {
-  width: 300px;
-}
-
 .card {
   height: calc(100% - 42px);
 }
@@ -62,14 +58,47 @@ table {
 }
 
 form label {
-  width: 165px;
+  width: 130px;
 }
-
+form label.type-2 {
+  width: 111px;
+}
 form .input {
   flex: 1 1 0;
 }
 
-.col-form-label {
-  padding-left: 0.1rem;
-  padding-right: 0.1rem;
+.col-stt {
+  width: 50px;
+}
+
+.col-type {
+  width: 120px;
+}
+
+.col-cat {
+  width: 300px;
+}
+
+.col-price {
+  width: 150px;
+}
+
+.col-start {
+  width: 250px;
+}
+
+.col-end {
+  width: 250px;
+}
+
+.col-supplier {
+  width: 150px;
+}
+
+.col-area {
+  width: 200px;
+}
+
+.col-route {
+  width: 200px;
 }

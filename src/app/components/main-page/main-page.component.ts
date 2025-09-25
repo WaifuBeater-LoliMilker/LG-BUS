@@ -28,6 +28,10 @@ import { RequestFormRouteComponent } from '../request-form-route/request-form-ro
 import { RequestFormStopComponent } from '../request-form-stop/request-form-stop.component';
 import { VehiclesComponent } from '../vehicles/vehicles.component';
 import { ScheduleManagementComponent } from '../schedule-management/schedule-management.component';
+import { OperationManagementComponent } from '../operation-management/operation-management.component';
+import { ApprovalComponent } from '../approval/approval.component';
+import { PricingManagementComponent } from '../pricing-management/pricing-management.component';
+import { ServiceCompletionComponent } from '../service-completion/service-completion.component';
 @Component({
   selector: 'app-main-page',
   imports: [
@@ -52,6 +56,7 @@ export class MainPageComponent implements OnInit {
   isSideNavOpened = false;
   categoriesOpen = true;
   applicationFormOpen = true;
+  paymentManagementOpen = true;
   requestFormEvent = RequestFormEventComponent;
   requestFormRoute = RequestFormRouteComponent;
   requestFormStop = RequestFormStopComponent;
@@ -61,6 +66,10 @@ export class MainPageComponent implements OnInit {
   routeType = RouteTypesComponent;
   vehicles = VehiclesComponent;
   schedule = ScheduleManagementComponent;
+  operation = OperationManagementComponent;
+  approval = ApprovalComponent;
+  pricing = PricingManagementComponent;
+  serviceCompletion = ServiceCompletionComponent;
   @ViewChild('tabContainer') tabContainer!: DynamicTabsComponent<any>;
   constructor(private router: Router) {}
 
@@ -99,7 +108,7 @@ export class MainPageComponent implements OnInit {
         active: true,
         passTabs,
       });
-      this.tabContainer.scrollToTab(newId);
+      setTimeout(() => this.tabContainer.scrollToTab(newId), 0); //fuck Angular, fuck you
     }
 
     const navlinks = document.querySelectorAll('[data-tab-name]');

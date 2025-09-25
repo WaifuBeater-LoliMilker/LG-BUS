@@ -7,10 +7,6 @@
   background-color: #2DA4CB;
 }
 
-.header input {
-  width: 300px;
-}
-
 .card {
   height: calc(100% - 42px);
 }
@@ -62,14 +58,9 @@ table {
 }
 
 form label {
-  width: 165px;
+  width: 190px;
 }
 
 form .input {
   flex: 1 1 0;
-}
-
-.col-form-label {
-  padding-left: 0.1rem;
-  padding-right: 0.1rem;
 }

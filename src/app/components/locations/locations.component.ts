@@ -24,7 +24,6 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './locations.component.html',
   styleUrls: ['./locations.component.css'],
   imports: [
-    TabulatorTableSingleComponent,
     FontAwesomeModule,
     NgxSelectModule,
     FormsModule,
@@ -73,9 +72,6 @@ export class LocationsComponent implements OnInit {
   //#endregion
 
   openModal(content: TemplateRef<any>, isEditing = false) {
-    const selected = this.tblComp.getSelectedRow() as Locations;
-    if (isEditing && !selected) return;
-    this.areaFormValue = isEditing ? new Locations(selected) : new Locations();
     this.modalService.open(content, {
       centered: true,
       modalDialogClass: 'w-50',
