@@ -53,7 +53,7 @@ export class RequestFormEventComponent implements AfterViewInit {
   @ViewChild('vcHost', { read: ViewContainerRef, static: true })
   vcr!: ViewContainerRef;
 
-  isShowingRightTable = true;
+  isShowingRightTable = false;
   masterColumns: ColumnDefinition[] = [
     {
       title: 'No',
@@ -71,29 +71,28 @@ export class RequestFormEventComponent implements AfterViewInit {
       headerSort: false,
       titleFormatter: function (column, formatterParams, onRendered) {
         return `
-        <div class="header-actions d-flex align-items-center justify-content-center">
-          <button class="btn btn-primary-alt btn-sm btn-add"><i class="bi bi-plus-lg"></i></button>
-        </div>
-      `;
+            <div class="header-actions d-flex align-items-center justify-content-center">
+              <button class="btn btn-primary-alt btn-sm btn-add"><i class="bi bi-plus-lg"></i></button>
+            </div>
+          `;
       },
-      headerClick: function (e, column) {
+      headerClick: (e, column) => {
         const btn = (e.target as HTMLElement).closest('.btn-add');
         if (btn) {
-          console.log('header Add clicked for column:', column.getField());
+          this.isShowingRightTable = true;
         }
       },
       formatter: function (cell, formatterParams, onRendered) {
         return `
-        <button class="btn btn-success-alt btn-sm btn-edit"><i class="bi bi-pencil-square"></i></button>
-        <button class="btn btn-danger btn-sm btn-del"><i class="bi bi-trash"></i></button>
-      `;
+            <button class="btn btn-success-alt btn-sm btn-edit"><i class="bi bi-pencil-square"></i></button>
+            <button class="btn btn-danger btn-sm btn-del"><i class="bi bi-trash"></i></button>
+          `;
       },
       cellClick: (e, cell) => {
         if ((e.target as HTMLElement).closest('.btn-edit')) {
-          console.log('edit row', cell.getRow().getData());
+          this.isShowingRightTable = true;
         }
         if ((e.target as HTMLElement).closest('.btn-del')) {
-          console.log('delete row', cell.getRow().getData());
         }
       },
     },

@@ -10,9 +10,10 @@
   </div>
   <div class="input-group flex-nowrap">
     <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">Search range</label>
-    <input type="date" class="form-control" ngbDatepicker #d1="ngbDatepicker" (click)="d1.open()">
+    <input type="date" class="form-control" value="2025-09-01" ngbDatepicker #d1="ngbDatepicker" (click)="d1.open()">
     <span class="input-group-text">to</span>
-    <input type="date" class="form-control me-1" ngbDatepicker #d2="ngbDatepicker" (click)="d2.open()">
+    <input type="date" class="form-control me-1" value="2025-09-20" ngbDatepicker #d2="ngbDatepicker"
+      (click)="d2.open()">
   </div>
   <button class="btn btn-primary d-flex align-items-center">
     <fa-icon [icon]="faGlass"></fa-icon>
@@ -396,7 +397,7 @@
 </div>
 <ng-template #content let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-area">Operation management</h4>
+    <h4 class="modal-title" id="modal-area">Pricing management</h4>
     <button type="button" class="btn-close btn-close-white" aria-label="Close"
       (click)="modal.dismiss('Cross click')"></button>
   </div>
@@ -407,19 +408,20 @@
         <div class="row mb-2">
           <label class="col-form-label  fw-bold" for="route_type">Nhà cung cấp</label>
           <div class="input">
-            <ngx-select id="route_type" [allowClear]="true">
+            <ngx-select id="route_type" [allowClear]="true" [items]="['Supplier 1','Supplier 2','Supplier 3']">
             </ngx-select>
           </div>
           <label class="col-form-label  fw-bold" for="area">Khu vực</label>
           <div class="input">
-            <ngx-select id="area" [allowClear]="true">
+            <ngx-select id="area" [allowClear]="true"
+              [items]="['Inner Haiphong','Suburban Haiphong','Other Provinces']">
             </ngx-select>
           </div>
         </div>
         <div class="row mb-2">
           <label class="col-form-label  fw-bold" for="route_name">Tên tuyến</label>
           <div class="input">
-            <ngx-select id="route_name" [allowClear]="true">
+            <ngx-select id="route_name" [allowClear]="true" [items]="['Route 1','Route 2','Route 3']">
             </ngx-select>
           </div>
           <label class="col-form-label  fw-bold" for="route_name">Giá/lượt</label>
@@ -430,11 +432,11 @@
         <div class="row mb-2">
           <label class="col-form-label  fw-bold" for="start">TG bắt đầu</label>
           <div class="input">
-            <input type="date" class="form-control" id="start">
+            <input type="date" class="form-control" id="start" value="2025-09-01">
           </div>
           <label class="col-form-label  fw-bold" for="end">TG kết thúc</label>
           <div class="input">
-            <input type="date" class="form-control" id="end">
+            <input type="date" class="form-control" id="end" value="2025-09-20">
           </div>
         </div>
         <div class="row mb-2">

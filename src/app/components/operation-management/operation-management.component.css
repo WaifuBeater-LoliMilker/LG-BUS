@@ -58,9 +58,30 @@ table {
 }
 
 form label {
-  width: 190px;
+  max-width: 174px;
 }
 
 form .input {
   flex: 1 1 0;
+}
+
+a {
+  color: rgb(10, 88, 202) !important;
+  text-decoration: underline !important;
+  cursor: pointer;
+}
+
+.sidebar {
+  width: 100%;
+}
+
+.no-radius {
+  border-radius: 0 !important;
+}
+
+.btn-close-map {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  z-index: 999;
 }

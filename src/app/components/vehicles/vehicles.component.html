@@ -406,17 +406,20 @@
         <div class="row mb-2">
           <label class="col-form-label  fw-bold" for="supplier">Supplier</label>
           <div class="input">
-            <ngx-select id="supplier" class="" placeholder="Choose a supplier" [allowClear]="true">
+            <ngx-select id="supplier" class="" placeholder="Choose a supplier" [allowClear]="true"
+              [items]="['Supplier 1','Supplier 2','Supplier 3']">
             </ngx-select>
           </div>
-          <label class="col-form-label  fw-bold" for="area">Area</label>
+          <label class="col-form-label  fw-bold" for="area" style="width: 45px">Area</label>
           <div class="input">
-            <ngx-select id="area" class="" placeholder="Choose an area" [allowClear]="true">
+            <ngx-select id="area" class="" placeholder="Choose an area" [allowClear]="true"
+              [items]="['Inner Haiphong','Suburban Haiphong','Other Provinces']">
             </ngx-select>
           </div>
-          <label class="col-form-label  fw-bold" for="route_name">Route name</label>
+          <label class="col-form-label  fw-bold" for="route_name" style="width: 100px">Route name</label>
           <div class="input">
-            <ngx-select id="route_name" class="" placeholder="Choose a route" [allowClear]="true">
+            <ngx-select id="route_name" class="" placeholder="Choose a route" [allowClear]="true"
+              [items]="['Route 1','Route 2','Route 3']">
             </ngx-select>
           </div>
         </div>
@@ -425,11 +428,11 @@
           <div class="input">
             <input id="prod_year" class="form-control" type="number" placeholder="Enter production year">
           </div>
-          <label class="col-form-label  fw-bold" for="register_date">Register date</label>
+          <label class="col-form-label  fw-bold" for="register_date" style="width: 110px">Register date</label>
           <div class="input">
-            <input id="register_date" class="form-control" type="date" placeholder="Pick register date">
+            <input id="register_date" class="form-control" type="date" value="2025-09-01">
           </div>
-          <label class="col-form-label  fw-bold" for="suspension_type">Suspension type</label>
+          <label class="col-form-label  fw-bold" for="suspension_type" style="width: 135px">Suspension type</label>
           <div class="input">
             <ngx-select id="suspension_type" class="" placeholder="Choose a type" [allowClear]="true">
             </ngx-select>
@@ -441,11 +444,11 @@
             <ngx-select id="driver" class="" placeholder="Choose a driver" [allowClear]="true">
             </ngx-select>
           </div>
-          <label class="col-form-label  fw-bold" for="scanner_numer">Scanner number</label>
+          <label class="col-form-label  fw-bold" for="scanner_numer" style="width: 135px">Scanner number</label>
           <div class="input">
             <input id="scanner_numer" class="form-control" type="number" placeholder="Enter scanner number">
           </div>
-          <label class="col-form-label  fw-bold" for="scaner_serial">Scanner serial</label>
+          <label class="col-form-label  fw-bold" for="scaner_serial" style="width: 125px">Scanner serial</label>
           <div class="input">
             <input id="scaner_serial" class="form-control" placeholder="Enter scanner serial">
           </div>
@@ -455,7 +458,7 @@
           <div class="input">
             <input id="plate_number" class="form-control" placeholder="Enter the license plate number">
           </div>
-          <label class="col-form-label  fw-bold" for="vehicle_brand">Vehicle brand</label>
+          <label class="col-form-label  fw-bold" for="vehicle_brand" style="width: 115px">Vehicle brand</label>
           <div class="input">
             <ngx-select id="vehicle_brand" class="" placeholder="Choose a vehicle brand" [allowClear]="true">
             </ngx-select>

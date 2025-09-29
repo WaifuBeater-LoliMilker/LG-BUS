@@ -997,35 +997,38 @@
     <form>
       <div class="container">
         <div class="row mb-2">
-          <label class="col-form-label fw-bold" for="supplier">Supplier</label>
+          <label class="col-form-label fw-bold" for="supplier" style="width: 85px;">Supplier</label>
           <div class="input">
-            <ngx-select id="supplier" class="" placeholder="Choose a supplier" [allowClear]="true">
+            <ngx-select id="supplier" class="" placeholder="Choose a supplier" [allowClear]="true"
+              [items]="['Supplier 1','Supplier 2','Supplier 3']">
             </ngx-select>
           </div>
-          <label class="col-form-label fw-bold" for="route_name">Route name</label>
+          <label class="col-form-label fw-bold" for="route_name" style="width: 115px;">Route name</label>
           <div class="input">
-            <ngx-select id="route_name" class="" placeholder="Choose an route" [allowClear]="true">
+            <ngx-select id="route_name" class="" placeholder="Choose an route" [allowClear]="true"
+              [items]="['Route 1','Route 2','Route 3']">
             </ngx-select>
           </div>
         </div>
         <div class="row mb-2">
-          <label class="col-form-label fw-bold" for="date">Date</label>
+          <label class="col-form-label fw-bold" for="date" style="width: 85px;">Date</label>
           <div class="input">
-            <input id="date" class="form-control" type="date" placeholder="Pick a date">
+            <input id="date" class="form-control" type="date" value="2025-09-01">
           </div>
-          <label class="col-form-label fw-bold" for="route_type">Route type</label>
+          <label class="col-form-label fw-bold" for="route_type" style="width: 110px;">Route type</label>
           <div class="input">
-            <ngx-select id="route_type" class="" placeholder="Choose a route type" [allowClear]="true">
+            <ngx-select id="route_type" class="" placeholder="Choose a type" [allowClear]="true"
+              [items]="['Về ca HC','Về Ca đêm','Đi làm ca ngày và HC']">
             </ngx-select>
           </div>
-          <label class="col-form-label fw-bold" for="number_of_vehicle" style="max-width: 220px;">Number of
+          <label class="col-form-label fw-bold" for="number_of_vehicle" style="max-width: 170px;">Number of
             vehicle</label>
           <div class="input">
             <input id="number_of_vehicle" class="form-control" type="number" placeholder="Enter number of vehicle">
           </div>
         </div>
         <div class="row mb-2">
-          <label class="col-form-label fw-bold" for="note">Note</label>
+          <label class="col-form-label fw-bold" for="note" style="width: 85px;">Note</label>
           <div class="input">
             <textarea id="note" class="form-control" type="number" style="height:120px">
               </textarea>

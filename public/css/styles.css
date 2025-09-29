@@ -604,3 +604,20 @@ a.mdc-list-item.open .chevron {
 .modal-width-sm {
   width: 55% !important;
 }
+
+.leaflet-bottom.leaflet-right {
+  display: none;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+
+input[type="date"] {
+  -moz-appearance: textfield;
+}
+
+input[type="date"]::-ms-clear {
+  display: none;
+}

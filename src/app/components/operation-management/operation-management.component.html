@@ -9,9 +9,10 @@
   </div>
   <div class="input-group flex-nowrap">
     <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">Search range</label>
-    <input type="date" class="form-control" ngbDatepicker #d1="ngbDatepicker" (click)="d1.open()">
+    <input type="date" class="form-control" value="2025-09-01" ngbDatepicker #d1="ngbDatepicker" (click)="d1.open()">
     <span class="input-group-text">to</span>
-    <input type="date" class="form-control me-1" ngbDatepicker #d2="ngbDatepicker" (click)="d2.open()">
+    <input type="date" class="form-control me-1" value="2025-09-20" ngbDatepicker #d2="ngbDatepicker"
+      (click)="d2.open()">
   </div>
   <button class="btn btn-primary d-flex align-items-center">
     <fa-icon [icon]="faGlass"></fa-icon>
@@ -51,348 +52,357 @@
   </div>
   <div class="card-body">
     <div class="overflow-auto">
-      <table class="table table-bordered table-sm table-striped border-primary text-center">
-        <thead class="table-primary fw-bold small text-start">
-          <tr>
-            <th>No</th>
-            <th>Date</th>
-            <th>Scheduled time</th>
-            <th>Route type</th>
-            <th>Area</th>
-            <th>Route name</th>
-            <th>Supplier</th>
-            <th>License plate number</th>
-            <th>Management status</th>
-            <th>Operation status</th>
-            <th>Number of operators</th>
-            <th>GPS Link</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>2025-07-14</td>
-            <td>05:55</td>
-            <td>Đi làm ca ngày và HC</td>
-            <td>Nội thành HP</td>
-            <td>TD PLAZA (FSE HP)</td>
-            <td>Kumho</td>
-            <td></td>
-            <td>Chưa sắp xếp</td>
-            <td>Đã hoàn thành</td>
-            <td></td>
-            <td><a href="#">GPS</a></td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>2025-07-14</td>
-            <td>08:00</td>
-            <td>Về Ca đêm</td>
-            <td>Nội thành HP</td>
-            <td>TD PLAZA</td>
-            <td>Kumho</td>
-            <td>29LD-32022</td>
-            <td>Chưa sắp xếp</td>
-            <td>Đã hoàn thành</td>
-            <td>45</td>
-            <td><a href="#">GPS</a></td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>2025-07-14</td>
-            <td>18:00</td>
-            <td>Đi làm ca HC</td>
-            <td>Nội thành HP</td>
-            <td>CẦU RAO</td>
-            <td>Kumho</td>
-            <td></td>
-            <td>Chưa sắp xếp</td>
-            <td>Chưa vận hành</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>2025-07-14</td>
-            <td>20:00</td>
-            <td>Về ca đêm</td>
-            <td>Nội thành HP</td>
-            <td>LẠCH TRAY (KTX HP)</td>
-            <td>Kumho</td>
-            <td>29H-93121</td>
-            <td>Đã sắp xếp</td>
-            <td>Chưa vận hành</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>2025-07-14</td>
-            <td>20:00</td>
-            <td>Về ca ngày</td>
-            <td>Nội thành HP</td>
-            <td>HỒ SEN (FSE HP)</td>
-            <td>Kumho</td>
-            <td></td>
-            <td>Chưa sắp xếp</td>
-            <td>Chưa vận hành</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>6</td>
-            <td>2025-07-14</td>
-            <td>05:55</td>
-            <td>Đi làm ca ngày và HC</td>
-            <td>Ngoại thành HP</td>
-            <td>MINH ĐỨC</td>
-            <td>Kumho</td>
-            <td>29LD-32771</td>
-            <td>Đã sắp xếp</td>
-            <td>Chưa vận hành</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>7</td>
-            <td>2025-07-14</td>
-            <td>08:00</td>
-            <td>Về Ca đêm</td>
-            <td>Ngoại thành HP</td>
-            <td>AN DƯƠNG</td>
-            <td>Kumho</td>
-            <td></td>
-            <td>Chưa sắp xếp</td>
-            <td>Chưa vận hành</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>8</td>
-            <td>2025-07-14</td>
-            <td>18:00</td>
-            <td>Đi làm ca HC</td>
-            <td>Ngoại thành HP</td>
-            <td>AN DƯƠNG</td>
-            <td>Kumho</td>
-            <td>29LD-32614</td>
-            <td>Đã sắp xếp</td>
-            <td>Chưa vận hành</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>9</td>
-            <td>2025-07-14</td>
-            <td>18:50</td>
-            <td>Đi làm ca đêm</td>
-            <td>Ngoại thành HP</td>
-            <td>CẦU ĐẦM</td>
-            <td>Kumho</td>
-            <td></td>
-            <td>Chưa sắp xếp</td>
-            <td>Chưa vận hành</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>10</td>
-            <td>2025-07-14</td>
-            <td>20:00</td>
-            <td>Về ca ngày</td>
-            <td>Ngoại thành HP</td>
-            <td>CẦU ĐẦM</td>
-            <td>Kumho</td>
-            <td>29H-93190</td>
-            <td>Đã sắp xếp</td>
-            <td>Đã hoàn thành</td>
-            <td>36</td>
-            <td><a href="#">GPS</a></td>
-          </tr>
-          <tr>
-            <td>11</td>
-            <td>2025-07-14</td>
-            <td>05:55</td>
-            <td>Đi làm ca ngày và HC</td>
-            <td>Ngoại thành HP</td>
-            <td>CẨM ĐIỀN</td>
-            <td>Kumho</td>
-            <td></td>
-            <td>Chưa sắp xếp</td>
-            <td>Chưa vận hành</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>12</td>
-            <td>2025-07-14</td>
-            <td>05:55</td>
-            <td>Đi làm ca ngày và HC</td>
-            <td>Ngoại thành HP</td>
-            <td>CẦU ĐẦM</td>
-            <td>Kumho</td>
-            <td>29H-93194</td>
-            <td>Đã sắp xếp</td>
-            <td>Chưa vận hành</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>13</td>
-            <td>2025-07-14</td>
-            <td>20:00</td>
-            <td>Về ca đêm</td>
-            <td>Ngoại thành HP</td>
-            <td>CẦU ĐẦM</td>
-            <td>Kumho</td>
-            <td></td>
-            <td>Chưa sắp xếp</td>
-            <td>Chưa vận hành</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>14</td>
-            <td>2025-07-14</td>
-            <td>18:00</td>
-            <td>Về ca HC</td>
-            <td>Ngoại thành HP</td>
-            <td>CẦU ĐẦM</td>
-            <td>Kumho</td>
-            <td>29LD-32734</td>
-            <td>Đã sắp xếp</td>
-            <td>Chưa vận hành</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>15</td>
-            <td>2025-07-14</td>
-            <td>18:50</td>
-            <td>Đi làm ca đêm</td>
-            <td>Ngoại thành HP</td>
-            <td>HÙNG THẮNG</td>
-            <td>Kumho</td>
-            <td></td>
-            <td>Chưa sắp xếp</td>
-            <td>Chưa vận hành</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>16</td>
-            <td>2025-07-14</td>
-            <td>20:00</td>
-            <td>Về ca ngày</td>
-            <td>Ngoại thành HP</td>
-            <td>HÙNG THẮNG</td>
-            <td>Kumho</td>
-            <td>29H-89829</td>
-            <td>Đã sắp xếp</td>
-            <td>Chưa vận hành</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>17</td>
-            <td>2025-07-14</td>
-            <td>05:55</td>
-            <td>Đi làm ca ngày và HC</td>
-            <td>Ngoại thành HP</td>
-            <td>HÙNG THẮNG</td>
-            <td>Kumho</td>
-            <td>29H-89811</td>
-            <td>Đã sắp xếp</td>
-            <td>Đã hoàn thành</td>
-            <td>38</td>
-            <td><a href="#">GPS</a></td>
-          </tr>
-          <tr>
-            <td>18</td>
-            <td>2025-07-14</td>
-            <td>08:00</td>
-            <td>Về ca HC</td>
-            <td>Ngoại thành HP</td>
-            <td>HÙNG THẮNG</td>
-            <td>Kumho</td>
-            <td></td>
-            <td>Chưa sắp xếp</td>
-            <td>Chưa vận hành</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>19</td>
-            <td>2025-07-14</td>
-            <td>18:50</td>
-            <td>Đi làm ca đêm</td>
-            <td>Ngoại thành HP</td>
-            <td>HÙNG THẮNG</td>
-            <td>Kumho</td>
-            <td>29H-00951</td>
-            <td>Đã sắp xếp</td>
-            <td>Chưa vận hành</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>20</td>
-            <td>2025-07-14</td>
-            <td>20:00</td>
-            <td>Về ca ngày</td>
-            <td>Ngoại thành HP</td>
-            <td>HÙNG THẮNG (KTX HP)</td>
-            <td>Kumho</td>
-            <td></td>
-            <td>Chưa sắp xếp</td>
-            <td>Chưa vận hành</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>21</td>
-            <td>2025-07-14</td>
-            <td>05:55</td>
-            <td>Đi làm ca ngày và HC</td>
-            <td>Ngoại thành HP</td>
-            <td>AN LÃO</td>
-            <td>Kumho</td>
-            <td>29LD-32778</td>
-            <td>Đã sắp xếp</td>
-            <td>Chưa vận hành</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>22</td>
-            <td>2025-07-14</td>
-            <td>05:55</td>
-            <td>Đi làm ca ngày và HC</td>
-            <td>Ngoại thành HP</td>
-            <td>AN LÃO</td>
-            <td>Kumho</td>
-            <td></td>
-            <td>Chưa sắp xếp</td>
-            <td>Chưa vận hành</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>23</td>
-            <td>2025-07-14</td>
-            <td>05:55</td>
-            <td>Đi làm ca ngày và HC</td>
-            <td>Ngoại thành HP</td>
-            <td>AN LÃO</td>
-            <td>Kumho</td>
-            <td></td>
-            <td>Chưa sắp xếp</td>
-            <td>Chưa vận hành</td>
-            <td></td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
+      <mat-sidenav-container class="h-100 w-100">
+        <mat-sidenav-content>
+          <table class="table table-bordered table-sm table-striped border-primary text-center">
+            <thead class="table-primary fw-bold small text-start">
+              <tr>
+                <th>No</th>
+                <th>Date</th>
+                <th>Scheduled time</th>
+                <th>Route type</th>
+                <th>Area</th>
+                <th>Route name</th>
+                <th>Supplier</th>
+                <th>License plate number</th>
+                <th>Management status</th>
+                <th>Operation status</th>
+                <th>Number of operators</th>
+                <th>GPS Link</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>2025-07-14</td>
+                <td>05:55</td>
+                <td>Đi làm ca ngày và HC</td>
+                <td>Nội thành HP</td>
+                <td>TD PLAZA (FSE HP)</td>
+                <td>Kumho</td>
+                <td></td>
+                <td>Chưa sắp xếp</td>
+                <td>Đã hoàn thành</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>2025-07-14</td>
+                <td>08:00</td>
+                <td>Về Ca đêm</td>
+                <td>Nội thành HP</td>
+                <td>TD PLAZA</td>
+                <td>Kumho</td>
+                <td>29LD-32022</td>
+                <td>Chưa sắp xếp</td>
+                <td>Đã hoàn thành</td>
+                <td>45</td>
+                <td><a (click)="this.isShowingRightTable = true">GPS</a></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>2025-07-14</td>
+                <td>18:00</td>
+                <td>Đi làm ca HC</td>
+                <td>Nội thành HP</td>
+                <td>CẦU RAO</td>
+                <td>Kumho</td>
+                <td></td>
+                <td>Chưa sắp xếp</td>
+                <td>Chưa vận hành</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>2025-07-14</td>
+                <td>20:00</td>
+                <td>Về ca đêm</td>
+                <td>Nội thành HP</td>
+                <td>LẠCH TRAY (KTX HP)</td>
+                <td>Kumho</td>
+                <td>29H-93121</td>
+                <td>Đã sắp xếp</td>
+                <td>Chưa vận hành</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>2025-07-14</td>
+                <td>20:00</td>
+                <td>Về ca ngày</td>
+                <td>Nội thành HP</td>
+                <td>HỒ SEN (FSE HP)</td>
+                <td>Kumho</td>
+                <td></td>
+                <td>Chưa sắp xếp</td>
+                <td>Chưa vận hành</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>2025-07-14</td>
+                <td>05:55</td>
+                <td>Đi làm ca ngày và HC</td>
+                <td>Ngoại thành HP</td>
+                <td>MINH ĐỨC</td>
+                <td>Kumho</td>
+                <td>29LD-32771</td>
+                <td>Đã sắp xếp</td>
+                <td>Chưa vận hành</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>2025-07-14</td>
+                <td>08:00</td>
+                <td>Về Ca đêm</td>
+                <td>Ngoại thành HP</td>
+                <td>AN DƯƠNG</td>
+                <td>Kumho</td>
+                <td></td>
+                <td>Chưa sắp xếp</td>
+                <td>Chưa vận hành</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>2025-07-14</td>
+                <td>18:00</td>
+                <td>Đi làm ca HC</td>
+                <td>Ngoại thành HP</td>
+                <td>AN DƯƠNG</td>
+                <td>Kumho</td>
+                <td>29LD-32614</td>
+                <td>Đã sắp xếp</td>
+                <td>Chưa vận hành</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>2025-07-14</td>
+                <td>18:50</td>
+                <td>Đi làm ca đêm</td>
+                <td>Ngoại thành HP</td>
+                <td>CẦU ĐẦM</td>
+                <td>Kumho</td>
+                <td></td>
+                <td>Chưa sắp xếp</td>
+                <td>Chưa vận hành</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>10</td>
+                <td>2025-07-14</td>
+                <td>20:00</td>
+                <td>Về ca ngày</td>
+                <td>Ngoại thành HP</td>
+                <td>CẦU ĐẦM</td>
+                <td>Kumho</td>
+                <td>29H-93190</td>
+                <td>Đã sắp xếp</td>
+                <td>Đã hoàn thành</td>
+                <td>36</td>
+                <td><a (click)="this.isShowingRightTable = true">GPS</a></td>
+              </tr>
+              <tr>
+                <td>11</td>
+                <td>2025-07-14</td>
+                <td>05:55</td>
+                <td>Đi làm ca ngày và HC</td>
+                <td>Ngoại thành HP</td>
+                <td>CẨM ĐIỀN</td>
+                <td>Kumho</td>
+                <td></td>
+                <td>Chưa sắp xếp</td>
+                <td>Chưa vận hành</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>12</td>
+                <td>2025-07-14</td>
+                <td>05:55</td>
+                <td>Đi làm ca ngày và HC</td>
+                <td>Ngoại thành HP</td>
+                <td>CẦU ĐẦM</td>
+                <td>Kumho</td>
+                <td>29H-93194</td>
+                <td>Đã sắp xếp</td>
+                <td>Chưa vận hành</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>13</td>
+                <td>2025-07-14</td>
+                <td>20:00</td>
+                <td>Về ca đêm</td>
+                <td>Ngoại thành HP</td>
+                <td>CẦU ĐẦM</td>
+                <td>Kumho</td>
+                <td></td>
+                <td>Chưa sắp xếp</td>
+                <td>Chưa vận hành</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>14</td>
+                <td>2025-07-14</td>
+                <td>18:00</td>
+                <td>Về ca HC</td>
+                <td>Ngoại thành HP</td>
+                <td>CẦU ĐẦM</td>
+                <td>Kumho</td>
+                <td>29LD-32734</td>
+                <td>Đã sắp xếp</td>
+                <td>Chưa vận hành</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>15</td>
+                <td>2025-07-14</td>
+                <td>18:50</td>
+                <td>Đi làm ca đêm</td>
+                <td>Ngoại thành HP</td>
+                <td>HÙNG THẮNG</td>
+                <td>Kumho</td>
+                <td></td>
+                <td>Chưa sắp xếp</td>
+                <td>Chưa vận hành</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>16</td>
+                <td>2025-07-14</td>
+                <td>20:00</td>
+                <td>Về ca ngày</td>
+                <td>Ngoại thành HP</td>
+                <td>HÙNG THẮNG</td>
+                <td>Kumho</td>
+                <td>29H-89829</td>
+                <td>Đã sắp xếp</td>
+                <td>Chưa vận hành</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>17</td>
+                <td>2025-07-14</td>
+                <td>05:55</td>
+                <td>Đi làm ca ngày và HC</td>
+                <td>Ngoại thành HP</td>
+                <td>HÙNG THẮNG</td>
+                <td>Kumho</td>
+                <td>29H-89811</td>
+                <td>Đã sắp xếp</td>
+                <td>Đã hoàn thành</td>
+                <td>38</td>
+                <td><a (click)="this.isShowingRightTable = true">GPS</a></td>
+              </tr>
+              <tr>
+                <td>18</td>
+                <td>2025-07-14</td>
+                <td>08:00</td>
+                <td>Về ca HC</td>
+                <td>Ngoại thành HP</td>
+                <td>HÙNG THẮNG</td>
+                <td>Kumho</td>
+                <td></td>
+                <td>Chưa sắp xếp</td>
+                <td>Chưa vận hành</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>19</td>
+                <td>2025-07-14</td>
+                <td>18:50</td>
+                <td>Đi làm ca đêm</td>
+                <td>Ngoại thành HP</td>
+                <td>HÙNG THẮNG</td>
+                <td>Kumho</td>
+                <td>29H-00951</td>
+                <td>Đã sắp xếp</td>
+                <td>Chưa vận hành</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>20</td>
+                <td>2025-07-14</td>
+                <td>20:00</td>
+                <td>Về ca ngày</td>
+                <td>Ngoại thành HP</td>
+                <td>HÙNG THẮNG (KTX HP)</td>
+                <td>Kumho</td>
+                <td></td>
+                <td>Chưa sắp xếp</td>
+                <td>Chưa vận hành</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>21</td>
+                <td>2025-07-14</td>
+                <td>05:55</td>
+                <td>Đi làm ca ngày và HC</td>
+                <td>Ngoại thành HP</td>
+                <td>AN LÃO</td>
+                <td>Kumho</td>
+                <td>29LD-32778</td>
+                <td>Đã sắp xếp</td>
+                <td>Chưa vận hành</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>22</td>
+                <td>2025-07-14</td>
+                <td>05:55</td>
+                <td>Đi làm ca ngày và HC</td>
+                <td>Ngoại thành HP</td>
+                <td>AN LÃO</td>
+                <td>Kumho</td>
+                <td></td>
+                <td>Chưa sắp xếp</td>
+                <td>Chưa vận hành</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>23</td>
+                <td>2025-07-14</td>
+                <td>05:55</td>
+                <td>Đi làm ca ngày và HC</td>
+                <td>Ngoại thành HP</td>
+                <td>AN LÃO</td>
+                <td>Kumho</td>
+                <td></td>
+                <td>Chưa sắp xếp</td>
+                <td>Chưa vận hành</td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </mat-sidenav-content>
+        <mat-sidenav #rightSidebar mode="over" position="end" [opened]="isShowingRightTable" (opened)="onDetailOpened()"
+          (closedStart)="onDetailClosed()" class="sidebar no-radius">
+          <map></map>
+          <button class="btn-close btn-close-black btn-close-map" (click)="isShowingRightTable = false"></button>
+        </mat-sidenav>
+      </mat-sidenav-container>
     </div>
   </div>
 </div>
@@ -408,31 +418,35 @@
         <div class="row mb-2">
           <label class="col-form-label  fw-bold" for="route_name">Route name</label>
           <div class="input">
-            <ngx-select id="route_name" placeholder="Choose a route" [allowClear]="true">
+            <ngx-select id="route_name" placeholder="Choose a route" [allowClear]="true"
+              [items]="['Route 1','Route 2','Route 3']">
             </ngx-select>
           </div>
-          <label class="col-form-label  fw-bold" for="route_type">Route type</label>
+          <label class="col-form-label  fw-bold" for="route_type" style="width: 115px">Route type</label>
           <div class="input">
-            <ngx-select id="route_type" placeholder="Choose a route type" [allowClear]="true">
+            <ngx-select id="route_type" placeholder="Choose a route type" [allowClear]="true"
+              [items]="['Về ca HC','Về Ca đêm','Đi làm ca ngày và HC']">
             </ngx-select>
           </div>
-          <label class="col-form-label  fw-bold" for="area">Area</label>
+          <label class="col-form-label  fw-bold" for="area" style="width: 50px">Area</label>
           <div class="input">
-            <ngx-select id="area" placeholder="Choose an area" [allowClear]="true">
+            <ngx-select id="area" placeholder="Choose an area" [allowClear]="true"
+              [items]="['Inner Haiphong','Suburban Haiphong','Other Provinces']">
             </ngx-select>
           </div>
         </div>
         <div class="row mb-2">
           <label class="col-form-label  fw-bold" for="supplier">Supplier</label>
           <div class="input">
-            <ngx-select id="supplier" placeholder="Choose a supplier" [allowClear]="true">
+            <ngx-select id="supplier" placeholder="Choose a supplier" [allowClear]="true"
+              [items]="['Supplier 1','Supplier 2','Supplier 3']">
             </ngx-select>
           </div>
-          <label class="col-form-label  fw-bold" for="plate_number">License plate number</label>
+          <label class="col-form-label  fw-bold" for="plate_number" style="width: 135px">Plate number</label>
           <div class="input">
             <input id="plate_number" class="form-control">
           </div>
-          <label class="col-form-label  fw-bold" for="op_number">Number of operator</label>
+          <label class="col-form-label  fw-bold" for="op_number" style="max-width: 185px;">Number of operator</label>
           <div class="input">
             <input type="number" id="op_number" class="form-control">
           </div>
@@ -440,7 +454,8 @@
         <div class="row mb-2">
           <label class="col-form-label  fw-bold" for="date">Date</label>
           <div class="input">
-            <input type="date" id="date" class="form-control" ngbDatepicker #d="ngbDatepicker" (click)="d.open()" />
+            <input type="date" id="date" class="form-control" ngbDatepicker #d="ngbDatepicker" (click)="d.open()"
+              value="2025-09-01" />
           </div>
           <label class="col-form-label  fw-bold" for="scheduled_time">Scheduled time</label>
           <div class="input">
@@ -450,12 +465,12 @@
         <div class="row mb-2">
           <label class="col-form-label  fw-bold" for="management_status">Management status</label>
           <div class="input">
-            <ngx-select id="management_status" [allowClear]="true">
+            <ngx-select id="management_status" [allowClear]="true" [items]="['Chưa sắp xếp', 'Đã sắp xếp']">
             </ngx-select>
           </div>
           <label class="col-form-label  fw-bold" for="operation_status">Operation status</label>
           <div class="input">
-            <ngx-select id="operation_status" [allowClear]="true">
+            <ngx-select id="operation_status" [allowClear]="true" [items]="['Chưa vận hành', 'Đã vận hành']">
             </ngx-select>
           </div>
         </div>

@@ -50,7 +50,7 @@ export class ScheduleManagementComponent implements OnInit {
   openModal() {
     this.modalService.open(this.modal, {
       centered: true,
-      modalDialogClass: 'modal-width',
+      modalDialogClass: 'w-50',
       // fullscreen: true,
     });
   }

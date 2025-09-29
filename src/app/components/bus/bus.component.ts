@@ -48,7 +48,7 @@ import { Tab } from '../_shared/dynamic-tabs/dynamic-tabs.component';
 })
 export class BusComponent implements OnInit, AfterViewInit {
   //#region Properties
-  isShowingRightTable = true;
+  isShowingRightTable = false;
   faPlus = faPlus;
   faPenToSquare = faPenToSquare;
   faCopy = faCopy;
@@ -70,6 +70,12 @@ export class BusComponent implements OnInit, AfterViewInit {
       width: 100,
       formatter: (cell) => {
         return `<button class="btn btn-primary"><i class="bi bi-eye-fill"></i></button>`;
+      },
+      cellClick: (e, cell) => {
+        const target = e.target as HTMLElement;
+        if (target.closest('button')) {
+          this.isShowingRightTable = true;
+        }
       },
     },
     {
@@ -116,14 +122,14 @@ export class BusComponent implements OnInit, AfterViewInit {
       title: 'Stop name',
       field: 'busStopName',
       headerHozAlign: 'center',
-      width: '50%',
+      width: 430,
     },
     {
       title: 'Arrive time',
       field: 'arriveTime',
       headerHozAlign: 'center',
       hozAlign: 'center',
-      width: '50%',
+      width: 430,
     },
   ];
 
@@ -365,17 +371,15 @@ export class BusComponent implements OnInit, AfterViewInit {
 
   //#region Life cycle
   ngOnInit() {}
-  ngAfterViewInit() {
-    this.tblMaster.table?.on('rowSelected', (row) => {
-      this.isShowingRightTable = true;
-    });
-  }
+  ngAfterViewInit() {}
   //#endregion
   onDetailClosed() {
     this.isShowingRightTable = false;
     this.tblMaster.table?.deselectRow();
   }
   onDetailOpened() {
+    console.log(this.tblDetail.table?.redraw);
+
     this.tblDetail.table?.redraw(true);
   }
   onAddTab(title: string, content: Type<any>) {

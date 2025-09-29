@@ -11,14 +11,33 @@ import { ColumnDefinition } from 'tabulator-tables';
 import { faBan, faFloppyDisk } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
+import { LocationPickerComponent } from '../location-picker/location-picker.component';
 
 @Component({
   selector: 'app-add-edit-bus',
-  imports: [NgxSelectModule, TabulatorTableSingleComponent, FontAwesomeModule],
+  imports: [
+    NgxSelectModule,
+    TabulatorTableSingleComponent,
+    FontAwesomeModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatIconModule,
+    MatListModule,
+    MatButtonModule,
+    LocationPickerComponent,
+  ],
   templateUrl: './add-edit-bus.component.html',
   styleUrls: ['./add-edit-bus.component.css'],
 })
 export class AddEditBusComponent implements OnInit {
+  isShowingRightTable = false;
   detailColumns: ColumnDefinition[] = [
     {
       title: 'No',
@@ -41,10 +60,10 @@ export class AddEditBusComponent implements OnInit {
         </div>
       `;
       },
-      headerClick: function (e, column) {
+      headerClick: (e, column) => {
         const btn = (e.target as HTMLElement).closest('.btn-add');
         if (btn) {
-          console.log('header Add clicked for column:', column.getField());
+          this.isShowingRightTable = true;
         }
       },
       formatter: function (cell, formatterParams, onRendered) {
@@ -54,15 +73,11 @@ export class AddEditBusComponent implements OnInit {
       `;
       },
       cellClick: (e, cell) => {
+        e.stopPropagation();
         if ((e.target as HTMLElement).closest('.btn-edit')) {
-          console.log('edit row', cell.getRow().getData());
-          this.modalService.open(this.modal, {
-            centered: true,
-            fullscreen: true,
-          });
+          this.isShowingRightTable = true;
         }
         if ((e.target as HTMLElement).closest('.btn-del')) {
-          console.log('delete row', cell.getRow().getData());
         }
       },
     },
@@ -119,8 +134,15 @@ export class AddEditBusComponent implements OnInit {
   tblDetail!: TabulatorTableSingleComponent;
   @ViewChild('content', { static: false })
   modal!: TemplateRef<any>;
+  @ViewChild(LocationPickerComponent) mapComponent!: LocationPickerComponent;
 
   constructor(private modalService: NgbModal) {}
 
   ngOnInit() {}
+  onDetailOpened() {
+    this.mapComponent.onRefreshMap();
+  }
+  onDetailClosed() {
+    this.isShowingRightTable = false;
+  }
 }

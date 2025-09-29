@@ -17,6 +17,7 @@ import {
   Tab,
 } from '../_shared/dynamic-tabs/dynamic-tabs.component';
 import { Router } from '@angular/router';
+import * as L from 'leaflet';
 import { BusComponent } from '../bus/bus.component';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -32,6 +33,8 @@ import { OperationManagementComponent } from '../operation-management/operation-
 import { ApprovalComponent } from '../approval/approval.component';
 import { PricingManagementComponent } from '../pricing-management/pricing-management.component';
 import { ServiceCompletionComponent } from '../service-completion/service-completion.component';
+import { MapComponent } from '../map/map.component';
+import { LocationPickerComponent } from '../location-picker/location-picker.component';
 @Component({
   selector: 'app-main-page',
   imports: [
@@ -70,10 +73,13 @@ export class MainPageComponent implements OnInit {
   approval = ApprovalComponent;
   pricing = PricingManagementComponent;
   serviceCompletion = ServiceCompletionComponent;
+  map = MapComponent;
+  locationPicker = LocationPickerComponent;
   @ViewChild('tabContainer') tabContainer!: DynamicTabsComponent<any>;
   constructor(private router: Router) {}
 
   ngOnInit() {
+    L.Icon.Default.imagePath = 'imgs/';
     this.isSideNavSideMode =
       localStorage.getItem('is_sidenav_side_mode') == 'side';
     this.isSideNavOpened = localStorage.getItem('is_sidenav_opened') == 'true';

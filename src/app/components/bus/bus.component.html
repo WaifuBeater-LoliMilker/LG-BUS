@@ -6,7 +6,7 @@
           <fa-icon [icon]="faPlus"></fa-icon>
           <span class="ms-1">Add</span>
         </button>
-        <button class="btn btn-success-alt">
+        <button class="btn btn-success-alt" (click)="onAddTab('Update route detail', addEditBus)">
           <fa-icon [icon]="faPenToSquare"></fa-icon>
           <span class="ms-1">Edit</span></button>
         <button #btnDeleteMaster class="btn btn-danger-alt">
@@ -25,7 +25,7 @@
             <span class="ms-3">Commuter route management</span>
           </div>
           <tabulator-table-single #tblMaster [tableData]="masterData" [columnNames]="masterColumns"
-            [height]="'calc(100% - 50px)'" [maxHeight]="'100%'" [hasSelection]="false">
+            [height]="'calc(100% - 50px)'" [maxHeight]="'100%'" [selectableRow]="false">
           </tabulator-table-single>
         </mat-sidenav-content>
         <mat-sidenav #rightSidebar mode="over" position="end" [opened]="isShowingRightTable" (opened)="onDetailOpened()"

@@ -12,9 +12,10 @@
   </div>
   <div class="input-group flex-nowrap">
     <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">Search range</label>
-    <input type="date" class="form-control" ngbDatepicker #d1="ngbDatepicker" (click)="d1.open()">
+    <input type="date" class="form-control" value="2025-09-01" ngbDatepicker #d1="ngbDatepicker" (click)="d1.open()">
     <span class="input-group-text">to</span>
-    <input type="date" class="form-control me-1" ngbDatepicker #d2="ngbDatepicker" (click)="d2.open()">
+    <input type="date" class="form-control me-1" value="2025-09-20" ngbDatepicker #d2="ngbDatepicker"
+      (click)="d2.open()">
   </div>
   <button class="btn btn-primary d-flex align-items-center">
     <fa-icon [icon]="faGlass"></fa-icon>
