@@ -16,7 +16,7 @@ import {
   NgbTimepickerModule,
 } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
-import { NgxSelectModule } from 'ngx-select-ex';
+import { INgxSelectOption, NgxSelectModule } from 'ngx-select-ex';
 
 @Component({
   selector: 'app-pricing-management',
@@ -51,5 +51,8 @@ export class PricingManagementComponent implements OnInit {
       modalDialogClass: 'w-50',
       // fullscreen: true,
     });
+  }
+  onSelectionChange(value: INgxSelectOption[]) {
+    this.isFirstType = value[0].value == 'Lịch lẻ'
   }
 }

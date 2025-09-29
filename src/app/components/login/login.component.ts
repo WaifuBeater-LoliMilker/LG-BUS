@@ -27,7 +27,7 @@ export class LoginComponent {
   loginForm: FormGroup;
   eyeIcon = faEye;
   eyeSlashIcon = faEyeSlash;
-  message = 'Vui lòng nhập thông tin đăng nhập';
+  message = '';
   username = new FormControl('');
   password = new FormControl('');
   showPassword = false;
@@ -40,8 +40,23 @@ export class LoginComponent {
     }
     this.message = 'Đang đăng nhập...';
     this.messageElement.nativeElement.classList.remove('text-error');
-  }
-  onClick() {
-    this.router.navigateByUrl('main-page');
+    if (
+      !['ADMIN', 'USER', 'SUPPLIER'].includes(
+        this.loginForm.value.username.toUpperCase()
+      )
+    ) {
+      this.message = 'Sai tên đăng nhập';
+      this.messageElement.nativeElement.classList.add('text-error');
+      return;
+    } else {
+      this.message = '';
+      this.messageElement.nativeElement.classList.add('text-error');
+      localStorage.setItem(
+        'account',
+        this.loginForm.value.username.toUpperCase()
+      );
+      this.router.navigateByUrl('main-page');
+      return;
+    }
   }
 }

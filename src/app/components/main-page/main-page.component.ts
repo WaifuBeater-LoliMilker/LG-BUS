@@ -60,6 +60,9 @@ export class MainPageComponent implements OnInit {
   categoriesOpen = true;
   applicationFormOpen = true;
   paymentManagementOpen = true;
+  isAdmin = localStorage.getItem('account') == 'ADMIN';
+  isUser = localStorage.getItem('account') == 'USER';
+  isSupplier = localStorage.getItem('account') == 'SUPPLIER';
   requestFormEvent = RequestFormEventComponent;
   requestFormRoute = RequestFormRouteComponent;
   requestFormStop = RequestFormStopComponent;
@@ -84,7 +87,12 @@ export class MainPageComponent implements OnInit {
       localStorage.getItem('is_sidenav_side_mode') == 'side';
     this.isSideNavOpened = localStorage.getItem('is_sidenav_opened') == 'true';
     setTimeout(() => {
-      this.onAddTab('Update commuter bus route', this.bus, true);
+      if (this.isAdmin)
+        this.onAddTab('Update commuter bus route', this.bus, true);
+      else if (this.isUser)
+        this.onAddTab('Request for event', this.requestFormEvent);
+      else if (this.isSupplier)
+        this.onAddTab('Pricing management', this.pricing);
     });
   }
   onDrawerModeChange() {
@@ -126,5 +134,8 @@ export class MainPageComponent implements OnInit {
     if (!this.isSideNavSideMode && this.isSideNavOpened) {
       this.isSideNavOpened = false;
     }
+  }
+  onLogOut() {
+    this.router.navigateByUrl('/login');
   }
 }

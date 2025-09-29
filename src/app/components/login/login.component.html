@@ -10,16 +10,16 @@
                   <img src="/imgs/rtc-logo.png" />
                 </div>
                 <div class="card-body px-lg-5 px-3 pt-0">
-                  <div class="mb-1 text-center text-error"></div>
-                  <form method="post" action="/login" autocomplete="on" id="form_login">
+                  <p #messageEl class="message text-center">{{message}}</p>
+                  <form autocomplete="on" id="form_login" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                     <div class="form-floating mb-3">
                       <input class="form-control" id="username" type="text" name="username" placeholder="Tên đăng nhập"
-                        autofocus autocomplete="username" required />
+                        autofocus autocomplete="username" required formControlName="username"/>
                       <label for="username">Tên đăng nhập</label>
                     </div>
                     <div class="form-floating mb-3 position-relative">
                       <input class="form-control" id="password" type="password" name="password" placeholder="Mật khẩu"
-                        autocomplete="current-password" required />
+                        autocomplete="current-password" required formControlName="password"/>
                       <label for="password">Mật khẩu</label>
                       <div class="position-absolute d-flex flex-column justify-content-center show-password"
                         (click)="showPassword = !showPassword">
@@ -27,7 +27,7 @@
                         </fa-icon>
                       </div>
                     </div>
-                    <button type="button" class="btn btn-login mt-3" (click)="onClick()">Đăng nhập</button>
+                    <button type="submit" class="btn btn-login mt-3">Đăng nhập</button>
                   </form>
                 </div>
               </div>

@@ -4,9 +4,10 @@
     <input type="text" class="form-control me-1">
   </div>
   <div class="input-group flex-nowrap">
-    <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text"
-      (click)="isFirstType = !isFirstType">Type</label>
-    <input type="text" class="form-control me-1" [value]="isFirstType?'Lịch lẻ':'Lịch tuyến'">
+    <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">Type</label>
+    <ngx-select class="flex-grow-1 me-1" [allowClear]="false" (selectionChanges)="onSelectionChange($event)"
+      [items]="['Lịch lẻ', 'Lịch tuyến']" [defaultValue]="isFirstType?['Lịch lẻ']:['Lịch tuyến']">
+    </ngx-select>
   </div>
   <div class="input-group flex-nowrap">
     <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">Search range</label>

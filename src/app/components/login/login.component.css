@@ -13243,9 +13243,8 @@ img {
 }
 
 .text-error {
-  font-size: 20px;
-  color: red;
-  min-height: 1.5em;
+  color: #DC143C;;
+  font-weight: 500;
 }
 
 .show-password {
@@ -13260,6 +13259,11 @@ img {
   border: none;
   background: transparent;
 }
-.show-password{
+
+.show-password {
   user-select: none;
+}
+
+.message {
+  height: 1rem;
 }
