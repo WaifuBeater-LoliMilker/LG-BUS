@@ -1,7 +1,7 @@
 <mat-sidenav-container class="h-100 w-100">
   <mat-sidenav-content>
     <div class="header d-flex align-items-center">
-      <span class="ms-3">Request for event</span>
+      <span class="ms-3">Request for bus stop</span>
     </div>
     <tabulator-table-single #table [tableData]="masterData" [columnNames]="masterColumns" [height]="'calc(100% - 50px)'"
       [maxHeight]="'100%'" [hasSelection]="false" [paginationSize]="10">
@@ -167,5 +167,8 @@
 <ng-template #dateInputTemplate let-row="row">
   <input class="form-control" ngbDatepicker [(ngModel)]="row.pickupDate" #d="ngbDatepicker" (click)="d.open()"
     container="body" />
+</ng-template>
+<ng-template #timeInputTemplate let-row="row">
+  <ngb-timepicker [(ngModel)]="row.duration" [spinners]="false" />
 </ng-template>
 <ng-container #vcHost></ng-container>

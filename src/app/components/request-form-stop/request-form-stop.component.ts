@@ -9,7 +9,12 @@ import {
 } from '@angular/core';
 import { TabulatorTableSingleComponent } from '../_shared/tabulator-table/tabulator-tables.component';
 import { ColumnDefinition } from 'tabulator-tables';
-import { NgbDatepickerModule, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbDatepickerModule,
+  NgbDateStruct,
+  NgbTimepickerModule,
+  NgbTimeStruct,
+} from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -28,6 +33,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FontAwesomeModule,
     FormsModule,
     NgbDatepickerModule,
+    NgbTimepickerModule,
     MatSidenavModule,
     MatToolbarModule,
     MatMenuModule,
@@ -42,6 +48,8 @@ export class RequestFormStopComponent implements AfterViewInit {
   tblMaster!: TabulatorTableSingleComponent;
   @ViewChild('dateInputTemplate', { static: true })
   dateInputTemplate!: TemplateRef<any>;
+  @ViewChild('timeInputTemplate', { static: true })
+  timeInputTemplate!: TemplateRef<any>;
   @ViewChild('vcHost', { read: ViewContainerRef, static: true })
   vcr!: ViewContainerRef;
 
@@ -71,7 +79,7 @@ export class RequestFormStopComponent implements AfterViewInit {
       headerClick: (e, column) => {
         const btn = (e.target as HTMLElement).closest('.btn-add');
         if (btn) {
-          this.isShowingRightTable = true
+          this.isShowingRightTable = true;
         }
       },
       formatter: function (cell, formatterParams, onRendered) {
@@ -117,7 +125,16 @@ export class RequestFormStopComponent implements AfterViewInit {
       field: 'duration',
       headerHozAlign: 'center',
       hozAlign: 'center',
-      width: 120,
+      width: 150,
+      formatter: (cell) => {
+        const container = document.createElement('div');
+        const rowData = cell.getRow().getData();
+        const view = this.vcr.createEmbeddedView(this.timeInputTemplate, {
+          row: rowData,
+        });
+        view.rootNodes.forEach((node) => container.appendChild(node));
+        return container;
+      },
     },
     {
       title: 'Departure',
@@ -154,7 +171,7 @@ export class RequestFormStopComponent implements AfterViewInit {
       no: 1,
       pickupDate: { year: 2025, month: 9, day: 1 },
       pickupTime: '08:15',
-      duration: '45m',
+      duration: { hour: 0, minute: 45, second: 0 },
       departure: 'Station A',
       arrival: 'Station B',
       assignedNumber: 'A101',
@@ -164,7 +181,7 @@ export class RequestFormStopComponent implements AfterViewInit {
       no: 2,
       pickupDate: { year: 2025, month: 9, day: 2 },
       pickupTime: '09:30',
-      duration: '50m',
+      duration: { hour: 0, minute: 50, second: 0 },
       departure: 'Station B',
       arrival: 'Station C',
       assignedNumber: 'A102',
@@ -174,7 +191,7 @@ export class RequestFormStopComponent implements AfterViewInit {
       no: 3,
       pickupDate: { year: 2025, month: 9, day: 3 },
       pickupTime: '07:45',
-      duration: '40m',
+      duration: { hour: 0, minute: 40, second: 0 },
       departure: 'Station C',
       arrival: 'Station D',
       assignedNumber: 'A103',
@@ -184,7 +201,7 @@ export class RequestFormStopComponent implements AfterViewInit {
       no: 4,
       pickupDate: { year: 2025, month: 9, day: 4 },
       pickupTime: '10:00',
-      duration: '55m',
+      duration: { hour: 0, minute: 55, second: 0 },
       departure: 'Station D',
       arrival: 'Station E',
       assignedNumber: 'A104',
@@ -194,7 +211,7 @@ export class RequestFormStopComponent implements AfterViewInit {
       no: 5,
       pickupDate: { year: 2025, month: 9, day: 5 },
       pickupTime: '06:20',
-      duration: '35m',
+      duration: { hour: 0, minute: 35, second: 0 },
       departure: 'Station E',
       arrival: 'Station F',
       assignedNumber: 'A105',
@@ -204,7 +221,7 @@ export class RequestFormStopComponent implements AfterViewInit {
       no: 6,
       pickupDate: { year: 2025, month: 9, day: 6 },
       pickupTime: '12:15',
-      duration: '60m',
+      duration: { hour: 1, minute: 0, second: 0 },
       departure: 'Station F',
       arrival: 'Station G',
       assignedNumber: 'A106',
@@ -214,7 +231,7 @@ export class RequestFormStopComponent implements AfterViewInit {
       no: 7,
       pickupDate: { year: 2025, month: 9, day: 7 },
       pickupTime: '13:45',
-      duration: '50m',
+      duration: { hour: 0, minute: 50, second: 0 },
       departure: 'Station G',
       arrival: 'Station H',
       assignedNumber: 'A107',
@@ -224,7 +241,7 @@ export class RequestFormStopComponent implements AfterViewInit {
       no: 8,
       pickupDate: { year: 2025, month: 9, day: 8 },
       pickupTime: '15:30',
-      duration: '42m',
+      duration: { hour: 0, minute: 42, second: 0 },
       departure: 'Station H',
       arrival: 'Station I',
       assignedNumber: 'A108',
@@ -234,7 +251,7 @@ export class RequestFormStopComponent implements AfterViewInit {
       no: 9,
       pickupDate: { year: 2025, month: 9, day: 9 },
       pickupTime: '17:10',
-      duration: '48m',
+      duration: { hour: 0, minute: 48, second: 0 },
       departure: 'Station I',
       arrival: 'Station J',
       assignedNumber: 'A109',
@@ -244,7 +261,7 @@ export class RequestFormStopComponent implements AfterViewInit {
       no: 10,
       pickupDate: { year: 2025, month: 9, day: 10 },
       pickupTime: '19:25',
-      duration: '52m',
+      duration: { hour: 0, minute: 52, second: 0 },
       departure: 'Station J',
       arrival: 'Station K',
       assignedNumber: 'A110',
@@ -254,7 +271,7 @@ export class RequestFormStopComponent implements AfterViewInit {
       no: 11,
       pickupDate: { year: 2025, month: 9, day: 11 },
       pickupTime: '20:40',
-      duration: '65m',
+      duration: { hour: 1, minute: 5, second: 0 },
       departure: 'Station K',
       arrival: 'Station L',
       assignedNumber: 'A111',
@@ -264,7 +281,7 @@ export class RequestFormStopComponent implements AfterViewInit {
       no: 12,
       pickupDate: { year: 2025, month: 9, day: 12 },
       pickupTime: '05:50',
-      duration: '38m',
+      duration: { hour: 0, minute: 38, second: 0 },
       departure: 'Station L',
       arrival: 'Station M',
       assignedNumber: 'A112',
@@ -274,7 +291,7 @@ export class RequestFormStopComponent implements AfterViewInit {
       no: 13,
       pickupDate: { year: 2025, month: 9, day: 13 },
       pickupTime: '07:05',
-      duration: '47m',
+      duration: { hour: 0, minute: 47, second: 0 },
       departure: 'Station M',
       arrival: 'Station N',
       assignedNumber: 'A113',
@@ -284,7 +301,7 @@ export class RequestFormStopComponent implements AfterViewInit {
       no: 14,
       pickupDate: { year: 2025, month: 9, day: 14 },
       pickupTime: '09:20',
-      duration: '55m',
+      duration: { hour: 0, minute: 55, second: 0 },
       departure: 'Station N',
       arrival: 'Station O',
       assignedNumber: 'A114',
@@ -294,7 +311,7 @@ export class RequestFormStopComponent implements AfterViewInit {
       no: 15,
       pickupDate: { year: 2025, month: 9, day: 15 },
       pickupTime: '11:35',
-      duration: '60m',
+      duration: { hour: 1, minute: 0, second: 0 },
       departure: 'Station O',
       arrival: 'Station P',
       assignedNumber: 'A115',
@@ -304,7 +321,7 @@ export class RequestFormStopComponent implements AfterViewInit {
       no: 16,
       pickupDate: { year: 2025, month: 9, day: 16 },
       pickupTime: '14:10',
-      duration: '45m',
+      duration: { hour: 0, minute: 45, second: 0 },
       departure: 'Station P',
       arrival: 'Station Q',
       assignedNumber: 'A116',
@@ -314,7 +331,7 @@ export class RequestFormStopComponent implements AfterViewInit {
       no: 17,
       pickupDate: { year: 2025, month: 9, day: 17 },
       pickupTime: '16:25',
-      duration: '53m',
+      duration: { hour: 0, minute: 53, second: 0 },
       departure: 'Station Q',
       arrival: 'Station R',
       assignedNumber: 'A117',
@@ -324,7 +341,7 @@ export class RequestFormStopComponent implements AfterViewInit {
       no: 18,
       pickupDate: { year: 2025, month: 9, day: 18 },
       pickupTime: '18:40',
-      duration: '49m',
+      duration: { hour: 0, minute: 49, second: 0 },
       departure: 'Station R',
       arrival: 'Station S',
       assignedNumber: 'A118',
@@ -334,7 +351,7 @@ export class RequestFormStopComponent implements AfterViewInit {
       no: 19,
       pickupDate: { year: 2025, month: 9, day: 19 },
       pickupTime: '21:00',
-      duration: '70m',
+      duration: { hour: 1, minute: 10, second: 0 },
       departure: 'Station S',
       arrival: 'Station T',
       assignedNumber: 'A119',
@@ -344,7 +361,7 @@ export class RequestFormStopComponent implements AfterViewInit {
       no: 20,
       pickupDate: { year: 2025, month: 9, day: 20 },
       pickupTime: '22:15',
-      duration: '55m',
+      duration: { hour: 0, minute: 55, second: 0 },
       departure: 'Station T',
       arrival: 'Station U',
       assignedNumber: 'A120',
@@ -366,7 +383,7 @@ interface RowData {
   no: number;
   pickupDate: NgbDateStruct;
   pickupTime: string;
-  duration: string;
+  duration: NgbTimeStruct;
   departure: string;
   arrival: string;
   assignedNumber: string;

@@ -17,6 +17,12 @@ import {
 } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { NgxSelectModule } from 'ngx-select-ex';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-approval',
@@ -29,9 +35,16 @@ import { NgxSelectModule } from 'ngx-select-ex';
     NgbDatepickerModule,
     NgbTimepickerModule,
     FormsModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatIconModule,
+    MatListModule,
+    MatButtonModule,
   ],
 })
 export class ApprovalComponent implements OnInit {
+  isShowingRightTable = false;
   time = { hour: 13, minute: 30 };
   faGlass = faMagnifyingGlass;
   faPlus = faPlus;
@@ -44,4 +57,8 @@ export class ApprovalComponent implements OnInit {
   modal!: TemplateRef<any>;
   constructor() {}
   ngOnInit() {}
+  onDetailClosed() {
+    this.isShowingRightTable = false;
+  }
+  onDetailOpened() {}
 }
