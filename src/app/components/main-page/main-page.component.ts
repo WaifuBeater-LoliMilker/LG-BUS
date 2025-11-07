@@ -35,6 +35,7 @@ import { PricingManagementComponent } from '../pricing-management/pricing-manage
 import { ServiceCompletionComponent } from '../service-completion/service-completion.component';
 import { MapComponent } from '../map/map.component';
 import { LocationPickerComponent } from '../location-picker/location-picker.component';
+import { ScanHistoryComponent } from '../scan-history/scan-history.component';
 @Component({
   selector: 'app-main-page',
   imports: [
@@ -78,6 +79,7 @@ export class MainPageComponent implements OnInit {
   serviceCompletion = ServiceCompletionComponent;
   map = MapComponent;
   locationPicker = LocationPickerComponent;
+  scanHistory = ScanHistoryComponent;
   @ViewChild('tabContainer') tabContainer!: DynamicTabsComponent<any>;
   constructor(private router: Router) {}
 

@@ -4,7 +4,6 @@ import {
   ElementRef,
   Input,
   OnInit,
-  TemplateRef,
   Type,
   ViewChild,
 } from '@angular/core';
@@ -16,7 +15,7 @@ import {
   faPlus,
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
-import { CellComponent, ColumnDefinition } from 'tabulator-tables';
+import { ColumnDefinition } from 'tabulator-tables';
 import { TabulatorTableSingleComponent } from '../_shared/tabulator-table/tabulator-tables.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -24,7 +23,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
-import { CdkMenu, CdkMenuTrigger } from '@angular/cdk/menu';
 import { NgxSelectModule } from 'ngx-select-ex';
 import { AddEditBusComponent } from '../add-edit-bus/add-edit-bus.component';
 import { Tab } from '../_shared/dynamic-tabs/dynamic-tabs.component';
@@ -92,7 +90,7 @@ export class BusComponent implements OnInit, AfterViewInit {
       hozAlign: 'center',
       formatter: (cell) => {
         const value = cell.getValue();
-        return `<a href="/routes/${encodeURIComponent(value)}">${value}</a>`;
+        return `<a class="route-name">${value}</a>`;
       },
       width: 180,
     },
@@ -378,8 +376,6 @@ export class BusComponent implements OnInit, AfterViewInit {
     this.tblMaster.table?.deselectRow();
   }
   onDetailOpened() {
-    console.log(this.tblDetail.table?.redraw);
-
     this.tblDetail.table?.redraw(true);
   }
   onAddTab(title: string, content: Type<any>) {
@@ -388,7 +384,6 @@ export class BusComponent implements OnInit, AfterViewInit {
       (t: Tab<Type<any>>) => t.title === title
     );
     this.dynamicTabs.tabs.forEach((t: Tab<Type<any>>) => (t.active = false));
-
     if (existing) {
       existing.active = true;
     } else {
@@ -403,11 +398,13 @@ export class BusComponent implements OnInit, AfterViewInit {
       ];
       this.dynamicTabs.onTabsChanged();
     }
-
     const navlinks = document.querySelectorAll('mat-nav-list>a');
     navlinks.forEach((link) => {
       const isActive = link.getAttribute('data-tab-name') === title;
       link.classList.toggle('active', isActive);
     });
+  }
+  confirmDelete() {
+    confirm('Confirm?');
   }
 }

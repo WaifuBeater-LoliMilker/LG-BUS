@@ -1,0 +1,84 @@
+<div class="header d-flex mb-2">
+  <div class="input-group flex-nowrap">
+    <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">Plate number</label>
+    <input type="text" class="form-control me-1">
+  </div>
+  <div class="input-group flex-nowrap">
+    <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">Route name</label>
+    <input type="text" class="form-control me-1">
+  </div>
+  <div class="input-group flex-nowrap">
+    <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">Search range</label>
+    <input type="date" class="form-control" value="2025-09-01" ngbDatepicker #d1="ngbDatepicker" (click)="d1.open()">
+    <span class="input-group-text">to</span>
+    <input type="date" class="form-control me-1" value="2025-09-20" ngbDatepicker #d2="ngbDatepicker"
+      (click)="d2.open()">
+  </div>
+  <button class="btn btn-primary d-flex align-items-center">
+    <fa-icon [icon]="faGlass"></fa-icon>
+    <span class="ms-1">Search</span>
+  </button>
+</div>
+<div class="card">
+  <div class="card-header">
+    <div class="d-flex gap-1" ngbDropdown>
+      <button #btnDeleteMaster class="btn btn-success">
+        <fa-icon [icon]="faExport"></fa-icon>
+        <span class="ms-1">Export</span></button>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="overflow-auto">
+      <table class="table table-bordered table-sm table-striped border-primary text-center">
+        <thead class="table-primary fw-bold small text-start cursor-pointer">
+          <tr>
+            <th (click)="onSort('id')" [class]="getSortClass('id')">
+              STT
+            </th>
+            <th (click)="onSort('ngay')" [class]="getSortClass('ngay')">
+              Ngày
+            </th>
+            <th (click)="onSort('thoiGian')" [class]="getSortClass('thoiGian')">
+              Thời gian
+            </th>
+            <th (click)="onSort('bienSoXe')" [class]="getSortClass('bienSoXe')">
+              Biển số xe
+            </th>
+            <th (click)="onSort('maThe')" [class]="getSortClass('maThe')">
+              Mã thẻ
+            </th>
+            <th (click)="onSort('tenHanhKhach')" [class]="getSortClass('tenHanhKhach')">
+              Tên hành khách
+            </th>
+            <th (click)="onSort('trangThai')" [class]="getSortClass('trangThai')">
+              Trạng thái
+            </th>
+            <th (click)="onSort('tenTuyen')" [class]="getSortClass('tenTuyen')">
+              Tên tuyến
+            </th>
+            <th>Ghi chú</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (history of sortedCardHistory; track history.id) {
+          <tr [class.row-failed]="history.trangThai === 'Thất bại'">
+            <td>{{ history.id }}</td>
+            <td>{{ history.ngay }}</td>
+            <td>{{ history.thoiGian }}</td>
+            <td>{{ history.bienSoXe }}</td>
+            <td>{{ history.maThe }}</td>
+            <td>{{ history.tenHanhKhach }}</td>
+            <td>
+              <span [class]="'status ' + getStatusClass(history.trangThai)">
+                {{ history.trangThai }}
+              </span>
+            </td>
+            <td>{{ history.tenTuyen }}</td>
+            <td>{{ history.ghiChu }}</td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

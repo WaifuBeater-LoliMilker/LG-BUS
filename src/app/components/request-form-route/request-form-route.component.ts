@@ -364,9 +364,7 @@ export class RequestFormRouteComponent implements AfterViewInit {
     },
   ];
   ngAfterViewInit(): void {
-    this.tblMaster.table?.on('rowSelected', (row) => {
-      this.isShowingRightTable = true;
-    });
+
   }
   onDetailClosed() {
     this.isShowingRightTable = false;

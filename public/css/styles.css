@@ -621,3 +621,7 @@ input[type="date"] {
 input[type="date"]::-ms-clear {
   display: none;
 }
+
+.cursor-pointer {
+  cursor: pointer;
+}

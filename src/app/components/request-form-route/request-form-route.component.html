@@ -4,7 +4,7 @@
       <span class="ms-3">Request for bus route</span>
     </div>
     <tabulator-table-single #table [tableData]="masterData" [columnNames]="masterColumns" [height]="'calc(100% - 50px)'"
-      [maxHeight]="'100%'" [hasSelection]="false" [paginationSize]="10">
+      [maxHeight]="'100%'" [selectableRow]="false" [paginationSize]="10">
     </tabulator-table-single>
   </mat-sidenav-content>
   <mat-sidenav #rightSidebar mode="over" position="end" [opened]="isShowingRightTable" (opened)="onDetailOpened()"

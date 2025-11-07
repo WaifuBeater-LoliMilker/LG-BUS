@@ -28,178 +28,46 @@
     </div>
     <div class="table-responsive">
       <table class="table table-bordered border-primary table-striped align-middle">
-        <thead class="table-primary text-center">
+        <thead class="table-primary text-center cursor-pointer">
           <tr>
-            <th>No</th>
-            <th>Status</th>
-            <th>Register No</th>
-            <th>Type</th>
-            <th>From</th>
-            <th>To</th>
-            <th>Request details</th>
-            <th>Register date</th>
-            <th>Scheduled date</th>
-            <th>Applicant</th>
-            <th>Applicant's Department</th>
+            <th (click)="onSort('no')" [class]="getSortClass('no')">No</th>
+            <th (click)="onSort('status')" [class]="getSortClass('status')">Status</th>
+            <th (click)="onSort('registerNo')" [class]="getSortClass('registerNo')">Register No</th>
+            <th (click)="onSort('type')" [class]="getSortClass('type')">Type</th>
+            <th (click)="onSort('from')" [class]="getSortClass('from')">From</th>
+            <th (click)="onSort('to')" [class]="getSortClass('to')">To</th>
+            <th (click)="onSort('requestDetails')" [class]="getSortClass('requestDetails')">Request details</th>
+            <th (click)="onSort('registerDate')" [class]="getSortClass('registerDate')">Register date</th>
+            <th (click)="onSort('scheduledDate')" [class]="getSortClass('scheduledDate')">Scheduled date</th>
+            <th (click)="onSort('applicant')" [class]="getSortClass('applicant')">Applicant</th>
+            <th (click)="onSort('applicantDepartment')" [class]="getSortClass('applicantDepartment')">Applicant's Department
+            </th>
           </tr>
         </thead>
         <tbody>
+          @for (request of sortedBusRequests; track request.no) {
           <tr>
-            <td>1</td>
-            <td>Hoàn thiện</td>
-            <td><a (click)="isShowingRightTable = true" >LICAR-R20250714332716</a></td>
-            <td>Request bus for event</td>
-            <td>LGD</td>
-            <td>Hải phòng</td>
-            <td>Yêu cầu xe cho sự kiện kick-off ...</td>
-            <td>2025-08-19</td>
-            <td>2025-07-20</td>
-            <td>Nguyễn Văn A</td>
-            <td>HR Team</td>
+            <td>{{ request.no }}</td>
+            <td>
+              <span [class]="'status ' + getStatusClass(request.status)">
+                {{ request.status }}
+              </span>
+            </td>
+            <td>
+              <a (click)="onRegisterNoClick()" class="register-link">
+                {{ request.registerNo }}
+              </a>
+            </td>
+            <td>{{ request.type }}</td>
+            <td>{{ request.from }}</td>
+            <td>{{ request.to }}</td>
+            <td>{{ request.requestDetails }}</td>
+            <td>{{ request.registerDate }}</td>
+            <td>{{ request.scheduledDate }}</td>
+            <td>{{ request.applicant }}</td>
+            <td>{{ request.applicantDepartment }}</td>
           </tr>
-          <tr>
-            <td>2</td>
-            <td>Hoàn thiện</td>
-            <td><a (click)="isShowingRightTable = true" >LICAR-R20250714328505</a></td>
-            <td>Request new bus route</td>
-            <td>Hải Dương</td>
-            <td>Thanh Miện</td>
-            <td>Yêu cầu thêm tuyến xe do tăng số lượng nhân viên ...</td>
-            <td>2025-08-19</td>
-            <td>2025-07-20</td>
-            <td>Trần Văn B</td>
-            <td>Business Support Section</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Trả lại</td>
-            <td><a (click)="isShowingRightTable = true" >LICAR-R20250714328055</a></td>
-            <td>Request open new bus stop</td>
-            <td>Thái Bình</td>
-            <td>Chân cầu vạt</td>
-            <td>Yêu cầu thêm tuyến xe do tăng số lượng nhân viên ...</td>
-            <td>2025-08-19</td>
-            <td>2025-07-20</td>
-            <td>Nguyễn Văn A</td>
-            <td>Management Team</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>Hoàn thiện</td>
-            <td><a (click)="isShowingRightTable = true" >LICAR-R20250714329537</a></td>
-            <td>Request new bus route</td>
-            <td>Thái Bình</td>
-            <td>Tiên Hải</td>
-            <td>Yêu cầu thêm tuyến xe do tăng số lượng nhân viên ...</td>
-            <td>2025-08-19</td>
-            <td>2025-07-20</td>
-            <td>Vũ Thị C</td>
-            <td>PO Development Team</td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>Trả lại</td>
-            <td><a (click)="isShowingRightTable = true" >LICAR-R20250714330193</a></td>
-            <td>Request bus for event</td>
-            <td>LGD</td>
-            <td>Hải Phòng</td>
-            <td>Yêu cầu xe cho sự kiện kick-off ...</td>
-            <td>2025-08-19</td>
-            <td>2025-07-20</td>
-            <td>Nguyễn Văn A</td>
-            <td>HR Team</td>
-          </tr>
-          <tr>
-            <td>6</td>
-            <td>Mới</td>
-            <td><a (click)="isShowingRightTable = true" >LICAR-R20250714326732</a></td>
-            <td>Request new bus route</td>
-            <td>Quảng Ninh</td>
-            <td>Vân Đồn</td>
-            <td>Yêu cầu thêm tuyến xe do tăng số lượng nhân viên ...</td>
-            <td>2025-08-19</td>
-            <td>2025-07-20</td>
-            <td>Trần Văn B</td>
-            <td>Business Support Section</td>
-          </tr>
-          <tr>
-            <td>7</td>
-            <td>Đang xử lý</td>
-            <td><a (click)="isShowingRightTable = true" >LICAR-R20250714320437</a></td>
-            <td>Request open new bus stop</td>
-            <td>Thái Bình</td>
-            <td>Chân cầu vạt</td>
-            <td>Yêu cầu thêm tuyến xe do tăng số lượng nhân viên ...</td>
-            <td>2025-08-19</td>
-            <td>2025-07-20</td>
-            <td>Nguyễn Văn A</td>
-            <td>Management Team</td>
-          </tr>
-          <tr>
-            <td>8</td>
-            <td>Đang xử lý</td>
-            <td><a (click)="isShowingRightTable = true" >LICAR-R20250714307402</a></td>
-            <td>Request new bus route</td>
-            <td>Hải Dương</td>
-            <td>Gia Lộc</td>
-            <td>Yêu cầu thêm tuyến xe do tăng số lượng nhân viên ...</td>
-            <td>2025-08-19</td>
-            <td>2025-07-20</td>
-            <td>Vũ Thị C</td>
-            <td>PO Development Team</td>
-          </tr>
-          <tr>
-            <td>9</td>
-            <td>Hoàn thiện</td>
-            <td><a (click)="isShowingRightTable = true" >LICAR-R20250714320546</a></td>
-            <td>Request bus for event</td>
-            <td>LGD</td>
-            <td>Hải Phòng</td>
-            <td>Yêu cầu xe cho sự kiện kick-off ...</td>
-            <td>2025-08-19</td>
-            <td>2025-07-20</td>
-            <td>Nguyễn Văn A</td>
-            <td>HR Team</td>
-          </tr>
-          <tr>
-            <td>10</td>
-            <td>Mới</td>
-            <td><a (click)="isShowingRightTable = true" >LICAR-R2025071434654</a></td>
-            <td>Request new bus route</td>
-            <td>Thái Thụy</td>
-            <td>Thái Hưng</td>
-            <td>Yêu cầu thêm tuyến xe do tăng số lượng nhân viên ...</td>
-            <td>2025-08-19</td>
-            <td>2025-07-20</td>
-            <td>Trần Văn B</td>
-            <td>Business Support Section</td>
-          </tr>
-          <tr>
-            <td>11</td>
-            <td>Mới</td>
-            <td><a (click)="isShowingRightTable = true" >LICAR-R20250714317981</a></td>
-            <td>Request open new bus stop</td>
-            <td>Thái Bình</td>
-            <td>Chân cầu vạt</td>
-            <td>Yêu cầu thêm tuyến xe do tăng số lượng nhân viên ...</td>
-            <td>2025-08-19</td>
-            <td>2025-07-20</td>
-            <td>Nguyễn Văn A</td>
-            <td>Management Team</td>
-          </tr>
-          <tr>
-            <td>12</td>
-            <td>Hoàn thiện</td>
-            <td><a (click)="isShowingRightTable = true" >LICAR-R2025071434885</a></td>
-            <td>Request new bus route</td>
-            <td>Hưng Hà</td>
-            <td>Ngã ba...</td>
-            <td>Yêu cầu thêm tuyến xe do tăng số lượng nhân viên ...</td>
-            <td>2025-08-19</td>
-            <td>2025-07-20</td>
-            <td>Vũ Thị C</td>
-            <td>PO Development Team</td>
-          </tr>
+          }
         </tbody>
       </table>
     </div>
@@ -211,7 +79,13 @@
         <span class="ms-3">Request 532438707</span>
         <button class="btn text-light" (click)="isShowingRightTable=false;">▶</button>
       </div>
-      <div style="height: calc(100% - 50px);">
+      <div style="height: calc(100% - 110px);">
+        <div class="d-flex m-1">
+          <button class="btn btn-sm btn-success mx-1" style="width: 90px;">
+            <i class="bi bi-check"></i>Approve</button>
+          <button class="btn btn-sm btn-danger mx-1" style="width: 90px;">
+            <i class="bi bi-x"></i>Reject</button>
+        </div>
         <div class="applicant-container pt-1 d-flex">
           <!-- Left section -->
           <div class="applicant-label d-flex flex-column align-items-center justify-content-start">
@@ -284,19 +158,22 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><img src="/imgs/icons/doc.png" class="me-1"><a (click)="isShowingRightTable = true" >Đơn đăng ký.doc</a></td>
+                    <td><img src="/imgs/icons/doc.png" class="me-1"><a (click)="isShowingRightTable = true">Đơn đăng
+                        ký.doc</a></td>
                     <td>1.2MB</td>
                     <td class="d-flex justify-content-center"><button class="btn btn-danger btn-sm btn-del"><i
                           class="bi bi-trash"></i></button></td>
                   </tr>
                   <tr>
-                    <td><img src="/imgs/icons/xls.png" class="me-1"><a (click)="isShowingRightTable = true" >Danh sách nhân viên.xlsx</a></td>
+                    <td><img src="/imgs/icons/xls.png" class="me-1"><a (click)="isShowingRightTable = true">Danh sách
+                        nhân viên.xlsx</a></td>
                     <td>3.5MB</td>
                     <td class="d-flex justify-content-center"><button class="btn btn-danger btn-sm btn-del"><i
                           class="bi bi-trash"></i></button></td>
                   </tr>
                   <tr>
-                    <td><img src="/imgs/icons/pdf.png" class="me-1"><a (click)="isShowingRightTable = true" >Thông tin xe.pdf</a></td>
+                    <td><img src="/imgs/icons/pdf.png" class="me-1"><a (click)="isShowingRightTable = true">Thông tin
+                        xe.pdf</a></td>
                     <td>4.9MB</td>
                     <td class="d-flex justify-content-center"><button class="btn btn-danger btn-sm btn-del"><i
                           class="bi bi-trash"></i></button></td>

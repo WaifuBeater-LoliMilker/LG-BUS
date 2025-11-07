@@ -50,6 +50,10 @@
           <img matListIcon src="/imgs/icons/operation.png" class="icon me-1">
           <span class="fw-sidenav">Operation management</span>
         </a>
+        <a mat-list-item data-tab-name="Scan History" (click)="onAddTab('Scan History', scanHistory)">
+          <img matListIcon src="/imgs/icons/scan.png" class="icon me-1">
+          <span class="fw-sidenav">Scan History</span>
+        </a>
         <a mat-list-item data-tab-name="Payment management" (click)="paymentManagementOpen = !paymentManagementOpen"
           [class.open]="paymentManagementOpen">
           <img matListIcon src="/imgs/icons/payment.png" class="icon me-1">
