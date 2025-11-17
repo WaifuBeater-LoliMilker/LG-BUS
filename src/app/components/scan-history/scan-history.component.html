@@ -1,22 +1,22 @@
 <div class="header d-flex mb-2">
   <div class="input-group flex-nowrap">
-    <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">Plate number</label>
+    <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">Biển số</label>
     <input type="text" class="form-control me-1">
   </div>
   <div class="input-group flex-nowrap">
-    <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">Route name</label>
+    <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">Tên tuyến</label>
     <input type="text" class="form-control me-1">
   </div>
   <div class="input-group flex-nowrap">
-    <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">Search range</label>
+    <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">Trong khoảng</label>
     <input type="date" class="form-control" value="2025-09-01" ngbDatepicker #d1="ngbDatepicker" (click)="d1.open()">
-    <span class="input-group-text">to</span>
+    <span class="input-group-text">tới</span>
     <input type="date" class="form-control me-1" value="2025-09-20" ngbDatepicker #d2="ngbDatepicker"
       (click)="d2.open()">
   </div>
-  <button class="btn btn-primary d-flex align-items-center">
+  <button class="btn btn-primary d-flex align-items-center" style="width: 320px;">
     <fa-icon [icon]="faGlass"></fa-icon>
-    <span class="ms-1">Search</span>
+    <span class="ms-1">Tìm kiếm</span>
   </button>
 </div>
 <div class="card">
@@ -24,7 +24,7 @@
     <div class="d-flex gap-1" ngbDropdown>
       <button #btnDeleteMaster class="btn btn-success">
         <fa-icon [icon]="faExport"></fa-icon>
-        <span class="ms-1">Export</span></button>
+        <span class="ms-1">Xuất</span></button>
     </div>
   </div>
   <div class="card-body">

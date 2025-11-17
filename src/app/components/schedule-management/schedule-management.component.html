@@ -1,19 +1,19 @@
 <div class="header d-flex mb-2">
   <div class="input-group">
-    <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">Supplier</label>
+    <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">Nhà cung cấp</label>
     <input type="text" class="form-control me-3">
   </div>
   <div class="input-group">
-    <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">Route name</label>
+    <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">Tên tuyến</label>
     <input type="text" class="form-control me-3">
   </div>
   <div class="input-group">
-    <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">License plate number</label>
+    <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">Biển số</label>
     <input type="text" class="form-control me-3">
   </div>
-  <button class="btn btn-primary d-flex align-items-center">
+  <button class="btn btn-primary d-flex align-items-center" style="width: 320px;">
     <fa-icon [icon]="faGlass"></fa-icon>
-    <span class="ms-1">Search</span>
+    <span class="ms-1">Tìm kiếm</span>
   </button>
 </div>
 <div class="card">
@@ -21,20 +21,20 @@
     <div class="d-flex gap-1" ngbDropdown>
       <button class="btn btn-primary-alt" (click)="openModal()">
         <fa-icon [icon]="faPlus"></fa-icon>
-        <span class="ms-1">Add</span>
+        <span class="ms-1">Thêm</span>
       </button>
       <button class="btn btn-success-alt" (click)="openModal()">
         <fa-icon [icon]="faPenToSquare"></fa-icon>
-        <span class="ms-1">Edit</span></button>
+        <span class="ms-1">Sửa</span></button>
       <button #btnDeleteMaster class="btn btn-danger-alt">
         <fa-icon [icon]="faTrash"></fa-icon>
-        <span class="ms-1">Delete</span></button>
+        <span class="ms-1">Xóa</span></button>
       <button #btnDeleteMaster id="btn_import" class="btn btn-primary" ngbDropdownToggle>
         <fa-icon [icon]="faImport"></fa-icon>
-        <span class="ms-1">Import</span></button>
+        <span class="ms-1">Nhập</span></button>
       <div ngbDropdownMenu aria-labelledby="btn_import" class="file-upload-card">
         <label class="file-label">
-          <span>Select a file:</span>
+          <span>Chọn file:</span>
           <input type="file" class="form-control">
         </label>
         <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0"
@@ -44,7 +44,7 @@
       </div>
       <button #btnDeleteMaster class="btn btn-success">
         <fa-icon [icon]="faExport"></fa-icon>
-        <span class="ms-1">Export</span></button>
+        <span class="ms-1">Xuất</span></button>
       <button class="btn btn-info" (click)="isTableView = !isTableView">
         <fa-icon [icon]="isTableView ? faList : faTable"></fa-icon>
         <span class="ms-1">{{isTableView ? 'List view' : 'Table view'}}</span></button>
@@ -989,7 +989,7 @@
 </div>
 <ng-template #content let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-area">Schedule management</h4>
+    <h4 class="modal-title" id="modal-area">Quản lý lịch trình</h4>
     <button type="button" class="btn-close btn-close-white" aria-label="Close"
       (click)="modal.dismiss('Cross click')"></button>
   </div>
@@ -997,38 +997,37 @@
     <form>
       <div class="container">
         <div class="row mb-2">
-          <label class="col-form-label fw-bold" for="supplier" style="width: 85px;">Supplier</label>
+          <label class="col-form-label fw-bold" for="supplier" style="width: 85px;">NCC</label>
           <div class="input">
-            <ngx-select id="supplier" class="" placeholder="Choose a supplier" [allowClear]="true"
+            <ngx-select id="supplier" class="" placeholder="Chọn nhà cung cấp" [allowClear]="true"
               [items]="['Supplier 1','Supplier 2','Supplier 3']">
             </ngx-select>
           </div>
-          <label class="col-form-label fw-bold" for="route_name" style="width: 115px;">Route name</label>
+          <label class="col-form-label fw-bold" for="route_name" style="width: 115px;">Tên tuyến</label>
           <div class="input">
-            <ngx-select id="route_name" class="" placeholder="Choose an route" [allowClear]="true"
+            <ngx-select id="route_name" class="" placeholder="Chọn tuyến" [allowClear]="true"
               [items]="['Route 1','Route 2','Route 3']">
             </ngx-select>
           </div>
         </div>
         <div class="row mb-2">
-          <label class="col-form-label fw-bold" for="date" style="width: 85px;">Date</label>
+          <label class="col-form-label fw-bold" for="date" style="width: 85px;">Ngày</label>
           <div class="input">
             <input id="date" class="form-control" type="date" value="2025-09-01">
           </div>
-          <label class="col-form-label fw-bold" for="route_type" style="width: 110px;">Route type</label>
+          <label class="col-form-label fw-bold" for="route_type" style="width: 110px;">Loại tuyến</label>
           <div class="input">
-            <ngx-select id="route_type" class="" placeholder="Choose a type" [allowClear]="true"
+            <ngx-select id="route_type" class="" placeholder="Chọn loại tuyến" [allowClear]="true"
               [items]="['Về ca HC','Về Ca đêm','Đi làm ca ngày và HC']">
             </ngx-select>
           </div>
-          <label class="col-form-label fw-bold" for="number_of_vehicle" style="max-width: 170px;">Number of
-            vehicle</label>
+          <label class="col-form-label fw-bold" for="number_of_vehicle" style="max-width: 170px;">SL xe</label>
           <div class="input">
-            <input id="number_of_vehicle" class="form-control" type="number" placeholder="Enter number of vehicle">
+            <input id="number_of_vehicle" class="form-control" type="number" placeholder="Nhập số xe">
           </div>
         </div>
         <div class="row mb-2">
-          <label class="col-form-label fw-bold" for="note" style="width: 85px;">Note</label>
+          <label class="col-form-label fw-bold" for="note" style="width: 85px;">Ghi chú</label>
           <div class="input">
             <textarea id="note" class="form-control" type="number" style="height:120px">
               </textarea>

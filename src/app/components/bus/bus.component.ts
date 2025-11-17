@@ -26,9 +26,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { NgxSelectModule } from 'ngx-select-ex';
-import { AddEditBusComponent } from '../add-edit-bus/add-edit-bus.component';
 import { Tab } from '../_shared/dynamic-tabs/dynamic-tabs.component';
-import { LocationPickerComponent } from '../location-picker/location-picker.component';
+import { BusRouteMap } from '../bus-route-map/bus-route-map.component';
 import {
   NgbDatepickerModule,
   NgbDateStruct,
@@ -53,7 +52,7 @@ import {
     NgxSelectModule,
     NgbDatepickerModule,
     NgbTimepickerModule,
-    LocationPickerComponent,
+    BusRouteMap,
   ],
 })
 export class BusComponent implements OnInit, AfterViewInit {
@@ -64,8 +63,7 @@ export class BusComponent implements OnInit, AfterViewInit {
   faPenToSquare = faPenToSquare;
   faCopy = faCopy;
   faTrash = faTrash;
-  addEditBus = AddEditBusComponent;
-  @ViewChild(LocationPickerComponent) mapComponent!: LocationPickerComponent;
+  @ViewChild(BusRouteMap) mapComponent!: BusRouteMap;
   @ViewChild('arriveTimeInputTemplate', { static: true })
   arriveTimeInputTemplate!: TemplateRef<any>;
   @ViewChild('offsetDurationInputTemplate', { static: true })
@@ -103,6 +101,8 @@ export class BusComponent implements OnInit, AfterViewInit {
             routeName: '',
             turnName: '',
             note: '',
+            vehicleList:
+              '<a class="vehicle-list-link cursor-pointer">DS xe</a>',
           };
           this.detailData = [];
           this.isShowingRightTable = true;
@@ -206,13 +206,21 @@ export class BusComponent implements OnInit, AfterViewInit {
       hozAlign: 'center',
       formatter: (cell) => {
         const value = cell.getValue();
-        return `<a class="route-name">${value}</a>`;
+        return `<a class="route-name cursor-pointer">${value}</a>`;
       },
       width: 180,
     },
     {
       title: 'Loại tuyến',
       field: 'turnName',
+      headerHozAlign: 'center',
+      hozAlign: 'center',
+      width: 180,
+    },
+    {
+      title: 'Danh sách xe',
+      field: 'vehicleList',
+      formatter: 'html',
       headerHozAlign: 'center',
       hozAlign: 'center',
       width: 180,
@@ -340,6 +348,7 @@ export class BusComponent implements OnInit, AfterViewInit {
     routeName: '',
     turnName: '',
     note: '',
+    vehicleList: '<a class="vehicle-list-link cursor-pointer">DS xe</a>',
   };
   masterData: RouteInfo[] = [
     {
@@ -348,6 +357,7 @@ export class BusComponent implements OnInit, AfterViewInit {
       routeName: 'Tuyến 01',
       turnName: 'Ca sáng',
       note: 'Chạy hằng ngày',
+      vehicleList: '<a class="vehicle-list-link cursor-pointer">DS xe</a>',
     },
     {
       no: 2,
@@ -355,6 +365,7 @@ export class BusComponent implements OnInit, AfterViewInit {
       routeName: 'Tuyến 01',
       turnName: 'Ca chiều',
       note: '',
+      vehicleList: '<a class="vehicle-list-link cursor-pointer">DS xe</a>',
     },
     {
       no: 3,
@@ -362,6 +373,7 @@ export class BusComponent implements OnInit, AfterViewInit {
       routeName: 'Tuyến 02',
       turnName: 'Ca sáng',
       note: '',
+      vehicleList: '<a class="vehicle-list-link cursor-pointer">DS xe</a>',
     },
     {
       no: 4,
@@ -369,6 +381,7 @@ export class BusComponent implements OnInit, AfterViewInit {
       routeName: 'Tuyến 02',
       turnName: 'Ca chiều',
       note: 'Đi đường tránh',
+      vehicleList: '<a class="vehicle-list-link cursor-pointer">DS xe</a>',
     },
     {
       no: 5,
@@ -376,6 +389,7 @@ export class BusComponent implements OnInit, AfterViewInit {
       routeName: 'Tuyến 03',
       turnName: 'Ca sáng',
       note: '',
+      vehicleList: '<a class="vehicle-list-link cursor-pointer">DS xe</a>',
     },
     {
       no: 6,
@@ -383,6 +397,7 @@ export class BusComponent implements OnInit, AfterViewInit {
       routeName: 'Tuyến 03',
       turnName: 'Ca chiều',
       note: '',
+      vehicleList: '<a class="vehicle-list-link cursor-pointer">DS xe</a>',
     },
     {
       no: 7,
@@ -390,6 +405,7 @@ export class BusComponent implements OnInit, AfterViewInit {
       routeName: 'Tuyến 04',
       turnName: 'Ca sáng',
       note: '',
+      vehicleList: '<a class="vehicle-list-link cursor-pointer">DS xe</a>',
     },
     {
       no: 8,
@@ -397,6 +413,7 @@ export class BusComponent implements OnInit, AfterViewInit {
       routeName: 'Tuyến 04',
       turnName: 'Ca chiều',
       note: 'Hay kẹt xe',
+      vehicleList: '<a class="vehicle-list-link cursor-pointer">DS xe</a>',
     },
     {
       no: 9,
@@ -404,6 +421,7 @@ export class BusComponent implements OnInit, AfterViewInit {
       routeName: 'Tuyến 05',
       turnName: 'Ca sáng',
       note: '',
+      vehicleList: '<a class="vehicle-list-link cursor-pointer">DS xe</a>',
     },
     {
       no: 10,
@@ -411,6 +429,7 @@ export class BusComponent implements OnInit, AfterViewInit {
       routeName: 'Tuyến 05',
       turnName: 'Ca chiều',
       note: '',
+      vehicleList: '<a class="vehicle-list-link cursor-pointer">DS xe</a>',
     },
     {
       no: 11,
@@ -418,6 +437,7 @@ export class BusComponent implements OnInit, AfterViewInit {
       routeName: 'Tuyến 06',
       turnName: 'Ca sáng',
       note: '',
+      vehicleList: '<a class="vehicle-list-link cursor-pointer">DS xe</a>',
     },
     {
       no: 12,
@@ -425,6 +445,7 @@ export class BusComponent implements OnInit, AfterViewInit {
       routeName: 'Tuyến 06',
       turnName: 'Ca chiều',
       note: 'Đi qua cầu Chương Dương',
+      vehicleList: '<a class="vehicle-list-link cursor-pointer">DS xe</a>',
     },
     {
       no: 13,
@@ -432,6 +453,7 @@ export class BusComponent implements OnInit, AfterViewInit {
       routeName: 'Tuyến 07',
       turnName: 'Ca sáng',
       note: '',
+      vehicleList: '<a class="vehicle-list-link cursor-pointer">DS xe</a>',
     },
     {
       no: 14,
@@ -439,6 +461,7 @@ export class BusComponent implements OnInit, AfterViewInit {
       routeName: 'Tuyến 07',
       turnName: 'Ca chiều',
       note: '',
+      vehicleList: '<a class="vehicle-list-link cursor-pointer">DS xe</a>',
     },
     {
       no: 15,
@@ -446,6 +469,7 @@ export class BusComponent implements OnInit, AfterViewInit {
       routeName: 'Tuyến 08',
       turnName: 'Ca sáng',
       note: 'Nhiều học sinh',
+      vehicleList: '<a class="vehicle-list-link cursor-pointer">DS xe</a>',
     },
     {
       no: 16,
@@ -453,6 +477,7 @@ export class BusComponent implements OnInit, AfterViewInit {
       routeName: 'Tuyến 08',
       turnName: 'Ca chiều',
       note: '',
+      vehicleList: '<a class="vehicle-list-link cursor-pointer">DS xe</a>',
     },
     {
       no: 17,
@@ -460,6 +485,7 @@ export class BusComponent implements OnInit, AfterViewInit {
       routeName: 'Tuyến 09',
       turnName: 'Ca sáng',
       note: '',
+      vehicleList: '<a class="vehicle-list-link cursor-pointer">DS xe</a>',
     },
     {
       no: 18,
@@ -467,6 +493,7 @@ export class BusComponent implements OnInit, AfterViewInit {
       routeName: 'Tuyến 09',
       turnName: 'Ca chiều',
       note: '',
+      vehicleList: '<a class="vehicle-list-link cursor-pointer">DS xe</a>',
     },
     {
       no: 19,
@@ -474,6 +501,7 @@ export class BusComponent implements OnInit, AfterViewInit {
       routeName: 'Tuyến 10',
       turnName: 'Ca sáng',
       note: '',
+      vehicleList: '<a class="vehicle-list-link cursor-pointer">DS xe</a>',
     },
     {
       no: 20,
@@ -481,6 +509,7 @@ export class BusComponent implements OnInit, AfterViewInit {
       routeName: 'Tuyến 10',
       turnName: 'Ca chiều',
       note: 'Điểm cuối: Bến xe Gia Lâm',
+      vehicleList: '<a class="vehicle-list-link cursor-pointer">DS xe</a>',
     },
   ];
   detailData: RouteDetail[] = [];
@@ -547,6 +576,7 @@ class RouteInfo {
   routeName: string;
   turnName: string;
   note: string;
+  vehicleList: string;
 
   constructor(data?: Partial<RouteInfo>) {
     this.no = data?.no ?? 0;
@@ -554,6 +584,7 @@ class RouteInfo {
     this.routeName = data?.routeName ?? '';
     this.turnName = data?.turnName ?? '';
     this.note = data?.note ?? '';
+    this.vehicleList = data?.vehicleList ?? '';
   }
 }
 export interface RouteDetail {

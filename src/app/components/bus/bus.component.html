@@ -12,7 +12,7 @@
     <div class="w-100 h-100 d-flex">
       <button class="btn-close btn-close-black btn-close-map" (click)="isShowingRightTable = false"></button>
       <div class="w-60 h-100">
-        <location-picker></location-picker>
+        <bus-route-map></bus-route-map>
       </div>
       <div class="w-40 h-100 p-3 pt-2 d-flex flex-column">
         <div class="d-flex">
@@ -22,17 +22,20 @@
             Hủy</button>
         </div>
         <div class="input-group pb-3">
-          <span class="input-group-text bg-primary-subtle text-center align-middle" for="bus_route">Tên tuyến</span>
+          <span class="input-group-text bg-primary-subtle text-center align-middle fw-bold" for="bus_route">
+            Tên tuyến</span>
           <input type="text" id="bus_route" class="form-control" [(ngModel)]="currentRoute.routeName">
         </div>
         <div class="input-group pb-3">
-          <span class="input-group-text bg-primary-subtle text-center align-middle" for="route_type">Loại tuyến</span>
+          <span class="input-group-text bg-primary-subtle text-center align-middle fw-bold" for="route_type">
+            Loại tuyến</span>
           <ngx-select id="route_type" class="dropdown" [allowClear]="true" [items]="['Ca sáng', 'Ca chiều', 'Ca tối']"
             [(ngModel)]="currentRoute.turnName">
           </ngx-select>
         </div>
         <div class="input-group pb-3">
-          <span class="input-group-text bg-primary-subtle text-center align-middle" for="note">Ghi chú</span>
+          <span class="input-group-text bg-primary-subtle text-center align-middle fw-bold" for="note">
+            Ghi chú</span>
           <textarea type="text" id="note" class="form-control" [(ngModel)]="currentRoute.note"></textarea>
         </div>
         <div class="flex-grow-1">

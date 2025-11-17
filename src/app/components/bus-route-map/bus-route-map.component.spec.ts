@@ -3,21 +3,20 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { RequestFormEventComponent } from './request-form-event.component';
+import { BusRouteMap } from './bus-route-map.component';
 
-describe('RequestFormEventComponent', () => {
-  let component: RequestFormEventComponent;
-  let fixture: ComponentFixture<RequestFormEventComponent>;
+describe('LocationPickerComponent', () => {
+  let component: BusRouteMap;
+  let fixture: ComponentFixture<BusRouteMap>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ RequestFormEventComponent ]
-    })
-    .compileComponents();
+      declarations: [BusRouteMap],
+    }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RequestFormEventComponent);
+    fixture = TestBed.createComponent(BusRouteMap);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -2,28 +2,28 @@
   <mat-sidenav-content>
     <div class="header-input d-flex mb-2">
       <div class="input-group flex-nowrap">
-        <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">Type</label>
+        <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">Loại</label>
         <input type="text" class="form-control me-1">
       </div>
       <div class="input-group flex-nowrap">
-        <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">Applicant</label>
+        <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">Người đăng ký</label>
         <input type="text" class="form-control me-1">
       </div>
       <div class="input-group flex-nowrap">
-        <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">Search range</label>
+        <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">Trong khoảng</label>
         <input type="date" class="form-control" value="2025-09-01" ngbDatepicker #d1="ngbDatepicker"
           (click)="d1.open()">
-        <span class="input-group-text">to</span>
+        <span class="input-group-text">tới</span>
         <input type="date" class="form-control me-1" value="2025-09-20" ngbDatepicker #d2="ngbDatepicker"
           (click)="d2.open()">
       </div>
       <div class="input-group flex-nowrap">
-        <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">Register No</label>
+        <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">Đơn đăng ký</label>
         <input type="text" class="form-control me-1">
       </div>
-      <button class="btn btn-primary d-flex align-items-center">
+      <button class="btn btn-primary d-flex align-items-center" style="width: 450px;">
         <fa-icon [icon]="faGlass"></fa-icon>
-        <span class="ms-1">Search</span>
+        <span class="ms-1">Tìm kiếm</span>
       </button>
     </div>
     <div class="table-responsive">
@@ -31,16 +31,16 @@
         <thead class="table-primary text-center cursor-pointer">
           <tr>
             <th (click)="onSort('no')" [class]="getSortClass('no')">No</th>
-            <th (click)="onSort('status')" [class]="getSortClass('status')">Status</th>
-            <th (click)="onSort('registerNo')" [class]="getSortClass('registerNo')">Register No</th>
-            <th (click)="onSort('type')" [class]="getSortClass('type')">Type</th>
-            <th (click)="onSort('from')" [class]="getSortClass('from')">From</th>
-            <th (click)="onSort('to')" [class]="getSortClass('to')">To</th>
-            <th (click)="onSort('requestDetails')" [class]="getSortClass('requestDetails')">Request details</th>
-            <th (click)="onSort('registerDate')" [class]="getSortClass('registerDate')">Register date</th>
-            <th (click)="onSort('scheduledDate')" [class]="getSortClass('scheduledDate')">Scheduled date</th>
-            <th (click)="onSort('applicant')" [class]="getSortClass('applicant')">Applicant</th>
-            <th (click)="onSort('applicantDepartment')" [class]="getSortClass('applicantDepartment')">Applicant's Department
+            <th (click)="onSort('status')" [class]="getSortClass('status')">Trạng thái</th>
+            <th (click)="onSort('registerNo')" [class]="getSortClass('registerNo')">Đơn đăng ký</th>
+            <th (click)="onSort('type')" [class]="getSortClass('type')">Loại</th>
+            <th (click)="onSort('from')" [class]="getSortClass('from')">Từ</th>
+            <th (click)="onSort('to')" [class]="getSortClass('to')">Đến</th>
+            <th (click)="onSort('requestDetails')" [class]="getSortClass('requestDetails')">Chi tiết</th>
+            <th (click)="onSort('registerDate')" [class]="getSortClass('registerDate')">Ngày đăng ký</th>
+            <th (click)="onSort('scheduledDate')" [class]="getSortClass('scheduledDate')">Ngày sắp xếp</th>
+            <th (click)="onSort('applicant')" [class]="getSortClass('applicant')">Người đăng ký</th>
+            <th (click)="onSort('applicantDepartment')" [class]="getSortClass('applicantDepartment')">Bộ phận
             </th>
           </tr>
         </thead>

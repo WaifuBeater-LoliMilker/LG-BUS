@@ -97,7 +97,7 @@ export class RequestFormStopComponent implements AfterViewInit {
       },
     },
     {
-      title: 'Pickup date',
+      title: 'TG đón',
       field: 'pickupDate',
       headerHozAlign: 'center',
       hozAlign: 'center',
@@ -121,7 +121,7 @@ export class RequestFormStopComponent implements AfterViewInit {
       },
     },
     {
-      title: 'Duration',
+      title: 'TG chờ',
       field: 'duration',
       headerHozAlign: 'center',
       hozAlign: 'center',
@@ -137,28 +137,14 @@ export class RequestFormStopComponent implements AfterViewInit {
       },
     },
     {
-      title: 'Departure',
+      title: 'Điểm đón',
       field: 'departure',
       headerHozAlign: 'center',
       hozAlign: 'center',
       width: 150,
     },
     {
-      title: 'Arrival',
-      field: 'arrival',
-      headerHozAlign: 'center',
-      hozAlign: 'center',
-      width: 150,
-    },
-    {
-      title: 'Assigned number',
-      field: 'assignedNumber',
-      headerHozAlign: 'center',
-      hozAlign: 'center',
-      width: 200,
-    },
-    {
-      title: 'Note',
+      title: 'Ghi chú',
       field: 'note',
       headerHozAlign: 'center',
       hozAlign: 'center',

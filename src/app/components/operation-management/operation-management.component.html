@@ -1,22 +1,22 @@
 <div class="header d-flex mb-2">
   <div class="input-group flex-nowrap">
-    <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">Plate number</label>
+    <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">Biển số</label>
     <input type="text" class="form-control me-1">
   </div>
   <div class="input-group flex-nowrap">
-    <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">Route name</label>
+    <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">Tên tuyến</label>
     <input type="text" class="form-control me-1">
   </div>
   <div class="input-group flex-nowrap">
-    <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">Search range</label>
+    <label class="text-light d-flex align-items-center px-3 fw-bold input-group-text">Trong khoảng</label>
     <input type="date" class="form-control" value="2025-09-01" ngbDatepicker #d1="ngbDatepicker" (click)="d1.open()">
-    <span class="input-group-text">to</span>
+    <span class="input-group-text">tới</span>
     <input type="date" class="form-control me-1" value="2025-09-20" ngbDatepicker #d2="ngbDatepicker"
       (click)="d2.open()">
   </div>
-  <button class="btn btn-primary d-flex align-items-center">
+  <button class="btn btn-primary d-flex align-items-center" style="width: 320px;">
     <fa-icon [icon]="faGlass"></fa-icon>
-    <span class="ms-1">Search</span>
+    <span class="ms-1">Tìm kiếm</span>
   </button>
 </div>
 <div class="card">
@@ -24,20 +24,20 @@
     <div class="d-flex gap-1" ngbDropdown>
       <button class="btn btn-primary-alt" (click)="openModal()">
         <fa-icon [icon]="faPlus"></fa-icon>
-        <span class="ms-1">Add</span>
+        <span class="ms-1">Thêm</span>
       </button>
       <button class="btn btn-success-alt">
         <fa-icon [icon]="faPenToSquare"></fa-icon>
-        <span class="ms-1">Edit</span></button>
+        <span class="ms-1">Sửa</span></button>
       <button #btnDeleteMaster class="btn btn-danger-alt">
         <fa-icon [icon]="faTrash"></fa-icon>
-        <span class="ms-1">Delete</span></button>
+        <span class="ms-1">Xóa</span></button>
       <button #btnDeleteMaster id="btn_import" class="btn btn-primary" ngbDropdownToggle>
         <fa-icon [icon]="faImport"></fa-icon>
-        <span class="ms-1">Import</span></button>
+        <span class="ms-1">Nhập</span></button>
       <div ngbDropdownMenu aria-labelledby="btn_import" class="file-upload-card">
         <label class="file-label">
-          <span>Select a file:</span>
+          <span>Chọn file:</span>
           <input type="file" class="form-control">
         </label>
         <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0"
@@ -47,7 +47,7 @@
       </div>
       <button #btnDeleteMaster class="btn btn-success">
         <fa-icon [icon]="faExport"></fa-icon>
-        <span class="ms-1">Export</span></button>
+        <span class="ms-1">Xuất<table></table></span></button>
     </div>
   </div>
   <div class="card-body">
@@ -130,7 +130,7 @@
 </div>
 <ng-template #content let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-area">Operation management</h4>
+    <h4 class="modal-title" id="modal-area">Quản lý vận hành</h4>
     <button type="button" class="btn-close btn-close-white" aria-label="Close"
       (click)="modal.dismiss('Cross click')"></button>
   </div>
@@ -138,59 +138,59 @@
     <form>
       <div class="container">
         <div class="row mb-2">
-          <label class="col-form-label  fw-bold" for="route_name">Route name</label>
+          <label class="col-form-label  fw-bold" for="route_name">Tên tuyến</label>
           <div class="input">
-            <ngx-select id="route_name" placeholder="Choose a route" [allowClear]="true"
+            <ngx-select id="route_name" placeholder="Chọn tuyến xe" [allowClear]="true"
               [items]="['Route 1','Route 2','Route 3']">
             </ngx-select>
           </div>
-          <label class="col-form-label  fw-bold" for="route_type" style="width: 115px">Route type</label>
+          <label class="col-form-label  fw-bold" for="route_type" style="width: 115px">Loại tuyến</label>
           <div class="input">
-            <ngx-select id="route_type" placeholder="Choose a route type" [allowClear]="true"
+            <ngx-select id="route_type" placeholder="Chọn loại tuyến" [allowClear]="true"
               [items]="['Về ca HC','Về Ca đêm','Đi làm ca ngày và HC']">
             </ngx-select>
           </div>
-          <label class="col-form-label  fw-bold" for="area" style="width: 50px">Area</label>
+          <label class="col-form-label  fw-bold" for="area" style="width: 100px">Khu vực</label>
           <div class="input">
-            <ngx-select id="area" placeholder="Choose an area" [allowClear]="true"
+            <ngx-select id="area" placeholder="Chọn khu vực" [allowClear]="true"
               [items]="['Inner Haiphong','Suburban Haiphong','Other Provinces']">
             </ngx-select>
           </div>
         </div>
         <div class="row mb-2">
-          <label class="col-form-label  fw-bold" for="supplier">Supplier</label>
+          <label class="col-form-label  fw-bold" for="supplier">NCC</label>
           <div class="input">
-            <ngx-select id="supplier" placeholder="Choose a supplier" [allowClear]="true"
+            <ngx-select id="supplier" placeholder="Chọn nhà cung cấp" [allowClear]="true"
               [items]="['Supplier 1','Supplier 2','Supplier 3']">
             </ngx-select>
           </div>
-          <label class="col-form-label  fw-bold" for="plate_number" style="width: 135px">Plate number</label>
+          <label class="col-form-label  fw-bold" for="plate_number" style="width: 135px">Biển số</label>
           <div class="input">
             <input id="plate_number" class="form-control">
           </div>
-          <label class="col-form-label  fw-bold" for="op_number" style="max-width: 185px;">Number of operator</label>
+          <label class="col-form-label  fw-bold" for="op_number" style="max-width: 185px;">SL nhân viên</label>
           <div class="input">
             <input type="number" id="op_number" class="form-control">
           </div>
         </div>
         <div class="row mb-2">
-          <label class="col-form-label  fw-bold" for="date">Date</label>
+          <label class="col-form-label  fw-bold" for="date">Ngày</label>
           <div class="input">
             <input type="date" id="date" class="form-control" ngbDatepicker #d="ngbDatepicker" (click)="d.open()"
               value="2025-09-01" />
           </div>
-          <label class="col-form-label  fw-bold" for="scheduled_time">Scheduled time</label>
+          <label class="col-form-label  fw-bold" for="scheduled_time">TG sắp xếp</label>
           <div class="input">
             <ngb-timepicker [(ngModel)]="time" [spinners]="false" name="scheduled_time" />
           </div>
         </div>
         <div class="row mb-2">
-          <label class="col-form-label  fw-bold" for="management_status">Management status</label>
+          <label class="col-form-label  fw-bold" for="management_status">Trạng thái sắp xếp</label>
           <div class="input">
             <ngx-select id="management_status" [allowClear]="true" [items]="['Chưa sắp xếp', 'Đã sắp xếp']">
             </ngx-select>
           </div>
-          <label class="col-form-label  fw-bold" for="operation_status">Operation status</label>
+          <label class="col-form-label  fw-bold" for="operation_status">Trạng thái vận hành</label>
           <div class="input">
             <ngx-select id="operation_status" [allowClear]="true" [items]="['Chưa vận hành', 'Đã vận hành']">
             </ngx-select>
@@ -200,6 +200,6 @@
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-primary">Save</button>
+    <button type="button" class="btn btn-primary">Lưu</button>
   </div>
 </ng-template>

@@ -206,6 +206,8 @@ a {
 }
 
 .status {
+  width: 80px;
+  text-align: center;
   padding: 0.25rem 0.75rem;
   border-radius: 15px;
   font-size: 0.75rem;

@@ -4,12 +4,12 @@ import * as L from 'leaflet';
 import { RouteDetail } from '../bus/bus.component';
 
 @Component({
-  selector: 'location-picker',
-  templateUrl: './location-picker.component.html',
-  styleUrls: ['./location-picker.component.css'],
+  selector: 'bus-route-map',
+  templateUrl: './bus-route-map.component.html',
+  styleUrls: ['./bus-route-map.component.css'],
   imports: [LeafletModule],
 })
-export class LocationPickerComponent implements OnInit {
+export class BusRouteMap implements OnInit {
   hanoiBounds = L.latLngBounds([
     [20.5, 105.5],
     [21.25, 106.3],
@@ -36,14 +36,12 @@ export class LocationPickerComponent implements OnInit {
       center: L.latLng(21.0285, 105.8542),
     };
   }
-
   onMapReady(map: L.Map) {
     this.map = map;
     this.markerLayer.addTo(this.map);
     if (!this.busStops.length) return;
     this.loadMap();
   }
-
   onRefreshMap(newData: RouteDetail[] = []) {
     if (this.map) {
       this.busStops = newData;
@@ -82,7 +80,6 @@ export class LocationPickerComponent implements OnInit {
       this.attachPopup(m);
       this.markerLayer.addLayer(m);
     });
-
     const polyline = L.polyline(
       this.busStops.map((s) => [s.lat, s.lng]),
       {

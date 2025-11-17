@@ -9,7 +9,12 @@ import {
 } from '@angular/core';
 import { TabulatorTableSingleComponent } from '../_shared/tabulator-table/tabulator-tables.component';
 import { ColumnDefinition } from 'tabulator-tables';
-import { NgbDatepickerModule, NgbDateStruct, NgbTimepickerModule, NgbTimeStruct } from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbDatepickerModule,
+  NgbDateStruct,
+  NgbTimepickerModule,
+  NgbTimeStruct,
+} from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -91,69 +96,62 @@ export class RequestFormRouteComponent implements AfterViewInit {
         }
       },
     },
+    // {
+    //   title: 'Ngày đón',
+    //   field: 'pickupDate',
+    //   headerHozAlign: 'center',
+    //   hozAlign: 'center',
+    //   width: 150,
+    //   formatter: (cell) => {
+    //     const container = document.createElement('div');
+    //     const rowData = cell.getRow().getData();
+    //     const view = this.vcr.createEmbeddedView(this.dateInputTemplate, {
+    //       row: rowData,
+    //     });
+    //     view.rootNodes.forEach((node) => container.appendChild(node));
+    //     return container;
+    //   },
+    //   sorter: (a, b) => {
+    //     if (!a && !b) return 0;
+    //     if (!a) return -1;
+    //     if (!b) return 1;
+    //     const dateA = new Date(a.year, a.month - 1, a.day).getTime();
+    //     const dateB = new Date(b.year, b.month - 1, b.day).getTime();
+    //     return dateA - dateB;
+    //   },
+    // },
+    // {
+    //   title: 'Thời gian',
+    //   field: 'duration',
+    //   headerHozAlign: 'center',
+    //   hozAlign: 'center',
+    //   width: 150,
+    //   formatter: (cell) => {
+    //     const container = document.createElement('div');
+    //     const rowData = cell.getRow().getData();
+    //     const view = this.vcr.createEmbeddedView(this.timeInputTemplate, {
+    //       row: rowData,
+    //     });
+    //     view.rootNodes.forEach((node) => container.appendChild(node));
+    //     return container;
+    //   },
+    // },
     {
-      title: 'Pickup date',
-      field: 'pickupDate',
-      headerHozAlign: 'center',
-      hozAlign: 'center',
-      width: 150,
-      formatter: (cell) => {
-        const container = document.createElement('div');
-        const rowData = cell.getRow().getData();
-        const view = this.vcr.createEmbeddedView(this.dateInputTemplate, {
-          row: rowData,
-        });
-        view.rootNodes.forEach((node) => container.appendChild(node));
-        return container;
-      },
-      sorter: (a, b) => {
-        if (!a && !b) return 0;
-        if (!a) return -1;
-        if (!b) return 1;
-        const dateA = new Date(a.year, a.month - 1, a.day).getTime();
-        const dateB = new Date(b.year, b.month - 1, b.day).getTime();
-        return dateA - dateB;
-      },
-    },
-    {
-      title: 'Duration',
-      field: 'duration',
-      headerHozAlign: 'center',
-      hozAlign: 'center',
-      width: 150,
-      formatter: (cell) => {
-        const container = document.createElement('div');
-        const rowData = cell.getRow().getData();
-        const view = this.vcr.createEmbeddedView(this.timeInputTemplate, {
-          row: rowData,
-        });
-        view.rootNodes.forEach((node) => container.appendChild(node));
-        return container;
-      },
-    },
-    {
-      title: 'Departure',
+      title: 'Điểm đầu',
       field: 'departure',
       headerHozAlign: 'center',
       hozAlign: 'center',
       width: 150,
     },
     {
-      title: 'Arrival',
+      title: 'Điểm cuối',
       field: 'arrival',
       headerHozAlign: 'center',
       hozAlign: 'center',
       width: 150,
     },
     {
-      title: 'Assigned number',
-      field: 'assignedNumber',
-      headerHozAlign: 'center',
-      hozAlign: 'center',
-      width: 200,
-    },
-    {
-      title: 'Note',
+      title: 'Ghi chú',
       field: 'note',
       headerHozAlign: 'center',
       hozAlign: 'center',
@@ -363,9 +361,7 @@ export class RequestFormRouteComponent implements AfterViewInit {
       note: '',
     },
   ];
-  ngAfterViewInit(): void {
-
-  }
+  ngAfterViewInit(): void {}
   onDetailClosed() {
     this.isShowingRightTable = false;
     this.tblMaster.table?.deselectRow();

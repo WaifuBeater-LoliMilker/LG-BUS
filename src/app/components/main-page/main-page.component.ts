@@ -34,7 +34,7 @@ import { ApprovalComponent } from '../approval/approval.component';
 import { PricingManagementComponent } from '../pricing-management/pricing-management.component';
 import { ServiceCompletionComponent } from '../service-completion/service-completion.component';
 import { MapComponent } from '../map/map.component';
-import { LocationPickerComponent } from '../location-picker/location-picker.component';
+import { BusRouteMap } from '../bus-route-map/bus-route-map.component';
 import { ScanHistoryComponent } from '../scan-history/scan-history.component';
 @Component({
   selector: 'app-main-page',
@@ -78,7 +78,7 @@ export class MainPageComponent implements OnInit {
   pricing = PricingManagementComponent;
   serviceCompletion = ServiceCompletionComponent;
   map = MapComponent;
-  locationPicker = LocationPickerComponent;
+  locationPicker = BusRouteMap;
   scanHistory = ScanHistoryComponent;
   @ViewChild('tabContainer') tabContainer!: DynamicTabsComponent<any>;
   constructor(private router: Router) {}
@@ -92,8 +92,7 @@ export class MainPageComponent implements OnInit {
       if (this.isAdmin) this.onAddTab('Tuyến xe', this.bus, true);
       else if (this.isUser)
         this.onAddTab('YC xe sự kiện', this.requestFormEvent);
-      else if (this.isSupplier)
-        this.onAddTab('Quản lý đơn giá', this.pricing);
+      else if (this.isSupplier) this.onAddTab('Quản lý đơn giá', this.pricing);
     });
   }
   onDrawerModeChange() {
