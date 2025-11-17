@@ -4,8 +4,10 @@ import {
   ElementRef,
   Input,
   OnInit,
+  TemplateRef,
   Type,
   ViewChild,
+  ViewContainerRef,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -26,6 +28,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { NgxSelectModule } from 'ngx-select-ex';
 import { AddEditBusComponent } from '../add-edit-bus/add-edit-bus.component';
 import { Tab } from '../_shared/dynamic-tabs/dynamic-tabs.component';
+import { LocationPickerComponent } from '../location-picker/location-picker.component';
+import {
+  NgbDatepickerModule,
+  NgbDateStruct,
+  NgbTimepickerModule,
+  NgbTimeStruct,
+} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'communication',
@@ -42,16 +51,27 @@ import { Tab } from '../_shared/dynamic-tabs/dynamic-tabs.component';
     MatListModule,
     MatButtonModule,
     NgxSelectModule,
+    NgbDatepickerModule,
+    NgbTimepickerModule,
+    LocationPickerComponent,
   ],
 })
 export class BusComponent implements OnInit, AfterViewInit {
   //#region Properties
   isShowingRightTable = false;
+  isEditting = false;
   faPlus = faPlus;
   faPenToSquare = faPenToSquare;
   faCopy = faCopy;
   faTrash = faTrash;
   addEditBus = AddEditBusComponent;
+  @ViewChild(LocationPickerComponent) mapComponent!: LocationPickerComponent;
+  @ViewChild('arriveTimeInputTemplate', { static: true })
+  arriveTimeInputTemplate!: TemplateRef<any>;
+  @ViewChild('offsetDurationInputTemplate', { static: true })
+  offsetDurationInputTemplate!: TemplateRef<any>;
+  @ViewChild('vcHost', { read: ViewContainerRef, static: true })
+  vcr!: ViewContainerRef;
   masterColumns: ColumnDefinition[] = [
     {
       title: 'No',
@@ -61,30 +81,126 @@ export class BusComponent implements OnInit, AfterViewInit {
       width: 75,
     },
     {
-      title: 'Details',
-      headerSort: false,
+      title: 'Actions',
+      field: 'actions',
       headerHozAlign: 'center',
       hozAlign: 'center',
-      width: 100,
-      formatter: (cell) => {
-        return `<button class="btn btn-primary"><i class="bi bi-eye-fill"></i></button>`;
+      width: 150,
+      headerSort: false,
+      titleFormatter: function (column, formatterParams, onRendered) {
+        return `
+        <div class="header-actions d-flex align-items-center justify-content-center">
+          <button class="btn btn-primary-alt btn-sm btn-add"><i class="bi bi-plus-lg"></i></button>
+        </div>
+      `;
+      },
+      headerClick: (e, column) => {
+        const btn = (e.target as HTMLElement).closest('.btn-add');
+        if (btn) {
+          this.currentRoute = {
+            no: 21,
+            area: '',
+            routeName: '',
+            turnName: '',
+            note: '',
+          };
+          this.detailData = [];
+          this.isShowingRightTable = true;
+          this.isEditting = false;
+        }
+      },
+      formatter: function (cell, formatterParams, onRendered) {
+        return `
+        <button class="btn btn-success-alt btn-sm btn-edit"><i class="bi bi-pencil-square"></i></button>
+        <button class="btn btn-danger btn-sm btn-del"><i class="bi bi-trash"></i></button>
+      `;
       },
       cellClick: (e, cell) => {
-        const target = e.target as HTMLElement;
-        if (target.closest('button')) {
+        e.stopPropagation();
+        if ((e.target as HTMLElement).closest('.btn-edit')) {
+          this.currentRoute = cell.getData() as RouteInfo;
+          this.detailData = [
+            {
+              SortOrder: 1,
+              StopName: 'Điểm dừng 1',
+              ArriveTime: { hour: 7, minute: 0, second: 0 },
+              OffsetDuration: { hour: 0, minute: 5, second: 0 },
+              lat: 21.06,
+              lng: 105.84,
+            },
+            {
+              SortOrder: 2,
+              StopName: 'Điểm dừng 2',
+              ArriveTime: { hour: 7, minute: 5, second: 0 },
+              OffsetDuration: { hour: 0, minute: 7, second: 0 },
+              lat: 21.0535,
+              lng: 105.842,
+            },
+            {
+              SortOrder: 3,
+              StopName: 'Điểm dừng 3',
+              ArriveTime: { hour: 7, minute: 12, second: 0 },
+              OffsetDuration: { hour: 0, minute: 4, second: 0 },
+              lat: 21.045,
+              lng: 105.846,
+            },
+            {
+              SortOrder: 4,
+              StopName: 'Điểm dừng 4',
+              ArriveTime: { hour: 7, minute: 16, second: 0 },
+              OffsetDuration: { hour: 0, minute: 6, second: 0 },
+              lat: 21.036,
+              lng: 105.8435,
+            },
+            {
+              SortOrder: 5,
+              StopName: 'Điểm dừng 5',
+              ArriveTime: { hour: 7, minute: 22, second: 0 },
+              OffsetDuration: { hour: 0, minute: 5, second: 0 },
+              lat: 21.02,
+              lng: 105.841,
+            },
+            {
+              SortOrder: 6,
+              StopName: 'Điểm dừng 6',
+              ArriveTime: { hour: 7, minute: 27, second: 0 },
+              OffsetDuration: { hour: 0, minute: 6, second: 0 },
+              lat: 21.0175,
+              lng: 105.844,
+            },
+            {
+              SortOrder: 7,
+              StopName: 'Điểm dừng 7',
+              ArriveTime: { hour: 7, minute: 33, second: 0 },
+              OffsetDuration: { hour: 0, minute: 4, second: 0 },
+              lat: 21.007,
+              lng: 105.8415,
+            },
+            {
+              SortOrder: 8,
+              StopName: 'Điểm dừng 8',
+              ArriveTime: { hour: 7, minute: 37, second: 0 },
+              OffsetDuration: { hour: 0, minute: 8, second: 0 },
+              lat: 20.9975,
+              lng: 105.845,
+            },
+          ];
           this.isShowingRightTable = true;
+          this.isEditting = true;
+        }
+        if ((e.target as HTMLElement).closest('.btn-del')) {
         }
       },
     },
+    // {
+    //   title: 'Area',
+    //   field: 'area',
+    //   headerHozAlign: 'center',
+    //   hozAlign: 'center',
+    //   width: 180,
+    // },
     {
-      title: 'Area',
-      field: 'area',
-      headerHozAlign: 'center',
-      hozAlign: 'center',
-      width: 180,
-    },
-    {
-      title: 'Route Name',
+      title: 'Tên tuyến',
       field: 'routeName',
       headerHozAlign: 'center',
       hozAlign: 'center',
@@ -95,262 +211,279 @@ export class BusComponent implements OnInit, AfterViewInit {
       width: 180,
     },
     {
-      title: 'Trip Name',
+      title: 'Loại tuyến',
       field: 'turnName',
       headerHozAlign: 'center',
       hozAlign: 'center',
       width: 180,
     },
     {
-      title: 'Note',
+      title: 'Ghi chú',
       field: 'note',
       headerHozAlign: 'center',
     },
   ];
-
   detailColumns: ColumnDefinition[] = [
     {
-      title: 'No',
-      field: 'no',
-      headerHozAlign: 'center',
-      hozAlign: 'center',
-      width: 75,
-    },
-    {
-      title: 'Stop name',
-      field: 'busStopName',
-      headerHozAlign: 'center',
-      width: 430,
-    },
-    {
-      title: 'Arrive time',
-      field: 'arriveTime',
-      headerHozAlign: 'center',
-      hozAlign: 'center',
-      width: 430,
-    },
-  ];
-
-  modalDetailColumns: ColumnDefinition[] = [
-    {
-      title: 'Order',
+      title: 'STT',
       field: 'SortOrder',
       headerHozAlign: 'center',
       hozAlign: 'center',
       editable: true,
       editor: true,
       width: 80,
-    },
-    {
-      title: 'Name',
-      field: 'ParamKey',
-      headerHozAlign: 'center',
-      editable: true,
-      editor: true,
-      width: 150,
-    },
-    {
-      title: 'Data Type',
-      field: 'DataType',
-      headerHozAlign: 'center',
-      editable: true,
-      editor: true,
-      width: 150,
-    },
-    {
-      title: 'Required',
-      field: 'IsRequired',
-      headerHozAlign: 'center',
-      formatter: 'tickCross',
-      hozAlign: 'center',
-      cellClick: function (_, cell) {
-        const currentValue = cell.getValue();
-        cell.setValue(!currentValue);
+      cellEdited: (cell) => {
+        const table = cell.getTable();
+        table.setSort('SortOrder', 'asc');
+        this.mapComponent.onRefreshMap(
+          this.detailData.sort((a, b) => {
+            if (+a.SortOrder < +b.SortOrder) return -1;
+            if (+a.SortOrder > +b.SortOrder) return 1;
+            return 0;
+          })
+        );
       },
     },
     {
-      title: 'Description',
-      field: 'Description',
+      title: 'Actions',
+      field: 'actions',
       headerHozAlign: 'center',
+      hozAlign: 'center',
+      width: 75,
+      headerSort: false,
+      titleFormatter: function (column, formatterParams, onRendered) {
+        return `
+        <div class="header-actions d-flex align-items-center justify-content-center">
+          <button class="btn btn-primary-alt btn-sm btn-add"><i class="bi bi-plus-lg"></i></button>
+        </div>
+      `;
+      },
+      headerClick: (e, column) => {
+        const btn = (e.target as HTMLElement).closest('.btn-add');
+        if (btn) {
+          this.detailData.unshift({
+            SortOrder: 0,
+            StopName: '',
+            ArriveTime: { hour: 0, minute: 0, second: 0 },
+            OffsetDuration: { hour: 0, minute: 0, second: 0 },
+            lat: 21.024,
+            lng: 105.8436,
+          });
+        }
+      },
+      formatter: function (cell, formatterParams, onRendered) {
+        return `
+        <button class="btn btn-danger btn-sm btn-del"><i class="bi bi-trash"></i></button>
+      `;
+      },
+      cellClick: (e, cell) => {
+        e.stopPropagation();
+        if ((e.target as HTMLElement).closest('.btn-del')) {
+          const confirmed = confirm('Bạn có chắc chắn muốn xóa không?');
+          if (!confirmed) return;
+          const data = cell.getData() as RouteDetail;
+          const idx = this.detailData.findIndex(
+            (d) => d.SortOrder == data.SortOrder && d.StopName == data.StopName
+          );
+          this.detailData.splice(idx, 1);
+        }
+      },
+    },
+    {
+      title: 'Tên điểm dừng',
+      field: 'StopName',
+      headerHozAlign: 'center',
+      hozAlign: 'center',
       editable: true,
       editor: true,
-      widthGrow: 1,
+      cellEdited: (cell) => {
+        this.mapComponent.onRefreshMap(this.detailData);
+      },
+    },
+    {
+      title: 'TG đón',
+      field: 'ArriveTime',
+      headerHozAlign: 'center',
+      hozAlign: 'center',
+      formatter: (cell) => {
+        const container = document.createElement('div');
+        const rowData = cell.getRow().getData();
+        const view = this.vcr.createEmbeddedView(this.arriveTimeInputTemplate, {
+          row: rowData,
+        });
+        view.rootNodes.forEach((node) => container.appendChild(node));
+        return container;
+      },
+    },
+    {
+      title: 'Offset',
+      field: 'OffsetDuration',
+      headerHozAlign: 'center',
+      hozAlign: 'center',
+      formatter: (cell) => {
+        const container = document.createElement('div');
+        const rowData = cell.getRow().getData();
+        const view = this.vcr.createEmbeddedView(
+          this.offsetDurationInputTemplate,
+          {
+            row: rowData,
+          }
+        );
+        view.rootNodes.forEach((node) => container.appendChild(node));
+        return container;
+      },
     },
   ];
-
-  masterData = [
+  currentRoute: RouteInfo = {
+    no: 21,
+    area: '',
+    routeName: '',
+    turnName: '',
+    note: '',
+  };
+  masterData: RouteInfo[] = [
     {
       no: 1,
-      area: 'Hanoi - Center',
-      routeName: 'Route 01',
-      turnName: 'Morning Trip',
-      note: 'Runs daily',
+      area: 'Hà Nội - Trung Tâm',
+      routeName: 'Tuyến 01',
+      turnName: 'Ca sáng',
+      note: 'Chạy hằng ngày',
     },
     {
       no: 2,
-      area: 'Hanoi - Center',
-      routeName: 'Route 01',
-      turnName: 'Afternoon Trip',
+      area: 'Hà Nội - Trung Tâm',
+      routeName: 'Tuyến 01',
+      turnName: 'Ca chiều',
       note: '',
     },
     {
       no: 3,
-      area: 'Hanoi - Cau Giay',
-      routeName: 'Route 02',
-      turnName: 'Morning Trip',
+      area: 'Hà Nội - Cầu Giấy',
+      routeName: 'Tuyến 02',
+      turnName: 'Ca sáng',
       note: '',
     },
     {
       no: 4,
-      area: 'Hanoi - Cau Giay',
-      routeName: 'Route 02',
-      turnName: 'Afternoon Trip',
-      note: 'Bypass road',
+      area: 'Hà Nội - Cầu Giấy',
+      routeName: 'Tuyến 02',
+      turnName: 'Ca chiều',
+      note: 'Đi đường tránh',
     },
     {
       no: 5,
-      area: 'Hanoi - Thanh Xuan',
-      routeName: 'Route 03',
-      turnName: 'Morning Trip',
+      area: 'Hà Nội - Thanh Xuân',
+      routeName: 'Tuyến 03',
+      turnName: 'Ca sáng',
       note: '',
     },
     {
       no: 6,
-      area: 'Hanoi - Thanh Xuan',
-      routeName: 'Route 03',
-      turnName: 'Afternoon Trip',
+      area: 'Hà Nội - Thanh Xuân',
+      routeName: 'Tuyến 03',
+      turnName: 'Ca chiều',
       note: '',
     },
     {
       no: 7,
-      area: 'Hanoi - Hoan Kiem',
-      routeName: 'Route 04',
-      turnName: 'Morning Trip',
+      area: 'Hà Nội - Hoàn Kiếm',
+      routeName: 'Tuyến 04',
+      turnName: 'Ca sáng',
       note: '',
     },
     {
       no: 8,
-      area: 'Hanoi - Hoan Kiem',
-      routeName: 'Route 04',
-      turnName: 'Afternoon Trip',
-      note: 'Frequent traffic jam',
+      area: 'Hà Nội - Hoàn Kiếm',
+      routeName: 'Tuyến 04',
+      turnName: 'Ca chiều',
+      note: 'Hay kẹt xe',
     },
     {
       no: 9,
-      area: 'Hanoi - Hai Ba Trung',
-      routeName: 'Route 05',
-      turnName: 'Morning Trip',
+      area: 'Hà Nội - Hai Bà Trưng',
+      routeName: 'Tuyến 05',
+      turnName: 'Ca sáng',
       note: '',
     },
     {
       no: 10,
-      area: 'Hanoi - Hai Ba Trung',
-      routeName: 'Route 05',
-      turnName: 'Afternoon Trip',
+      area: 'Hà Nội - Hai Bà Trưng',
+      routeName: 'Tuyến 05',
+      turnName: 'Ca chiều',
       note: '',
     },
     {
       no: 11,
-      area: 'Hanoi - Long Bien',
-      routeName: 'Route 06',
-      turnName: 'Morning Trip',
+      area: 'Hà Nội - Long Biên',
+      routeName: 'Tuyến 06',
+      turnName: 'Ca sáng',
       note: '',
     },
     {
       no: 12,
-      area: 'Hanoi - Long Bien',
-      routeName: 'Route 06',
-      turnName: 'Afternoon Trip',
-      note: 'Passes Chuong Duong Bridge',
+      area: 'Hà Nội - Long Biên',
+      routeName: 'Tuyến 06',
+      turnName: 'Ca chiều',
+      note: 'Đi qua cầu Chương Dương',
     },
     {
       no: 13,
-      area: 'Hanoi - Tay Ho',
-      routeName: 'Route 07',
-      turnName: 'Morning Trip',
+      area: 'Hà Nội - Tây Hồ',
+      routeName: 'Tuyến 07',
+      turnName: 'Ca sáng',
       note: '',
     },
     {
       no: 14,
-      area: 'Hanoi - Tay Ho',
-      routeName: 'Route 07',
-      turnName: 'Afternoon Trip',
+      area: 'Hà Nội - Tây Hồ',
+      routeName: 'Tuyến 07',
+      turnName: 'Ca chiều',
       note: '',
     },
     {
       no: 15,
-      area: 'Hanoi - Dong Da',
-      routeName: 'Route 08',
-      turnName: 'Morning Trip',
-      note: 'Many students',
+      area: 'Hà Nội - Đống Đa',
+      routeName: 'Tuyến 08',
+      turnName: 'Ca sáng',
+      note: 'Nhiều học sinh',
     },
     {
       no: 16,
-      area: 'Hanoi - Dong Da',
-      routeName: 'Route 08',
-      turnName: 'Afternoon Trip',
+      area: 'Hà Nội - Đống Đa',
+      routeName: 'Tuyến 08',
+      turnName: 'Ca chiều',
       note: '',
     },
     {
       no: 17,
-      area: 'Hanoi - Nam Tu Liem',
-      routeName: 'Route 09',
-      turnName: 'Morning Trip',
+      area: 'Hà Nội - Nam Từ Liêm',
+      routeName: 'Tuyến 09',
+      turnName: 'Ca sáng',
       note: '',
     },
     {
       no: 18,
-      area: 'Hanoi - Nam Tu Liem',
-      routeName: 'Route 09',
-      turnName: 'Afternoon Trip',
+      area: 'Hà Nội - Nam Từ Liêm',
+      routeName: 'Tuyến 09',
+      turnName: 'Ca chiều',
       note: '',
     },
     {
       no: 19,
-      area: 'Hanoi - Gia Lam',
-      routeName: 'Route 10',
-      turnName: 'Morning Trip',
+      area: 'Hà Nội - Gia Lâm',
+      routeName: 'Tuyến 10',
+      turnName: 'Ca sáng',
       note: '',
     },
     {
       no: 20,
-      area: 'Hanoi - Gia Lam',
-      routeName: 'Route 10',
-      turnName: 'Afternoon Trip',
-      note: 'Final stop Gia Lam Bus Station',
+      area: 'Hà Nội - Gia Lâm',
+      routeName: 'Tuyến 10',
+      turnName: 'Ca chiều',
+      note: 'Điểm cuối: Bến xe Gia Lâm',
     },
   ];
-
-  detailData = [
-    { no: 1, busStopName: 'My Dinh Bus Station', arriveTime: '06:30' },
-    {
-      no: 2,
-      busStopName: 'Hanoi University of Science and Technology',
-      arriveTime: '06:45',
-    },
-    { no: 3, busStopName: 'Nga Tu So', arriveTime: '07:00' },
-    { no: 4, busStopName: 'Royal City', arriveTime: '07:10' },
-    { no: 5, busStopName: 'Times City', arriveTime: '07:20' },
-    { no: 6, busStopName: 'Cau Giay', arriveTime: '07:35' },
-    { no: 7, busStopName: 'Trung Hoa', arriveTime: '07:45' },
-    { no: 8, busStopName: 'Foreign Trade University', arriveTime: '07:55' },
-    { no: 9, busStopName: 'Big C Thang Long', arriveTime: '08:05' },
-    { no: 10, busStopName: 'Nga Tu Vong', arriveTime: '08:15' },
-    { no: 11, busStopName: 'Thong Nhat Park', arriveTime: '08:25' },
-    { no: 12, busStopName: 'Hanoi Railway Station', arriveTime: '08:35' },
-    { no: 13, busStopName: 'Opera House', arriveTime: '08:45' },
-    { no: 14, busStopName: 'Hoan Kiem Lake', arriveTime: '08:55' },
-    { no: 15, busStopName: 'Giap Bat Bus Station', arriveTime: '09:10' },
-    { no: 16, busStopName: 'Nuoc Ngam Bus Station', arriveTime: '09:25' },
-    { no: 17, busStopName: 'Linh Dam Urban Area', arriveTime: '09:35' },
-    { no: 18, busStopName: 'Nga Tu So (return)', arriveTime: '09:50' },
-    {
-      no: 19,
-      busStopName: 'National Economics University',
-      arriveTime: '10:00',
-    },
-    { no: 20, busStopName: 'Gia Lam Bus Station', arriveTime: '10:20' },
-  ];
+  detailData: RouteDetail[] = [];
 
   @ViewChild('tblMaster', { static: false })
   tblMaster!: TabulatorTableSingleComponent;
@@ -373,10 +506,10 @@ export class BusComponent implements OnInit, AfterViewInit {
   //#endregion
   onDetailClosed() {
     this.isShowingRightTable = false;
-    this.tblMaster.table?.deselectRow();
+    this.mapComponent.clearLayer();
   }
   onDetailOpened() {
-    this.tblDetail.table?.redraw(true);
+    this.mapComponent.onRefreshMap(this.detailData);
   }
   onAddTab(title: string, content: Type<any>) {
     const newId = 'tab_' + Math.random().toString(36).substring(2, 7);
@@ -407,4 +540,27 @@ export class BusComponent implements OnInit, AfterViewInit {
   confirmDelete() {
     confirm('Confirm?');
   }
+}
+class RouteInfo {
+  no: number;
+  area: string;
+  routeName: string;
+  turnName: string;
+  note: string;
+
+  constructor(data?: Partial<RouteInfo>) {
+    this.no = data?.no ?? 0;
+    this.area = data?.area ?? '';
+    this.routeName = data?.routeName ?? '';
+    this.turnName = data?.turnName ?? '';
+    this.note = data?.note ?? '';
+  }
+}
+export interface RouteDetail {
+  SortOrder: number;
+  StopName: string;
+  ArriveTime: NgbTimeStruct;
+  OffsetDuration: NgbTimeStruct;
+  lat: number;
+  lng: number;
 }

@@ -58,9 +58,9 @@ export class MainPageComponent implements OnInit {
   faChevdown = faChevronDown;
   isSideNavSideMode = false;
   isSideNavOpened = false;
-  categoriesOpen = true;
-  applicationFormOpen = true;
-  paymentManagementOpen = true;
+  categoriesOpen = false;
+  applicationFormOpen = false;
+  paymentManagementOpen = false;
   isAdmin = localStorage.getItem('account') == 'ADMIN';
   isUser = localStorage.getItem('account') == 'USER';
   isSupplier = localStorage.getItem('account') == 'SUPPLIER';
@@ -89,12 +89,11 @@ export class MainPageComponent implements OnInit {
       localStorage.getItem('is_sidenav_side_mode') == 'side';
     this.isSideNavOpened = localStorage.getItem('is_sidenav_opened') == 'true';
     setTimeout(() => {
-      if (this.isAdmin)
-        this.onAddTab('Update commuter bus route', this.bus, true);
+      if (this.isAdmin) this.onAddTab('Tuyến xe', this.bus, true);
       else if (this.isUser)
-        this.onAddTab('Request for event', this.requestFormEvent);
+        this.onAddTab('YC xe sự kiện', this.requestFormEvent);
       else if (this.isSupplier)
-        this.onAddTab('Pricing management', this.pricing);
+        this.onAddTab('Quản lý đơn giá', this.pricing);
     });
   }
   onDrawerModeChange() {

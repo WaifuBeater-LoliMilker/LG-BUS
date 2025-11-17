@@ -1,174 +1,54 @@
-<div class="card h-100" refreshable>
-  <div class="card-header">
-    <div class="row">
-      <div class="col-4 d-flex gap-1">
-        <button class="btn btn-primary-alt" (click)="onAddTab('Update route detail', addEditBus)">
-          <fa-icon [icon]="faPlus"></fa-icon>
-          <span class="ms-1">Add</span>
-        </button>
-        <button class="btn btn-success-alt" (click)="onAddTab('Update route detail', addEditBus)">
-          <fa-icon [icon]="faPenToSquare"></fa-icon>
-          <span class="ms-1">Edit</span></button>
-        <button #btnDeleteMaster class="btn btn-danger-alt" (click)="confirmDelete()">
-          <fa-icon [icon]="faTrash"></fa-icon>
-          <span class="ms-1">Delete</span></button>
-      </div>
-      <div class="col-8 ps-1">
-      </div>
+<mat-sidenav-container class="h-100 w-100">
+  <mat-sidenav-content>
+    <div class="header d-flex align-items-center">
+      <span class="ms-3">Tuyến xe</span>
     </div>
-  </div>
-  <div class="card-body">
-    <div class="row h-100">
-      <mat-sidenav-container class="h-100 w-100">
-        <mat-sidenav-content>
-          <div class="header d-flex align-items-center">
-            <span class="ms-3">Commuter route management</span>
-          </div>
-          <tabulator-table-single #tblMaster [tableData]="masterData" [columnNames]="masterColumns"
-            [height]="'calc(100% - 50px)'" [maxHeight]="'100%'" [hasSelection]="false">
+    <tabulator-table-single #tblMaster [tableData]="masterData" [columnNames]="masterColumns"
+      [height]="'calc(100% - 50px)'" [maxHeight]="'100%'" [selectableRow]="false" [paginationSize]="12">
+    </tabulator-table-single>
+  </mat-sidenav-content>
+  <mat-sidenav #rightSidebar mode="over" position="end" [opened]="isShowingRightTable" (opened)="onDetailOpened()"
+    (closedStart)="onDetailClosed()" class="sidebar no-radius">
+    <div class="w-100 h-100 d-flex">
+      <button class="btn-close btn-close-black btn-close-map" (click)="isShowingRightTable = false"></button>
+      <div class="w-60 h-100">
+        <location-picker></location-picker>
+      </div>
+      <div class="w-40 h-100 p-3 pt-2 d-flex flex-column">
+        <div class="d-flex">
+          <button class="btn btn-primary mb-3 me-1" style="width: 80px;" (click)="isShowingRightTable = false"><i class="bi bi-floppy"></i>
+            Lưu</button>
+          <button class="btn btn-danger mb-3" style="width: 80px;" (click)="isShowingRightTable = false"><i class="bi bi-x-circle"></i>
+            Hủy</button>
+        </div>
+        <div class="input-group pb-3">
+          <span class="input-group-text bg-primary-subtle text-center align-middle" for="bus_route">Tên tuyến</span>
+          <input type="text" id="bus_route" class="form-control" [(ngModel)]="currentRoute.routeName">
+        </div>
+        <div class="input-group pb-3">
+          <span class="input-group-text bg-primary-subtle text-center align-middle" for="route_type">Loại tuyến</span>
+          <ngx-select id="route_type" class="dropdown" [allowClear]="true" [items]="['Ca sáng', 'Ca chiều', 'Ca tối']"
+            [(ngModel)]="currentRoute.turnName">
+          </ngx-select>
+        </div>
+        <div class="input-group pb-3">
+          <span class="input-group-text bg-primary-subtle text-center align-middle" for="note">Ghi chú</span>
+          <textarea type="text" id="note" class="form-control" [(ngModel)]="currentRoute.note"></textarea>
+        </div>
+        <div class="flex-grow-1">
+          <tabulator-table-single #tblMaster [tableData]="detailData" [columnNames]="detailColumns" [height]="'100%'"
+            [maxHeight]="'100%'" [selectableRow]="false" [paginationSize]="7">
           </tabulator-table-single>
-        </mat-sidenav-content>
-        <mat-sidenav #rightSidebar mode="over" position="end" [opened]="isShowingRightTable" (opened)="onDetailOpened()"
-          (closedStart)="onDetailClosed()" class="sidebar no-radius">
-          <div class="d-flex flex-column h-100">
-            <div class="header d-flex align-items-center justify-content-between">
-              <span class="ms-3">Commuter route information</span>
-              <button class="btn text-light" (click)="isShowingRightTable=false;">▶</button>
-            </div>
-            <div class="search-div container">
-              <div class="row h-50">
-                <div class="col-4 d-flex align-items-center">
-                  <label for="i1" class="fw-bold label-background text-light me-2 mb-0 flex-shrink-0">Location</label>
-                  <ngx-select id="i1" class="flex-grow-1" placeholder="VH.Subsidiary" [allowClear]="true">
-                  </ngx-select>
-                </div>
-                <div class="col-4 d-flex align-items-center">
-                  <label for="i2" class="fw-bold label-background text-light me-2 mb-0 flex-shrink-0">Route name</label>
-                  <ngx-select id="i2" class="flex-grow-1" placeholder="TDPLAZA" [allowClear]="true" [disabled]="true">
-                  </ngx-select>
-                </div>
-                <div class="col-4 d-flex align-items-center">
-                  <label for="i3" class="fw-bold label-background text-light me-2 mb-0 flex-shrink-0">Route type</label>
-                  <ngx-select id="i3" class="flex-grow-1" placeholder="Day shift" [allowClear]="true">
-                  </ngx-select>
-                </div>
-              </div>
-              <div class="row h-50">
-                <div class="col-4 d-flex align-items-center"><label for="i4"
-                    class="fw-bold label-background text-light me-2 mb-0 flex-shrink-0">Area</label>
-                  <ngx-select id="i4" class="flex-grow-1" placeholder="Inner Haiphong" [allowClear]="true">
-                  </ngx-select>
-                </div>
-                <div class="col-8 d-flex align-items-center"><label for="i5"
-                    class="fw-bold label-background text-light me-2 mb-0 flex-shrink-0">Stop name</label>
-                  <ngx-select id="i5" class="flex-grow-1" placeholder="" [allowClear]="true">
-                  </ngx-select>
-                </div>
-              </div>
-              <!-- <div class="h-33">
-                <div class="d-flex border">
-                  <div class="p-2 bg-light text-center fw-bold d-flex align-items-center">
-                    TD Plaza
-                  </div>
-                  <div class="flex-grow-1 d-flex align-items-center px-3">
-                    <div class="timeline d-flex align-items-center justify-content-between w-100">
-                      <div class="stop text-center">
-                        <div class="stop-name">TD Plaza</div>
-                        <div class="dot filled"></div>
-                        <div class="stop-time">06:50</div>
-                      </div>
-                      <div class="line"></div>
-                      <div class="stop text-center">
-                        <div class="stop-name">Cổng Cảng</div>
-                        <div class="dot"></div>
-                        <div class="stop-time">06:55</div>
-                      </div>
-                      <div class="line"></div>
-                      <div class="stop text-center">
-                        <div class="stop-name">108 Bạch Đằng</div>
-                        <div class="dot"></div>
-                        <div class="stop-time">07:10</div>
-                      </div>
-                      <div class="line"></div>
-                      <div class="stop text-center">
-                        <div class="stop-name">Điện máy Trần Anh</div>
-                        <div class="dot filled"></div>
-                        <div class="stop-time">07:15</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
-            </div>
-            <div class="table-div">
-              <tabulator-table-single #tblDetail [tableData]="detailData" [columnNames]="detailColumns"
-                [height]="'100%'" [maxHeight]="'100%'" [hasSelection]="false">
-              </tabulator-table-single>
-            </div>
-          </div>
-        </mat-sidenav>
-      </mat-sidenav-container>
-    </div>
-  </div>
-</div>
-<ng-template #content let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-area">Truyền thông</h4>
-    <button type="button" class="btn-close btn-close-white" aria-label="Close"
-      (click)="modal.dismiss('Cross click')"></button>
-  </div>
-  <div class="modal-body">
-    <div class="d-flex flex-column h-100">
-      <input type="text" class="form-control form-id-input" id="comm_id" name="comm_id">
-      <div class="d-flex justify-content-center">
-        <div class="modal-div-master">
-          <div class="row">
-            <div class="mb-3 col-3 row">
-              <label for="comm_name" class="col-2 col-form-label fw-bold">Tên</label>
-              <div class="col-10">
-                <input type="text" class="form-control" id="comm_name" name="comm_name" ngbAutofocus>
-              </div>
-            </div>
-            <div class="mb-3 col-9 row">
-              <label for="comm_description" class="col-1 col-form-label fw-bold">Mô tả</label>
-              <div class="col-11">
-                <input class="form-control" id="comm_description" name="comm_description" maxlength="200">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="d-flex justify-content-center flex-grow-1">
-        <div class="modal-div-detail">
-          <div class="card h-100" refreshable>
-            <div class="card-header">
-              <div class="row">
-                <div class="col-4 pe-1my-1 d-flex gap-1">
-                  <button class="btn btn-primary-alt">
-                    <fa-icon [icon]="faPlus"></fa-icon>
-                    <span class="ms-1">Thêm</span>
-                  </button>
-                  <button class="btn btn-success-alt">
-                    <fa-icon [icon]="faPenToSquare"></fa-icon>
-                    <span class="ms-1">Sửa</span></button>
-                  <button #btnDeleteDetail class="btn btn-danger-alt">
-                    <fa-icon [icon]="faTrash"></fa-icon>
-                    <span class="ms-1">Xóa</span></button>
-                </div>
-                <div class="col-8 ps-1">
-                </div>
-              </div>
-            </div>
-            <div class="card-body">
-              <tabulator-table-single #tblModalDetail [columnNames]="modalDetailColumns" [selectableRow]="true"
-                [height]="'100%'" [maxHeight]="'100%'" [hasSelection]="true"></tabulator-table-single>
-            </div>
-          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-primary">Lưu</button>
-  </div>
+  </mat-sidenav>
+</mat-sidenav-container>
+<ng-template #arriveTimeInputTemplate let-row="row">
+  <ngb-timepicker [(ngModel)]="row.ArriveTime" [spinners]="false" />
 </ng-template>
+<ng-template #offsetDurationInputTemplate let-row="row">
+  <ngb-timepicker class="offset-duration" [(ngModel)]="row.OffsetDuration" [seconds]="true" [spinners]="false"
+    [hourStep]="0" />
+</ng-template>
+<ng-container #vcHost></ng-container>

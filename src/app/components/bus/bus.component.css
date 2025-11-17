@@ -32,9 +32,16 @@
   height: 33%;
 }
 
+.w-60 {
+  width: 60%;
+}
+
+.w-40 {
+  width: 40%;
+}
+
 .sidebar {
-  width: 65%;
-  min-width: 500px;
+  width: 100%;
 }
 
 .no-radius {
@@ -104,4 +111,22 @@
   height: 2px;
   background: #f25c7f;
   margin: 0 4px;
+}
+
+.btn-close-map {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  z-index: 999;
+}
+
+span.input-group-text.bg-primary-subtle {
+  width: 100px;
+}
+
+.input-group .dropdown {
+  position: relative;
+  flex: 1 1 auto;
+  width: 1%;
+  min-width: 0;
 }

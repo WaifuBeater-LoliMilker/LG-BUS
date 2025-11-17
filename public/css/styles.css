@@ -625,3 +625,20 @@ input[type="date"]::-ms-clear {
 .cursor-pointer {
   cursor: pointer;
 }
+
+.offset-duration .ngb-tp-hour {
+  display: none !important;
+}
+
+.offset-duration .ngb-tp-spacer:nth-child(2) {
+  display: none !important;
+}
+
+.bus-stop-marker {
+  width: 18px !important;
+  height: 18px !important;
+  transform: translate(-3px, -3px);
+  background: blue;
+  border-radius: 50%;
+  border: 2px solid white;
+}
