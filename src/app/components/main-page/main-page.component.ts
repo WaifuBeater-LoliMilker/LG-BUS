@@ -36,6 +36,8 @@ import { ServiceCompletionComponent } from '../service-completion/service-comple
 import { MapComponent } from '../map/map.component';
 import { BusRouteMap } from '../bus-route-map/bus-route-map.component';
 import { ScanHistoryComponent } from '../scan-history/scan-history.component';
+import { IssueComponent } from '../issue/issue.component';
+import { BusIssueSummaryComponent } from '../bus-issue-summary/bus-issue-summary.component';
 @Component({
   selector: 'app-main-page',
   imports: [
@@ -80,6 +82,8 @@ export class MainPageComponent implements OnInit {
   map = MapComponent;
   locationPicker = BusRouteMap;
   scanHistory = ScanHistoryComponent;
+  issue = IssueComponent;
+  issueSummary = BusIssueSummaryComponent;
   @ViewChild('tabContainer') tabContainer!: DynamicTabsComponent<any>;
   constructor(private router: Router) {}
 

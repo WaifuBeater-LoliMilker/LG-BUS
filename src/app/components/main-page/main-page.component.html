@@ -15,6 +15,10 @@
           <img matListIcon src="/imgs/icons/dashboard.png" class="icon me-1">
           <span class="fw-sidenav">Tuyến xe</span>
         </a>
+        <a mat-list-item data-tab-name="Báo cáo vấn đề" (click)="onAddTab('Báo cáo vấn đề', issue)">
+          <img matListIcon src="/imgs/icons/issue.png" class="icon me-1">
+          <span class="fw-sidenav">Báo cáo vấn đề</span>
+        </a>
         <a mat-list-item (click)="applicationFormOpen = !applicationFormOpen" [class.open]="applicationFormOpen">
           <img matListIcon src="/imgs/icons/forms.png" class="icon me-1">
           <span class="fw-sidenav">Đơn yêu cầu</span>
@@ -22,7 +26,8 @@
           <fa-icon [icon]="applicationFormOpen? faChevup:faChevdown" class="chevron"></fa-icon>
         </a>
         <div class="submenu" [class.open]="applicationFormOpen">
-          <a mat-list-item data-tab-name="Yêu cầu xe sự kiện" (click)="onAddTab('Yêu cầu xe sự kiện', requestFormEvent)">
+          <a mat-list-item data-tab-name="Yêu cầu xe sự kiện"
+            (click)="onAddTab('Yêu cầu xe sự kiện', requestFormEvent)">
             <img matListIcon src="/imgs/icons/events.png" class="icon me-1">
             <span class="fw-sidenav">Yêu cầu xe sự kiện</span>
           </a>
@@ -30,9 +35,14 @@
             <img matListIcon src="/imgs/icons/bus.png" class="icon me-1">
             <span class="fw-sidenav">Yêu cầu tuyến mới</span>
           </a>
-          <a mat-list-item data-tab-name="Yêu cầu điểm dừng mới" (click)="onAddTab('Yêu cầu điểm dừng mới', requestFormStop)">
+          <a mat-list-item data-tab-name="Yêu cầu điểm dừng mới"
+            (click)="onAddTab('Yêu cầu điểm dừng mới', requestFormStop)">
             <img matListIcon src="/imgs/icons/bus-stop.png" class="icon me-1">
             <span class="fw-sidenav">Yêu cầu điểm dừng mới</span>
+          </a>
+          <a mat-list-item data-tab-name="Tổng hợp vấn đề" (click)="onAddTab('Tổng hợp vấn đề', issueSummary)">
+            <img matListIcon src="/imgs/icons/issue-summary.png" class="icon me-1">
+            <span class="fw-sidenav">Tổng hợp vấn đề</span>
           </a>
         </div>
         <a mat-list-item data-tab-name="Duyệt đơn" (click)="onAddTab('Duyệt đơn', approval)">
@@ -94,6 +104,10 @@
         </div>
         }
         @if(isUser && !isAdmin && !isSupplier){
+        <a mat-list-item data-tab-name="Báo cáo vấn đề" (click)="onAddTab('Báo cáo vấn đề', issue)">
+          <img matListIcon src="/imgs/icons/issue.png" class="icon me-1">
+          <span class="fw-sidenav">Báo cáo vấn đề</span>
+        </a>
         <a mat-list-item (click)="applicationFormOpen = !applicationFormOpen" [class.open]="applicationFormOpen">
           <img matListIcon src="/imgs/icons/forms.png" class="icon me-1">
           <span class="fw-sidenav">Đơn yêu cầu</span>
@@ -101,7 +115,8 @@
           <fa-icon [icon]="applicationFormOpen? faChevup:faChevdown" class="chevron"></fa-icon>
         </a>
         <div class="submenu" [class.open]="applicationFormOpen">
-          <a mat-list-item data-tab-name="Yêu cầu xe sự kiện" (click)="onAddTab('Yêu cầu xe sự kiện', requestFormEvent)">
+          <a mat-list-item data-tab-name="Yêu cầu xe sự kiện"
+            (click)="onAddTab('Yêu cầu xe sự kiện', requestFormEvent)">
             <img matListIcon src="/imgs/icons/events.png" class="icon me-1">
             <span class="fw-sidenav">Yêu cầu xe sự kiện</span>
           </a>
@@ -109,7 +124,8 @@
             <img matListIcon src="/imgs/icons/bus.png" class="icon me-1">
             <span class="fw-sidenav">Yêu cầu tuyến mới</span>
           </a>
-          <a mat-list-item data-tab-name="Yêu cầu điểm dừng mới" (click)="onAddTab('Yêu cầu điểm dừng mới', requestFormStop)">
+          <a mat-list-item data-tab-name="Yêu cầu điểm dừng mới"
+            (click)="onAddTab('Yêu cầu điểm dừng mới', requestFormStop)">
             <img matListIcon src="/imgs/icons/bus-stop.png" class="icon me-1">
             <span class="fw-sidenav">Yêu cầu điểm dừng mới</span>
           </a>

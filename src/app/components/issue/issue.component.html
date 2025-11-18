@@ -1,0 +1,112 @@
+<div class="issue-report-container">
+  <div class="report-card">
+    <h2>Báo Cáo Sự Cố Xe Bus</h2>
+    <p class="subtitle">Giúp chúng tôi cải thiện trải nghiệm di chuyển của bạn</p>
+
+    <form (ngSubmit)="onSubmit()" #issueForm="ngForm">
+      <!-- Bus Information -->
+      <div class="form-section">
+        <h3>Thông Tin Xe Bus</h3>
+
+        <div class="form-group">
+          <label for="busNumber">Biển số *</label>
+          <input type="text" id="busNumber" name="busNumber" [(ngModel)]="report.busNumber" required
+          class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label for="route">Tuyến xe *</label>
+          <input type="text" id="route" name="route" [(ngModel)]="report.route" required
+            class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label for="dateTime">Ngày & Giờ *</label>
+          <input type="datetime-local" id="dateTime" name="dateTime" [(ngModel)]="report.dateTime" required
+            class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label for="location">Vị Trí</label>
+          <input type="text" id="location" name="location" [(ngModel)]="report.location"
+            class="form-control" />
+        </div>
+      </div>
+
+      <!-- Issue Details -->
+      <div class="form-section">
+        <h3>Chi Tiết Sự Cố</h3>
+
+        <div class="form-group">
+          <label for="issueType">Loại Sự Cố *</label>
+          <select id="issueType" name="issueType" [(ngModel)]="report.issueType" required class="form-control">
+            <option value="">Chọn loại sự cố</option>
+            <option value="delay">Chậm Trễ / Đến Muộn</option>
+            <option value="noshow">Xe Không Đến</option>
+            <option value="overcrowding">Quá Đông Người</option>
+            <option value="cleanliness">Vấn Đề Vệ Sinh</option>
+            <option value="safety">Vấn Đề An Toàn</option>
+            <option value="driver">Hành Vi Tài Xế</option>
+            <option value="mechanical">Vấn Đề Kỹ Thuật</option>
+            <option value="route">Vấn Đề Tuyến Đường</option>
+            <option value="other">Khác</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="priority">Mức Độ Ưu Tiên *</label>
+          <select id="priority" name="priority" [(ngModel)]="report.priority" required class="form-control">
+            <option value="">Chọn mức độ ưu tiên</option>
+            <option value="low">Thấp</option>
+            <option value="medium">Trung Bình</option>
+            <option value="high">Cao</option>
+            <option value="urgent">Khẩn Cấp</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="description">Mô Tả *</label>
+          <textarea id="description" name="description" [(ngModel)]="report.description" required rows="5"
+            placeholder="Vui lòng cung cấp thông tin chi tiết về sự cố..." class="form-control"></textarea>
+        </div>
+      </div>
+
+      <!-- Contact Information -->
+      <div class="form-section">
+        <h3>Thông Tin Liên Hệ</h3>
+
+        <div class="form-group">
+          <label for="contactName">Họ Tên *</label>
+          <input type="text" id="contactName" name="contactName" [(ngModel)]="report.contactName" required
+            placeholder="Nguyễn Văn A" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label for="contactEmail">Email *</label>
+          <input type="email" id="contactEmail" name="contactEmail" [(ngModel)]="report.contactEmail" required
+            placeholder="nguyen.van.a@example.com" class="form-control" />
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="form-actions">
+        <button type="submit" class="btn-primary" [disabled]="!issueForm.form.valid || isSubmitting">
+          {{ isSubmitting ? 'Đang Gửi...' : 'Gửi Báo Cáo' }}
+        </button>
+        <button type="button" class="btn-secondary" (click)="onReset()" [disabled]="isSubmitting">
+          Đặt Lại
+        </button>
+      </div>
+    </form>
+
+    <!-- Success Message -->
+    <div *ngIf="submitted" class="success-message">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+      </svg>
+      <p>Cảm ơn bạn! Báo cáo của bạn đã được gửi thành công.</p>
+      <p class="tracking-info">Mã Theo Dõi: {{ trackingId }}</p>
+    </div>
+  </div>
+</div>
