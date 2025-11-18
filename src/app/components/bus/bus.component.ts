@@ -30,10 +30,10 @@ import { Tab } from '../_shared/dynamic-tabs/dynamic-tabs.component';
 import { BusRouteMap } from '../bus-route-map/bus-route-map.component';
 import {
   NgbDatepickerModule,
-  NgbDateStruct,
   NgbTimepickerModule,
   NgbTimeStruct,
 } from '@ng-bootstrap/ng-bootstrap';
+import { VehicleListComponent } from '../vehicle-list/vehicle-list.component';
 
 @Component({
   selector: 'communication',
@@ -63,6 +63,7 @@ export class BusComponent implements OnInit, AfterViewInit {
   faPenToSquare = faPenToSquare;
   faCopy = faCopy;
   faTrash = faTrash;
+  vehicleList = VehicleListComponent;
   @ViewChild(BusRouteMap) mapComponent!: BusRouteMap;
   @ViewChild('arriveTimeInputTemplate', { static: true })
   arriveTimeInputTemplate!: TemplateRef<any>;
@@ -189,16 +190,16 @@ export class BusComponent implements OnInit, AfterViewInit {
           this.isEditting = true;
         }
         if ((e.target as HTMLElement).closest('.btn-del')) {
+          const confirmed = confirm('Bạn có chắc chắn muốn xóa không?');
+          if (!confirmed) return;
+          const data = cell.getData() as RouteInfo;
+          const idx = this.masterData.findIndex(
+            (d) => d.routeName == data.routeName
+          );
+          this.masterData.splice(idx, 1);
         }
       },
     },
-    // {
-    //   title: 'Area',
-    //   field: 'area',
-    //   headerHozAlign: 'center',
-    //   hozAlign: 'center',
-    //   width: 180,
-    // },
     {
       title: 'Tên tuyến',
       field: 'routeName',
@@ -224,6 +225,12 @@ export class BusComponent implements OnInit, AfterViewInit {
       headerHozAlign: 'center',
       hozAlign: 'center',
       width: 180,
+      cellClick: (e, cell) => {
+        e.stopPropagation();
+        if ((e.target as HTMLElement).closest('.vehicle-list-link')) {
+          this.onAddTab('Danh sách xe', this.vehicleList);
+        }
+      },
     },
     {
       title: 'Ghi chú',
@@ -556,6 +563,7 @@ export class BusComponent implements OnInit, AfterViewInit {
           title,
           content,
           active: true,
+          passTabs: true,
         },
       ];
       this.dynamicTabs.onTabsChanged();

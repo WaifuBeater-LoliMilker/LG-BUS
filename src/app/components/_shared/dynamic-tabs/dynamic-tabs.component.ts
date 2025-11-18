@@ -165,7 +165,9 @@ export class DynamicTabsComponent<T> implements AfterViewInit, OnDestroy {
     this.scrollToTab(active?.id ?? '');
   }
   public passTabsToChilds(tab: Tab<T>) {
-    return tab.passTabs ? { dynamicTabs: this } : {};
+    let passingInputs: any = { dynamicTabs: this };
+    if (tab.inputs) passingInputs.passingInputs = tab.inputs;
+    return tab.passTabs ? passingInputs : {};
   }
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.tabs, event.previousIndex, event.currentIndex);
@@ -178,4 +180,5 @@ export interface Tab<T> {
   content: Type<T>;
   active: boolean;
   passTabs?: boolean;
+  inputs?: { [key: string]: any };
 }

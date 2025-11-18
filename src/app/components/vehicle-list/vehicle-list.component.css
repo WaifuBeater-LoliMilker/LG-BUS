@@ -1,0 +1,25 @@
+.header {
+  height: 50px;
+  background-color: rgb(45, 164, 203);
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.sidebar {
+  width: 50%;
+}
+
+.no-radius {
+  border-radius: 0 !important;
+}
+
+.input-group .dropdown {
+  position: relative;
+  flex: 1 1 auto;
+  width: 1%;
+  min-width: 0;
+}
+span.input-group-text.bg-primary-subtle{
+  width: 100px;
+}
