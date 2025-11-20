@@ -36,13 +36,26 @@
             <span class="fw-sidenav">Yêu cầu tuyến mới</span>
           </a>
           <a mat-list-item data-tab-name="Yêu cầu điểm dừng mới"
-            (click)="onAddTab('Yêu cầu điểm dừng mới', requestFormStop)">
+            (click)="onAddTab('Yêu cầu điểm dừng mới', busStopRequest)">
             <img matListIcon src="/imgs/icons/bus-stop.png" class="icon me-1">
             <span class="fw-sidenav">Yêu cầu điểm dừng mới</span>
           </a>
+        </div>
+        <a mat-list-item (click)="summaryOpen = !summaryOpen" [class.open]="summaryOpen">
+          <img matListIcon src="/imgs/icons/summary-check.png" class="icon me-1">
+          <span class="fw-sidenav">Tổng hợp</span>
+          <span class="spacer"></span>
+          <fa-icon [icon]="summaryOpen? faChevup:faChevdown" class="chevron"></fa-icon>
+        </a>
+        <div class="submenu" [class.open]="summaryOpen">
           <a mat-list-item data-tab-name="Tổng hợp vấn đề" (click)="onAddTab('Tổng hợp vấn đề', issueSummary)">
             <img matListIcon src="/imgs/icons/issue-summary.png" class="icon me-1">
             <span class="fw-sidenav">Tổng hợp vấn đề</span>
+          </a>
+          <a mat-list-item data-tab-name="Tổng hợp yc điểm dừng"
+            (click)="onAddTab('Tổng hợp yc điểm dừng', busStopRequestSummary)">
+            <img matListIcon src="/imgs/icons/bus-station.png" class="icon me-1">
+            <span class="fw-sidenav">Tổng hợp yc điểm dừng</span>
           </a>
         </div>
         <a mat-list-item data-tab-name="Duyệt đơn" (click)="onAddTab('Duyệt đơn', approval)">
@@ -53,7 +66,7 @@
           <img matListIcon src="/imgs/icons/schedule.png" class="icon me-1">
           <span class="fw-sidenav">Quản lý lịch trình</span>
         </a>
-        <a mat-list-item data-tab-name="Quản lý vận hành" (click)="onAddTab('Quản lý vận hành', operation)">
+        <a mat-list-item data-tab-name="Quản lý vận hành" (click)="onAddTab('Quản lý vận hành', vehicleTracker)">
           <img matListIcon src="/imgs/icons/operation.png" class="icon me-1">
           <span class="fw-sidenav">Quản lý vận hành</span>
         </a>

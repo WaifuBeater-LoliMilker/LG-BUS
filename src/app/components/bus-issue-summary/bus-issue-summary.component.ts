@@ -26,25 +26,6 @@ interface IssueReport {
     <div class="summary-container">
       <div class="summary-header">
         <h2>Tổng Hợp Sự Cố Xe Bus</h2>
-        <div class="header-actions">
-          <button class="btn-refresh" (click)="loadIssues()">
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <polyline points="23 4 23 10 17 10"></polyline>
-              <polyline points="1 20 1 14 7 14"></polyline>
-              <path
-                d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"
-              ></path>
-            </svg>
-            Làm Mới
-          </button>
-        </div>
       </div>
 
       <!-- Statistics Cards -->
@@ -150,8 +131,8 @@ interface IssueReport {
         <table class="issues-table">
           <thead>
             <tr>
-              <th>Mã</th>
-              <th>Số Xe</th>
+              <th>Tuyến</th>
+              <th>Biển số</th>
               <th>Tuyến</th>
               <th>Loại Sự Cố</th>
               <th>Mức Độ</th>
@@ -693,8 +674,8 @@ export class BusIssueSummaryComponent implements OnInit {
     // Simulated data - replace with actual API call
     this.issues = [
       {
-        id: 'BUS-A1B2C3',
-        busNumber: '34',
+        id: 'Route1',
+        busNumber: '29H-93190',
         route: 'Cầu Giấy - Hà Đông',
         issueType: 'delay',
         description: 'Xe chậm hơn 30 phút so với lịch trình',
@@ -707,8 +688,8 @@ export class BusIssueSummaryComponent implements OnInit {
         createdAt: '2025-11-18T08:35:00',
       },
       {
-        id: 'BUS-D4E5F6',
-        busNumber: '22',
+        id: 'Route2',
+        busNumber: '29LD-32022',
         route: 'Bến Xe Mỹ Đình - Sân Bay Nội Bài',
         issueType: 'overcrowding',
         description: 'Xe quá tải, nhiều người phải đứng',
@@ -721,8 +702,8 @@ export class BusIssueSummaryComponent implements OnInit {
         createdAt: '2025-11-18T07:20:00',
       },
       {
-        id: 'BUS-G7H8I9',
-        busNumber: '45',
+        id: 'Route3',
+        busNumber: '29A-77234',
         route: 'Kim Mã - Long Biên',
         issueType: 'safety',
         description: 'Tài xế lái xe không an toàn, đánh lái gấp',
@@ -735,8 +716,8 @@ export class BusIssueSummaryComponent implements OnInit {
         createdAt: '2025-11-17T18:10:00',
       },
       {
-        id: 'BUS-J1K2L3',
-        busNumber: '18',
+        id: 'Route4',
+        busNumber: '99H-11823',
         route: 'Bát Tràng - Gia Lâm',
         issueType: 'cleanliness',
         description: 'Xe không được vệ sinh, ghế ngồi dơ bẩn',
@@ -749,8 +730,8 @@ export class BusIssueSummaryComponent implements OnInit {
         createdAt: '2025-11-18T09:15:00',
       },
       {
-        id: 'BUS-M4N5O6',
-        busNumber: '86',
+        id: 'Route5',
+        busNumber: '88B-44291',
         route: 'Thanh Xuân - Hà Đông',
         issueType: 'mechanical',
         description: 'Điều hòa không hoạt động, xe quá nóng',
@@ -763,8 +744,8 @@ export class BusIssueSummaryComponent implements OnInit {
         createdAt: '2025-11-18T10:45:00',
       },
       {
-        id: 'BUS-P7Q8R9',
-        busNumber: '52',
+        id: 'Route6',
+        busNumber: '30A-77103',
         route: 'Hoàng Mai - Đống Đa',
         issueType: 'noshow',
         description: 'Xe không đến theo lịch trình, chờ quá 45 phút',

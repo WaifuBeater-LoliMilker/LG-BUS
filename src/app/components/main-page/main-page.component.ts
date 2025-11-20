@@ -38,6 +38,9 @@ import { BusRouteMap } from '../bus-route-map/bus-route-map.component';
 import { ScanHistoryComponent } from '../scan-history/scan-history.component';
 import { IssueComponent } from '../issue/issue.component';
 import { BusIssueSummaryComponent } from '../bus-issue-summary/bus-issue-summary.component';
+import { BusStopRequestComponent } from '../bus-stop-request/bus-stop-request.component';
+import { BusStopRequestSummaryComponent } from '../bus-stop-request-summary/bus-stop-request-summary.component';
+import { VehicleTrackerComponent } from '../vehicle-tracking/vehicle-tracking.component';
 @Component({
   selector: 'app-main-page',
   imports: [
@@ -62,6 +65,7 @@ export class MainPageComponent implements OnInit {
   isSideNavOpened = false;
   categoriesOpen = false;
   applicationFormOpen = false;
+  summaryOpen = false;
   paymentManagementOpen = false;
   isAdmin = localStorage.getItem('account') == 'ADMIN';
   isUser = localStorage.getItem('account') == 'USER';
@@ -84,6 +88,9 @@ export class MainPageComponent implements OnInit {
   scanHistory = ScanHistoryComponent;
   issue = IssueComponent;
   issueSummary = BusIssueSummaryComponent;
+  busStopRequest = BusStopRequestComponent;
+  busStopRequestSummary = BusStopRequestSummaryComponent;
+  vehicleTracker = VehicleTrackerComponent;
   @ViewChild('tabContainer') tabContainer!: DynamicTabsComponent<any>;
   constructor(private router: Router) {}
 

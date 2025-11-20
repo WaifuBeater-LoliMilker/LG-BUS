@@ -301,6 +301,7 @@ export class BusComponent implements OnInit, AfterViewInit {
             (d) => d.SortOrder == data.SortOrder && d.StopName == data.StopName
           );
           this.detailData.splice(idx, 1);
+          this.mapComponent.onRefreshMap(this.detailData);
         }
       },
     },
