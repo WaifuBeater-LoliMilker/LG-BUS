@@ -2,7 +2,6 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
-  Input,
   TemplateRef,
   ViewChild,
   ViewContainerRef,

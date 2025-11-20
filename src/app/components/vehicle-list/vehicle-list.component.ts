@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { NgxSelectModule } from 'ngx-select-ex';
+import { VehicleParkingComponent } from '../vehicle-parking/vehicle-parking.component';
 
 @Component({
   selector: 'app-vehicle-list',
@@ -31,6 +32,9 @@ import { NgxSelectModule } from 'ngx-select-ex';
 export class VehicleListComponent implements OnInit {
   @Input() dynamicTabs!: any;
   scanHistory = ScanHistoryComponent;
+  parking = VehicleParkingComponent;
+  @ViewChild('tblMaster', { static: false })
+  tblMaster!: TabulatorTableSingleComponent;
   @ViewChild('tblDetail', { static: false })
   tblDetail!: TabulatorTableSingleComponent;
   isShowingRightTable = false;
@@ -152,6 +156,8 @@ export class VehicleListComponent implements OnInit {
       cellClick: (e, cell) => {
         e.stopPropagation();
         if ((e.target as HTMLElement).closest('.vehicle-list-link')) {
+          const data = cell.getData();
+          this.onAddTab('Vị trí đỗ xe', this.parking, data);
         }
       },
     },
@@ -370,13 +376,14 @@ export class VehicleListComponent implements OnInit {
     this.isShowingRightTable = false;
     const data = this.tblDetail.table?.getSelectedData()[0] as VehicleList;
     this.masterData.push({
-      no: 21,
+      no: 16,
       actions: null,
       bienSo: data.bienSo,
       laiXe: data.laiXe,
       viTriDo: '',
       note: '',
     });
+    this.tblMaster.table?.setSort('no', 'asc');
   }
   onAddTab(title: string, content: Type<any>, data: any) {
     const newId = 'tab_' + Math.random().toString(36).substring(2, 7);

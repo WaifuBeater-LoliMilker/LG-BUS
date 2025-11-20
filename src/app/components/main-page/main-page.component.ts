@@ -41,6 +41,7 @@ import { BusIssueSummaryComponent } from '../bus-issue-summary/bus-issue-summary
 import { BusStopRequestComponent } from '../bus-stop-request/bus-stop-request.component';
 import { BusStopRequestSummaryComponent } from '../bus-stop-request-summary/bus-stop-request-summary.component';
 import { VehicleTrackerComponent } from '../vehicle-tracking/vehicle-tracking.component';
+import { VehicleManagementComponent } from '../vehicle-managment/vehicle-managment.component';
 @Component({
   selector: 'app-main-page',
   imports: [
@@ -91,6 +92,7 @@ export class MainPageComponent implements OnInit {
   busStopRequest = BusStopRequestComponent;
   busStopRequestSummary = BusStopRequestSummaryComponent;
   vehicleTracker = VehicleTrackerComponent;
+  vehicleManagement = VehicleManagementComponent;
   @ViewChild('tabContainer') tabContainer!: DynamicTabsComponent<any>;
   constructor(private router: Router) {}
 
